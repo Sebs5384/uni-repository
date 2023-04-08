@@ -7,7 +7,13 @@ using namespace std;
 
 int main() {
 
-    int rangoMinimo, rangoMaximo, intentosMaximos, numeroAleatorio, adivinanza, i, intentosRestantes;
+    int rangoMinimo;
+    int rangoMaximo;
+    int intentosMaximos;
+    int numeroAleatorio;
+    int adivinanza;
+    int i;
+    int intentosRestantes;
     vector<int> numerosUsados;
 
     cout << "Porfavor introduzca un rango minimo para el juego: " << endl;
@@ -47,11 +53,12 @@ int main() {
             cout << "Te quedan " << intentosRestantes << " intentos" << endl;
             numerosUsados.push_back(adivinanza);
         }
-
-
-
+        cout << "Los numeros que usastes son: " << endl;
+        for (int j = 0; j < numerosUsados.size(); j++) {
+            cout << numerosUsados[j] << ", ";
+        }
+        cout << endl;
     }
-
     if (i == intentosMaximos) {
         cout << "Se acabaron tus intentos, perdiste !" << endl;
     }
