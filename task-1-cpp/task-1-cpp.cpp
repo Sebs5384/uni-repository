@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -66,6 +67,8 @@ int main() {
                 numerosUsados.push_back(adivinanza);
             }
         }
+
+        sort(numerosUsados.begin(), numerosUsados.end());
         cout << "Los numeros que utilizaste hasta ahora son: ";
         for (int k = 0; k < numerosUsados.size(); k++) {
             cout << numerosUsados[k] << ", ";
