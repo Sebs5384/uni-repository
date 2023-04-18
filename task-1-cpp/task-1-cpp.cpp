@@ -26,21 +26,22 @@ int main() {
     cin >> intentosMaximos;
 
     if (rangoMinimo > rangoMaximo) {
-        int $rangoMaximo = rangoMinimo;
+        int $rangoMaximo = rangoMinimo; 
         rangoMinimo = rangoMaximo;
-        rangoMaximo = $rangoMaximo;
+        rangoMaximo = $rangoMaximo;  
     }
 
     srand(time(NULL));
     numeroAleatorio = rand() % (rangoMaximo - rangoMinimo + 1) + rangoMinimo;
 
+    cout << "Podes adivinar el numero aleatorio entre tus inputs? " << rangoMinimo << " y " << rangoMaximo << " tenes estos intentos: " << intentosMaximos << endl;
+
     for (i = 0; i < intentosMaximos; i++) {
+
+        cin >> adivinanza;
         adivinanzaRepetida = false;
         intentosRestantes = (intentosMaximos - (i + 1));
-
-        cout << "Podes adivinar el numero aleatorio entre tus inputs? " << rangoMinimo << " y " << rangoMaximo << endl;
-        cin >> adivinanza;
-
+        
         for (int j = 0; j < numerosUsados.size(); j++) {
             if (numerosUsados[j] == adivinanza) {
                 i--;
@@ -49,8 +50,12 @@ int main() {
                 break;
             }
         }
-           
-        if (!adivinanzaRepetida) {
+
+        if (intentosRestantes == 0) {
+            cout << "Se acabaron tus intentos, perdiste !" << endl;
+            break;
+        }
+        else if (!adivinanzaRepetida) {
 
             if (adivinanza == numeroAleatorio) {
                 cout << "Adivinazte! el numero aleatorio era: " << numeroAleatorio << endl;
@@ -58,14 +63,13 @@ int main() {
             }
             else if (adivinanza < numeroAleatorio) {
                 cout << "Tu adivinanza es de menor valor a tu numero aleatorio, intenta de nuevo !" << endl;
-                cout << "Te quedan " << intentosRestantes << " intentos" << endl;
-                numerosUsados.push_back(adivinanza);
+                cout << "Te quedan esta cantidad de intentos: " << intentosRestantes << endl;
             }
             else if (adivinanza > numeroAleatorio) {
                 cout << "Tu adivinanza es de mayor valor a tu numero aleatorio, intenta de nuevo !" << endl;
-                cout << "Te quedan " << intentosRestantes << " intentos" << endl;
-                numerosUsados.push_back(adivinanza);
+                cout << "Te quedan esta cantidad de intentos: " << intentosRestantes << endl;
             }
+            numerosUsados.push_back(adivinanza);
         }
 
         sort(numerosUsados.begin(), numerosUsados.end());
@@ -74,9 +78,7 @@ int main() {
             cout << numerosUsados[k] << ", ";
         }
         cout << endl;
-    }
-    if (i == intentosMaximos) {
-        cout << "Se acabaron tus intentos, perdiste !" << endl;
+       
     }
 
     return 0;
