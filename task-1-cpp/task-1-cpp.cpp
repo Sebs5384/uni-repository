@@ -33,6 +33,7 @@ int main() {
 
     srand(time(NULL));
     numeroAleatorio = rand() % (rangoMaximo - rangoMinimo + 1) + rangoMinimo;
+    cout << numeroAleatorio << endl;
 
     cout << "Podes adivinar el numero aleatorio entre tus inputs? " << rangoMinimo << " y " << rangoMaximo << " tenes estos intentos: " << intentosMaximos << endl;
 
@@ -51,17 +52,18 @@ int main() {
             }
         }
 
-        if (intentosRestantes == 0) {
-            cout << "Se acabaron tus intentos, perdiste !" << endl;
+        if (adivinanza == numeroAleatorio) {
+            cout << "Adivinazte! el numero aleatorio era: " << numeroAleatorio << endl;
             break;
         }
-        else if (!adivinanzaRepetida) {
+        else if ((i + 1) == intentosMaximos) {
+            cout << "Se acabaron tus intentos, perdiste !" << endl;
+            break;
+        } 
+        
+        if (!adivinanzaRepetida) {
 
-            if (adivinanza == numeroAleatorio) {
-                cout << "Adivinazte! el numero aleatorio era: " << numeroAleatorio << endl;
-                break;
-            }
-            else if (adivinanza < numeroAleatorio) {
+            if (adivinanza < numeroAleatorio) {
                 cout << "Tu adivinanza es de menor valor a tu numero aleatorio, intenta de nuevo !" << endl;
                 cout << "Te quedan esta cantidad de intentos: " << intentosRestantes << endl;
             }
