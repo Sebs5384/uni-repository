@@ -10,7 +10,6 @@ using namespace std;
 
 int main() {
 
-    int i;
     int rangoMinimo;
     int rangoMaximo;
     int intentosMaximos;
@@ -39,7 +38,7 @@ int main() {
 
     cout << "Podes adivinar el numero aleatorio entre tus inputs? " << rangoMinimo << " y " << rangoMaximo << " tenes estos intentos: " << intentosMaximos << endl;
 
-    for (i = 0; i < intentosMaximos; i++) {
+    for (int i = 0; i < intentosMaximos; i++) {
 
         cin >> adivinanza;
         adivinanzaRepetida = false;
