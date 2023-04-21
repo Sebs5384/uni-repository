@@ -6,7 +6,13 @@
 
 using namespace std;
 
-
+void intercambiarValores(int rangoMinimo, int rangoMaximo){
+    if (rangoMinimo > rangoMaximo) {
+        int $rangoMaximo = rangoMinimo; 
+        rangoMinimo = rangoMaximo;
+        rangoMaximo = $rangoMaximo;  
+    }
+}
 
 int main() {
 
@@ -26,11 +32,7 @@ int main() {
     cout << "Cuantos intentos deseas tener en esta partida? " << endl;
     cin >> intentosMaximos;
 
-    if (rangoMinimo > rangoMaximo) {
-        int $rangoMaximo = rangoMinimo; 
-        rangoMinimo = rangoMaximo;
-        rangoMaximo = $rangoMaximo;  
-    }
+    intercambiarValores(rangoMinimo, rangoMaximo);
 
     srand(time(NULL));
     numeroAleatorio = rand() % (rangoMaximo - rangoMinimo + 1) + rangoMinimo;
