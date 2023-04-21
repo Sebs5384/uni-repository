@@ -14,12 +14,17 @@ void intercambiarValores(int rangoMinimo, int rangoMaximo){
     }
 }
 
+void generarNumeroAleatorio(int minimo, int maximo, int numeroAleatorio){
+    srand(time(NULL));
+    numeroAleatorio = rand() % (maximo - minimo + 1) + minimo;    
+}
+
 int main() {
 
     int rangoMinimo;
     int rangoMaximo;
-    int intentosMaximos;
     int numeroAleatorio;
+    int intentosMaximos;
     int adivinanza;
     int intentosRestantes;
     bool adivinanzaRepetida;
@@ -34,8 +39,7 @@ int main() {
 
     intercambiarValores(rangoMinimo, rangoMaximo);
 
-    srand(time(NULL));
-    numeroAleatorio = rand() % (rangoMaximo - rangoMinimo + 1) + rangoMinimo;
+    generarNumeroAleatorio(rangoMinimo, rangoMaximo, numeroAleatorio);
     cout << numeroAleatorio << endl;
 
     cout << "Podes adivinar el numero aleatorio entre tus inputs? " << rangoMinimo << " y " << rangoMaximo << " tenes estos intentos: " << intentosMaximos << endl;
