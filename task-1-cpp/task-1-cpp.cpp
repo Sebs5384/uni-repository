@@ -19,32 +19,14 @@ void generarNumeroAleatorio(int minimo, int maximo, int numeroAleatorio){
     numeroAleatorio = rand() % (maximo - minimo + 1) + minimo;    
 }
 
-int main() {
+void jugarAdivinarNumero(int rangoMinimo, int rangoMaximo, int intentosMaximos, int numeroAleatorio){
 
-    int rangoMinimo;
-    int rangoMaximo;
-    int numeroAleatorio;
-    int intentosMaximos;
     int adivinanza;
     int intentosRestantes;
     bool adivinanzaRepetida;
     vector<int> numerosUsados;
 
-    cout << "Porfavor introduzca un rango minimo para el juego: " << endl;
-    cin >> rangoMinimo;
-    cout << "Ahora introduzca un rango maximo para el juego: " << endl;
-    cin >> rangoMaximo;
-    cout << "Cuantos intentos deseas tener en esta partida? " << endl;
-    cin >> intentosMaximos;
-
-    intercambiarValores(rangoMinimo, rangoMaximo);
-
-    generarNumeroAleatorio(rangoMinimo, rangoMaximo, numeroAleatorio);
-    cout << numeroAleatorio << endl;
-
-    cout << "Podes adivinar el numero aleatorio entre tus inputs? " << rangoMinimo << " y " << rangoMaximo << " tenes estos intentos: " << intentosMaximos << endl;
-
-    for (int i = 0; i < intentosMaximos; i++) {
+        for (int i = 0; i < intentosMaximos; i++) {
 
         cin >> adivinanza;
         adivinanzaRepetida = false;
@@ -89,6 +71,31 @@ int main() {
         cout << endl;
        
     }
+
+}
+
+int main() {
+
+    int rangoMinimo;
+    int rangoMaximo;
+    int intentosMaximos;
+    int numeroAleatorio;
+
+    cout << "Porfavor introduzca un rango minimo para el juego: " << endl;
+    cin >> rangoMinimo;
+    cout << "Ahora introduzca un rango maximo para el juego: " << endl;
+    cin >> rangoMaximo;
+    cout << "Cuantos intentos deseas tener en esta partida? " << endl;
+    cin >> intentosMaximos;
+
+    intercambiarValores(rangoMinimo, rangoMaximo);
+
+    generarNumeroAleatorio(rangoMinimo, rangoMaximo, numeroAleatorio);
+    cout << numeroAleatorio << endl;
+
+    cout << "Podes adivinar el numero aleatorio entre tus inputs? " << rangoMinimo << " y " << rangoMaximo << " tenes estos intentos: " << intentosMaximos << endl;
+
+    jugarAdivinarNumero(rangoMinimo, rangoMaximo, intentosMaximos, numeroAleatorio);
 
     return 0;
 }
