@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+tasks.json
+task-1-cpp/task-1-cpp.exe
