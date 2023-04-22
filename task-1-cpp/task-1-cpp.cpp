@@ -97,7 +97,6 @@ int main() {
     intercambiarValores(rangoMinimo, rangoMaximo);
 
     numeroAleatorio = generarNumeroAleatorio(rangoMinimo, rangoMaximo);
-    cout << numeroAleatorio << endl;
 
     cout << "Podes adivinar el numero aleatorio entre tus inputs? " << rangoMinimo << " y " << rangoMaximo << " tenes estos intentos: " << intentosMaximos << endl;
 
