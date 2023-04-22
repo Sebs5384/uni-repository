@@ -19,15 +19,14 @@ int generarNumeroAleatorio(int minimo, int maximo){
     return rand() % (maximo - minimo + 1) + minimo;    
 }
 
-void verificarNumerosUsados(int adivinanza, bool adivinanzaRepetida, vector<int> numerosUsados, int i){
+bool verificarNumerosUsados(int adivinanza, bool adivinanzaRepetida, vector<int> numerosUsados){
     for (int j = 0; j < numerosUsados.size(); j++) {
         if (numerosUsados[j] == adivinanza) {
-            i--;
             cout << "Ya usaste este numero, intenta otro !" << endl;
             adivinanzaRepetida = true;
-            break;
         }
     }
+    return adivinanzaRepetida;
 }
 
 void jugarAdivinarNumero(int rangoMinimo, int rangoMaximo, int intentosMaximos, int numeroAleatorio){
@@ -38,12 +37,16 @@ void jugarAdivinarNumero(int rangoMinimo, int rangoMaximo, int intentosMaximos, 
     vector<int> numerosUsados;
 
     for (int i = 0; i < intentosMaximos; i++) {
-
         cin >> adivinanza;
         adivinanzaRepetida = false;
         intentosRestantes = (intentosMaximos - (i + 1));
         
-        verificarNumerosUsados(adivinanza, adivinanzaRepetida, numerosUsados, i);
+        adivinanzaRepetida = verificarNumerosUsados(adivinanza, adivinanzaRepetida, numerosUsados);
+
+        if(adivinanzaRepetida){
+            i--;
+            continue;
+        }
 
         if (adivinanza == numeroAleatorio) {
             cout << "Adivinazte! el numero aleatorio era: " << numeroAleatorio << endl;
@@ -75,7 +78,6 @@ void jugarAdivinarNumero(int rangoMinimo, int rangoMaximo, int intentosMaximos, 
         cout << endl;
        
     }
-
 }
 
 int main() {
