@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 tasks.json
 task-1-cpp/task-1-cpp.exe
+*.json
