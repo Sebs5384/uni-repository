@@ -14,9 +14,9 @@ void intercambiarValores(int rangoMinimo, int rangoMaximo){
     }
 }
 
-void generarNumeroAleatorio(int minimo, int maximo, int numeroAleatorio){
+int generarNumeroAleatorio(int minimo, int maximo){
     srand(time(NULL));
-    numeroAleatorio = rand() % (maximo - minimo + 1) + minimo;    
+    return rand() % (maximo - minimo + 1) + minimo;    
 }
 
 void verificarNumerosUsados(int adivinanza, bool adivinanzaRepetida, vector<int> numerosUsados, int i){
@@ -94,7 +94,7 @@ int main() {
 
     intercambiarValores(rangoMinimo, rangoMaximo);
 
-    generarNumeroAleatorio(rangoMinimo, rangoMaximo, numeroAleatorio);
+    numeroAleatorio = generarNumeroAleatorio(rangoMinimo, rangoMaximo);
     cout << numeroAleatorio << endl;
 
     cout << "Podes adivinar el numero aleatorio entre tus inputs? " << rangoMinimo << " y " << rangoMaximo << " tenes estos intentos: " << intentosMaximos << endl;
