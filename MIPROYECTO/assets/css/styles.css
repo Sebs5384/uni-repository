@@ -28,3 +28,13 @@ h1 {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+
+#logo {
+  display: flex;
+  justify-content: center;
+}
+
+#tech-byte {
+  height: 200px;
+  width: 200px;
+}
