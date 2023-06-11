@@ -1,7 +1,7 @@
 $botonGuardar.onclick = (event) => {
   const $campoId = document.querySelector("#id-categoria");
   const $campoCategorio = document.querySelector("#tipo-categoria");
-  validarID($campoId);
+  validarCampoId($campoId);
   validarCategorias($campoCategorio);
 
   event.preventDefault();
@@ -28,4 +28,18 @@ function validarCategorias(categoria) {
     return "El nombre de la categoria debe ser solo en mayusculas";
   }
   return "";
+}
+
+function validarCampoId(ID) {
+  const errorEnCampoId = validarID(ID);
+
+  const errorEnCampo = {
+    id: errorEnCampoId,
+  };
+
+  const esExistoso = manejarErrores(errorEnCampo, "#error-id") === 0;
+  if (esExistoso) {
+    const exitoso = document.querySelector("#exitoso");
+    exitoso.innerText = "Guardado con exito";
+  }
 }
