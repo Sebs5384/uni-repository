@@ -1,6 +1,8 @@
-document.querySelector("#guardar-operacion").onclick = function (event) {
+$botonGuardar.onclick = (event) => {
   const $campoId = document.querySelector("#id-categoria");
+  const $campoCategorio = document.querySelector("#tipo-categoria");
   validarID($campoId);
+  validarCategorias($campoCategorio);
 
   event.preventDefault();
 };
