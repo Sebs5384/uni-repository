@@ -2,7 +2,7 @@ $botonGuardar.onclick = (event) => {
   const $campoId = document.querySelector("#id-categoria");
   const $campoCategorio = document.querySelector("#tipo-categoria");
   validarCampoId($campoId);
-  validarCategorias($campoCategorio);
+  validarCampoCategorias($campoCategorio);
 
   event.preventDefault();
 };
@@ -38,6 +38,20 @@ function validarCampoId(ID) {
   };
 
   const esExistoso = manejarErrores(errorEnCampo, "#error-id") === 0;
+  if (esExistoso) {
+    const exitoso = document.querySelector("#exitoso");
+    exitoso.innerText = "Guardado con exito";
+  }
+}
+
+function validarCampoCategorias(categoria) {
+  const errorEnCampoCategoria = validarCategorias(categoria);
+
+  const errorEnCampo = {
+    categoria: errorEnCampoCategoria,
+  };
+
+  const esExistoso = manejarErrores(errorEnCampo, "#error-nombre");
   if (esExistoso) {
     const exitoso = document.querySelector("#exitoso");
     exitoso.innerText = "Guardado con exito";
