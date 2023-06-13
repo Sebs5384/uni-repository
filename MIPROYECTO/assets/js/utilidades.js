@@ -16,10 +16,11 @@ function manejarErrores(errores, selector) {
     const error = errores[llave];
     if (error) {
       erroresPresente++;
-      $formulario[llave].className = "form-control";
+      $formulario[llave].className = "form-control is-invalid";
       $error.innerText = error;
+      $error.className = "invalid-feedback";
     } else {
-      $formulario[llave].className = "form-control";
+      $formulario[llave].className = "form-control is-valid";
     }
   });
   return erroresPresente;
