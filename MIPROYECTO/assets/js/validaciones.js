@@ -1,9 +1,15 @@
 $botonGuardar.onclick = (event) => {
+  const $exitoso = document.querySelector("#exitoso");
   const $campoId = document.querySelector("#id-categoria");
   const $campoCategorio = document.querySelector("#tipo-categoria");
-  validarCampoId($campoId);
-  validarCampoCategorias($campoCategorio);
+  const idValido = validarCampoId($campoId);
+  const categoriaValida = validarCampoCategorias($campoCategorio);
 
+  if (idValido && categoriaValida === true) {
+    $exitoso.innerText = "ID y Categoria guardado con exito";
+  } else {
+    $exitoso.innerText = "";
+  }
   event.preventDefault();
 };
 
@@ -20,11 +26,12 @@ function validarID(ID) {
 }
 
 function validarCategorias(categoria) {
-  if (/\d/.test(categoria)) {
+  const $categoria = categoria.value;
+  if (/\d/.test($categoria)) {
     return "El nombre de la categoria no puede tener valores numericos";
-  } else if (/^$/.test(categoria)) {
+  } else if (/^$/.test($categoria)) {
     return "El nombre de la categoria no debe estar vacio";
-  } else if (!/^[A-Z]+$/.test(categoria)) {
+  } else if (!/^[A-Z]+$/.test($categoria)) {
     return "El nombre de la categoria debe ser solo en mayusculas";
   }
   return "";
@@ -38,10 +45,8 @@ function validarCampoId(ID) {
   };
 
   const esExistoso = manejarErrores(errorEnCampo, "#error-id") === 0;
-  if (esExistoso) {
-    const exitoso = document.querySelector("#exitoso");
-    exitoso.innerText = "Guardado con exito";
-  }
+  console.log(esExistoso);
+  return esExistoso;
 }
 
 function validarCampoCategorias(categoria) {
@@ -51,9 +56,7 @@ function validarCampoCategorias(categoria) {
     categoria: errorEnCampoCategoria,
   };
 
-  const esExistoso = manejarErrores(errorEnCampo, "#error-nombre");
-  if (esExistoso) {
-    const exitoso = document.querySelector("#exitoso");
-    exitoso.innerText = "Guardado con exito";
-  }
+  const esExistoso = manejarErrores(errorEnCampo, "#error-nombre") === 0;
+  console.log(esExistoso);
+  return esExistoso;
 }
