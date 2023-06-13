@@ -2,6 +2,7 @@ $botonGuardar.onclick = (event) => {
   const $exitoso = document.querySelector("#exitoso");
   const $campoId = document.querySelector("#id-categoria");
   const $campoCategorio = document.querySelector("#tipo-categoria");
+
   const idValido = validarCampoId($campoId);
   const categoriaValida = validarCampoCategorias($campoCategorio);
 
@@ -17,6 +18,8 @@ function validarID(ID) {
   const $id = convertirAString(ID.value);
   if ($id % 1 !== 0) {
     return "El campo ID no acepta decimales";
+  } else if (/^$/.test($id)) {
+    return "El campo ID no puede estar vacio";
   } else if (!/^[1-9][0-9]*$/.test($id)) {
     return "El campo ID solo acepta numeros y no puede empezar con 0";
   } else if (!/^.{1,4}$/.test($id)) {
