@@ -1,4 +1,5 @@
 const $botonGuardar = document.querySelector("#guardar-operacion");
+const $botonCancelar = document.querySelector("#cancelar-operacion");
 const $formulario = document.querySelector("#form-categoria");
 
 function convertirAString(integro) {
@@ -24,4 +25,19 @@ function manejarErrores(errores, selector) {
     }
   });
   return erroresPresente;
+}
+
+function resetearFormulario() {
+  const $inputId = document.querySelector("#input-id");
+  const $inputCategoria = document.querySelector("#input-categoria");
+  const $exitoso = document.querySelector("#exitoso");
+
+  $inputId.value = "";
+  $inputId.className = "form-control";
+
+  $inputCategoria.value = "";
+  $inputCategoria.className = "form-control";
+
+  $exitoso.innerText = "";
+  $exitoso.className = "";
 }
