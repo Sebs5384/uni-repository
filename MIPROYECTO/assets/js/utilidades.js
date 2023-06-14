@@ -31,6 +31,8 @@ function resetearFormulario() {
   const $inputId = document.querySelector("#input-id");
   const $inputCategoria = document.querySelector("#input-categoria");
   const $exitoso = document.querySelector("#exitoso");
+  const $errorId = document.querySelector("#error-id");
+  const $errorNombre = document.querySelector("#error-nombre");
 
   $inputId.value = "";
   $inputId.className = "form-control";
@@ -40,4 +42,10 @@ function resetearFormulario() {
 
   $exitoso.innerText = "";
   $exitoso.className = "";
+
+  $errorId.innerText = "";
+  $errorId.className = "";
+
+  $errorNombre.innerText = "";
+  $errorNombre.className = "";
 }
