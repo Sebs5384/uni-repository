@@ -1,17 +1,23 @@
 $botonGuardar.onclick = (event) => {
   const $exitoso = document.querySelector("#exitoso");
-  const $campoId = document.querySelector("#id-categoria");
-  const $campoCategorio = document.querySelector("#tipo-categoria");
+  const $campoId = document.querySelector("#input-id");
+  const $campoCategorio = document.querySelector("#input-categoria");
 
   const idValido = validarCampoId($campoId);
   const categoriaValida = validarCampoCategorias($campoCategorio);
 
   if (idValido && categoriaValida === true) {
     $exitoso.innerText = "ID y Categoria guardado con exito";
+    $exitoso.className = "alert alert-success";
   } else {
     $exitoso.innerText = "";
   }
   event.preventDefault();
+};
+
+$botonCancelar.onclick = (event) => {
+  resetearFormulario();
+  event.preventDefault(event);
 };
 
 function validarID(ID) {
@@ -48,7 +54,6 @@ function validarCampoId(ID) {
   };
 
   const esExistoso = manejarErrores(errorEnCampo, "#error-id") === 0;
-  console.log(esExistoso);
   return esExistoso;
 }
 
@@ -60,6 +65,5 @@ function validarCampoCategorias(categoria) {
   };
 
   const esExistoso = manejarErrores(errorEnCampo, "#error-nombre") === 0;
-  console.log(esExistoso);
   return esExistoso;
 }
