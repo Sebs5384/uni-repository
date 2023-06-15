@@ -54,4 +54,18 @@ describe("Testeo de alta categorias", () => {
     cy.get("#error-nombre").should("have.text", "");
     cy.get("#error-nombre").should("have.class", "");
   });
+
+  it("Testea el uso del boton guardar al principio del programa", () => {
+    cy.visit(URL);
+
+    cy.get("#guardar-operacion").click();
+
+    cy.get("#error-id").should("have.text", "El campo ID no puede estar vacio");
+    cy.get("#error-id").should("have.class", "invalid-feedback");
+    cy.get("#error-nombre").should("have.text", "El nombre de la categoria no debe estar vacio");
+    cy.get("#error-nombre").should("have.class", "invalid-feedback");
+
+    cy.get("#exitoso").should("have.text", "");
+    cy.get("#exitoso").should("have.class", "");
+  });
 });
