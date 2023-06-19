@@ -1,12 +1,12 @@
 $botonGuardar.onclick = (event) => {
   const $exitoso = document.querySelector("#exitoso");
   const $campoId = document.querySelector("#input-id");
-  const $campoCategorio = document.querySelector("#input-categoria");
+  const $campoNombre = document.querySelector("#input-nombre");
 
   const idValido = validarCampoId($campoId);
-  const categoriaValida = validarCampoCategorias($campoCategorio);
+  const nombreValido = validarCampoNombre($campoNombre);
 
-  if (idValido && categoriaValida === true) {
+  if (idValido && nombreValido === true) {
     $exitoso.innerText = "ID y Categoria guardado con exito";
     $exitoso.className = "alert alert-success";
   } else {
@@ -34,8 +34,8 @@ function validarID(ID) {
   return "";
 }
 
-function validarCategorias(categoria) {
-  const $categoria = categoria.value;
+function validarNombre(nombre) {
+  const $categoria = nombre.value;
   if (/\d/.test($categoria)) {
     return "El nombre de la categoria no puede tener valores numericos";
   } else if (/^$/.test($categoria)) {
@@ -57,11 +57,11 @@ function validarCampoId(ID) {
   return esExistoso;
 }
 
-function validarCampoCategorias(categoria) {
-  const errorEnCampoCategoria = validarCategorias(categoria);
+function validarCampoNombre(nombre) {
+  const errorEnCampoCategoria = validarNombre(nombre);
 
   const errorEnCampo = {
-    categoria: errorEnCampoCategoria,
+    nombre: errorEnCampoCategoria,
   };
 
   const esExistoso = manejarErrores(errorEnCampo, "#error-nombre") === 0;
