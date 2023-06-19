@@ -1,6 +1,6 @@
 const $botonGuardar = document.querySelector("#guardar-operacion");
 const $botonCancelar = document.querySelector("#cancelar-operacion");
-const $formulario = document.querySelector("#form-categoria");
+const $formulario = document.querySelector("#formulario");
 
 function convertirAString(integro) {
   const string = integro.toString();
@@ -29,7 +29,7 @@ function manejarErrores(errores, selector) {
 
 function resetearFormulario() {
   const $inputId = document.querySelector("#input-id");
-  const $inputCategoria = document.querySelector("#input-categoria");
+  const $inputCategoria = document.querySelector("#input-nombre");
   const $exitoso = document.querySelector("#exitoso");
   const $errorId = document.querySelector("#error-id");
   const $errorNombre = document.querySelector("#error-nombre");
