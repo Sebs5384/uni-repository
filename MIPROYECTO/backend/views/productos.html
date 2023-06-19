@@ -4,19 +4,54 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alta Productos</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Alta de productos</title>
   </head>
   <body>
-    <h1 id="categorias">Alta de productos</h1>
-    <form id="form-productos">
-      <strong>Inserta el ID del producto</strong><br /><br />
-      <input type="number" id="id-producto" placeholder="Ej: 55" /><br /><br />
-      <strong>Inserta el nombre del producto</strong><br /><br />
-      <input type="text" id="tipo-producto" placeholder="zapatillas" /><br /><br />
+    <div class="row justify-content-center" id="logo">
+      <img src="../../assets/img/tech-byte-solutions.png" id="tech-byte" />
+    </div>
 
-      <input type="submit" value="Guardar" id="guardar-operacion" />
-      <button id="cancelar-operacion">Cancelar</button><br /><br />
-      <strong>Sebastian Araya</strong>
-    </form>
+    <div class="text-center">
+      <h1 style="font-size: 25px" id="categorias">ALTA DE PRODUCTOS</h1>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="card" style="width: 30rem">
+        <div class="card-body">
+          <form id="formulario" action="../../class/productos.php" method="post">
+            <div class="contenedor-productos row justify-content-center mb-2">
+              <div class="mb-2 p-3 col-8 text-center">
+                <label for="input-id" class="form-label" style="font-size: 15px">Inserta el ID del producto</label>
+                <input type="number" class="form-control" id="input-id" placeholder="Ej: 320" name="id" />
+                <strong id="error-id" style="font-size: 9px" class=""></strong>
+              </div>
+              <div class="mb-4 p-3 col-8 text-center">
+                <label for="input-nombre" class="form-label" style="font-size: 15px">Inserta el nombre del producto</label>
+                <input type="text" class="form-control" id="input-nombre" placeholder="Ej: placas-de-video" name="nombre" />
+                <strong id="error-nombre" style="font-size: 9px"></strong>
+              </div>
+              <div class="text-center mb-4">
+                <strong id="exitoso" style="font-size: 9px"></strong>
+              </div>
+            </div>
+
+            <div class="contenedor-botones text-center mb-4">
+              <button type="button" class="btn btn-dark" id="guardar-operacion">Guardar</button>
+              <button type="button" class="btn btn-dark" id="cancelar-operacion">Cancelar</button>
+            </div>
+
+            <div class="text-center gy-4">
+              <strong id="nombre-desarrollador">Sebastian Araya</strong>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="../../assets/js/utilidades.js"></script>
+  <script src="../../assets/js/validaciones.js"></script>
 </html>
