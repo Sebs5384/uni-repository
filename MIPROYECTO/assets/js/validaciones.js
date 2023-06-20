@@ -7,7 +7,7 @@ $botonGuardar.onclick = (event) => {
   const nombreValido = validarCampoNombre($campoNombre);
 
   if (idValido && nombreValido === true) {
-    $exitoso.innerText = "ID y Categoria guardado con exito";
+    $exitoso.innerText = "ID y Nombre guardado con exito";
     $exitoso.className = "alert alert-success";
   } else {
     $exitoso.innerText = "";
@@ -37,11 +37,11 @@ function validarID(ID) {
 function validarNombre(nombre) {
   const $categoria = nombre.value;
   if (/\d/.test($categoria)) {
-    return "El nombre de la categoria no puede tener valores numericos";
+    return "El campo nombre no puede tener valores numericos";
   } else if (/^$/.test($categoria)) {
-    return "El nombre de la categoria no debe estar vacio";
+    return "El campo nombre no debe estar vacio";
   } else if (!/^[A-Z]+$/.test($categoria)) {
-    return "El nombre de la categoria debe ser solo en mayusculas";
+    return "El campo nombre solo acepta caracteres en mayuscula";
   }
   return "";
 }
