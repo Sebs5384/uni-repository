@@ -5,18 +5,18 @@ describe("Testeo de alta categorias", () => {
     cy.visit(URL);
 
     cy.get("#input-id").type(1234);
-    cy.get("#input-categoria").type("PLACADEVIDEO");
+    cy.get("#input-nombre").type("PLACADEVIDEOS");
 
     cy.get("#guardar-operacion").click();
     cy.get("#error-id").should("have.text", "");
     cy.get("#error-nombre").should("have.text", "");
     cy.get("#exitoso").should("have.class", "alert alert-success");
-    cy.get("#exitoso").should("have.text", "ID y Categoria guardado con exito");
+    cy.get("#exitoso").should("have.text", "ID y Nombre guardado con exito");
 
     cy.get("#cancelar-operacion").click();
 
     cy.get("#input-id").should("have.value", "");
-    cy.get("#input-categoria").should("have.text", "");
+    cy.get("#input-nombre").should("have.text", "");
     cy.get("#error-id").should("have.text", "");
     cy.get("#error-nombre").should("have.text", "");
     cy.get("#exitoso").should("have.class", "");
@@ -27,16 +27,16 @@ describe("Testeo de alta categorias", () => {
     cy.visit(URL);
 
     cy.get("#input-id").type(12345);
-    cy.get("#input-categoria").type("placadevideo");
+    cy.get("#input-nombre").type("placadevideo");
 
     cy.get("#guardar-operacion").click();
 
     cy.get("#input-id").should("have.class", "form-control is-invalid");
-    cy.get("#input-categoria").should("have.class", "form-control is-invalid");
+    cy.get("#input-nombre").should("have.class", "form-control is-invalid");
 
     cy.get("#error-id").should("have.text", "El campo ID solo acepta 4 digitos como maximo");
     cy.get("#error-id").should("have.class", "invalid-feedback");
-    cy.get("#error-nombre").should("have.text", "El nombre de la categoria debe ser solo en mayusculas");
+    cy.get("#error-nombre").should("have.text", "El campo nombre solo acepta caracteres en mayuscula");
     cy.get("#error-nombre").should("have.class", "invalid-feedback");
 
     cy.get("#exitoso").should("have.class", "");
@@ -45,9 +45,9 @@ describe("Testeo de alta categorias", () => {
     cy.get("#cancelar-operacion").click();
 
     cy.get("#input-id").should("have.value", "");
-    cy.get("#input-categoria").should("have.text", "");
+    cy.get("#input-nombre").should("have.text", "");
     cy.get("#input-id").should("have.class", "form-control");
-    cy.get("#input-categoria").should("have.class", "form-control");
+    cy.get("#input-nombre").should("have.class", "form-control");
 
     cy.get("#error-id").should("have.text", "");
     cy.get("#error-id").should("have.class", "");
@@ -62,7 +62,7 @@ describe("Testeo de alta categorias", () => {
 
     cy.get("#error-id").should("have.text", "El campo ID no puede estar vacio");
     cy.get("#error-id").should("have.class", "invalid-feedback");
-    cy.get("#error-nombre").should("have.text", "El nombre de la categoria no debe estar vacio");
+    cy.get("#error-nombre").should("have.text", "El campo nombre no debe estar vacio");
     cy.get("#error-nombre").should("have.class", "invalid-feedback");
 
     cy.get("#exitoso").should("have.text", "");
