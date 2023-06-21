@@ -11,6 +11,7 @@ $botonGuardar.onclick = (event) => {
     $exitoso.className = "alert alert-success";
   } else {
     $exitoso.innerText = "";
+    $exitoso.className = "";
   }
   event.preventDefault();
 };
