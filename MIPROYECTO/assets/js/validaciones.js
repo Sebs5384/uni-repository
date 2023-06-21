@@ -1,28 +1,5 @@
-$botonGuardar.onclick = (event) => {
-  const $exitoso = document.querySelector("#exitoso");
-  const $campoId = document.querySelector("#input-id");
-  const $campoNombre = document.querySelector("#input-nombre");
-
-  const idValido = validarCampoId($campoId);
-  const nombreValido = validarCampoNombre($campoNombre);
-
-  if (idValido && nombreValido === true) {
-    $exitoso.innerText = "ID y Nombre guardado con exito";
-    $exitoso.className = "alert alert-success";
-  } else {
-    $exitoso.innerText = "";
-    $exitoso.className = "";
-  }
-  event.preventDefault();
-};
-
-$botonCancelar.onclick = (event) => {
-  resetearFormulario();
-  event.preventDefault(event);
-};
-
-function validarID(ID) {
-  const $id = convertirAString(ID.value);
+function validarId(id) {
+  const $id = convertirAString(id.value);
   if ($id % 1 !== 0) {
     return "El campo ID no acepta decimales";
   } else if (/^$/.test($id)) {
@@ -47,8 +24,8 @@ function validarNombre(nombre) {
   return "";
 }
 
-function validarCampoId(ID) {
-  const errorEnCampoId = validarID(ID);
+function validarCampoId(id) {
+  const errorEnCampoId = validarId(id);
 
   const errorEnCampo = {
     id: errorEnCampoId,
