@@ -2,3 +2,17 @@
   height: 150px;
   width: 175px;
 }
+
+#carta-formulario {
+  width: 30rem;
+}
+
+#error-id,
+#error-nombre,
+#exitoso {
+  font-size: 9px;
+}
+
+.label-formulario {
+  font-size: 15px;
+}
