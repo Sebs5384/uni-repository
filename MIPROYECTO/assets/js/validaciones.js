@@ -24,8 +24,9 @@ function validarNombre(nombre) {
   return "";
 }
 
-function validarCampoId(id) {
-  const errorEnCampoId = validarId(id);
+export function validarCampoId() {
+  const $campoId = document.querySelector("#input-id");
+  const errorEnCampoId = validarId($campoId);
 
   const errorEnCampo = {
     id: errorEnCampoId,
@@ -35,8 +36,9 @@ function validarCampoId(id) {
   return esExistoso;
 }
 
-function validarCampoNombre(nombre) {
-  const errorEnCampoCategoria = validarNombre(nombre);
+export function validarCampoNombre() {
+  const $campoNombre = document.querySelector("#input-nombre");
+  const errorEnCampoCategoria = validarNombre($campoNombre);
 
   const errorEnCampo = {
     nombre: errorEnCampoCategoria,

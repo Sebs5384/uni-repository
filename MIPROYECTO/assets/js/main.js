@@ -1,22 +1,15 @@
-$botonGuardar.onclick = (event) => {
-  const $exitoso = document.querySelector("#exitoso");
-  const $campoId = document.querySelector("#input-id");
-  const $campoNombre = document.querySelector("#input-nombre");
+function submitForm() {
+  const $botonGuardar = getButton("#guardar-operacion");
+  $botonGuardar.onclick = saludar;
+}
 
-  const idValido = validarCampoId($campoId);
-  const nombreValido = validarCampoNombre($campoNombre);
+function saludar() {
+  console.log("hola");
+}
 
-  if (idValido && nombreValido === true) {
-    $exitoso.innerText = "ID y Nombre guardado con exito";
-    $exitoso.className = "alert alert-success";
-  } else {
-    $exitoso.innerText = "";
-    $exitoso.className = "";
-  }
-  event.preventDefault();
-};
+function getButton(selector) {
+  const $button = document.querySelector(selector);
+  return $button;
+}
 
-$botonCancelar.onclick = (event) => {
-  resetearFormulario();
-  event.preventDefault();
-};
+submitForm();

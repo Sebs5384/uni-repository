@@ -1,14 +1,11 @@
-const $botonGuardar = document.querySelector("#guardar-operacion");
-const $botonCancelar = document.querySelector("#cancelar-operacion");
-const $formulario = document.querySelector("#formulario");
-
-function convertirAString(integro) {
+export function convertirAString(integro) {
   const string = integro.toString();
   return string;
 }
 
-function manejarErrores(errores, selector) {
+export function manejarErrores(errores, selector) {
   const llaves = Object.keys(errores);
+  const $formulario = document.querySelector("#formulario");
   const $error = document.querySelector(selector);
   let erroresPresente = 0;
 
@@ -27,7 +24,7 @@ function manejarErrores(errores, selector) {
   return erroresPresente;
 }
 
-function resetearFormulario() {
+export function resetearFormulario() {
   const $inputId = document.querySelector("#input-id");
   const $inputCategoria = document.querySelector("#input-nombre");
   const $exitoso = document.querySelector("#exitoso");

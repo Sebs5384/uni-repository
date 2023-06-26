@@ -1,4 +1,4 @@
-// Unit tests basicos usando vanilla Javascript, metodo console.assert
+// Pruebas basicas usando vanilla Javascript, metodo console.assert
 
 function pruebaValidarId() {
   console.assert(validarId({ value: "" }) === "El campo ID no puede estar vacio", "validarId fallo al no verificar si el campo esta vacio");
