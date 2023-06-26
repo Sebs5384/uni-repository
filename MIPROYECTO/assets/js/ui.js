@@ -1,6 +1,6 @@
 import { obtenerElemento } from "./utilidades.js";
 
-export const $botonGuardar = obtenerElemento("#guardar-operacion");
+export const $botonEnviar = obtenerElemento("#enviar-operacion");
 export const $botonCancelar = obtenerElemento("#cancelar-operacion");
 
 export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
@@ -19,6 +19,8 @@ export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
 
 export function resetearFormulario() {
   const $formulario = obtenerElemento("#formulario");
+  const $mensajeExito = obtenerElemento("#mensaje-exitoso");
+  const $mensajeError = obtenerElemento(".error");
 
   $formulario.id.value = "";
   $formulario.id.className = "form-control";
@@ -26,9 +28,6 @@ export function resetearFormulario() {
   $formulario.nombre.value = "";
   $formulario.nombre.className = "form-control";
 
-  $formulario.exitoso.innerText = "";
-  $formulario.exitoso.className = "";
-
-  $formulario.error.innerText = "";
-  $formulario.error.className = "";
+  $mensajeExito.innerText = "";
+  $mensajeExito.className = "";
 }
