@@ -4,7 +4,7 @@ export const $botonGuardar = obtenerElemento("#guardar-operacion");
 export const $botonCancelar = obtenerElemento("#cancelar-operacion");
 
 export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
-  const $exitoso = document.querySelector("#mensaje-exitoso");
+  const $exitoso = obtenerElemento("#mensaje-exitoso");
   const idValido = campoId;
   const nombreValido = campoNombre;
 
@@ -19,24 +19,16 @@ export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
 
 export function resetearFormulario() {
   const $formulario = obtenerElemento("#formulario");
-  const $inputId = document.querySelector("#input-id");
-  const $inputCategoria = document.querySelector("#input-nombre");
-  const $exitoso = document.querySelector("#exitoso");
-  const $errorId = document.querySelector("#error-id");
-  const $errorNombre = document.querySelector("#error-nombre");
 
-  $inputId.value = "";
-  $inputId.className = "form-control";
+  $formulario.id.value = "";
+  $formulario.id.className = "form-control";
 
-  $inputCategoria.value = "";
-  $inputCategoria.className = "form-control";
+  $formulario.nombre.value = "";
+  $formulario.nombre.className = "form-control";
 
-  $exitoso.innerText = "";
-  $exitoso.className = "";
+  $formulario.exitoso.innerText = "";
+  $formulario.exitoso.className = "";
 
-  $errorId.innerText = "";
-  $errorId.className = "";
-
-  $errorNombre.innerText = "";
-  $errorNombre.className = "";
+  $formulario.error.innerText = "";
+  $formulario.error.className = "";
 }
