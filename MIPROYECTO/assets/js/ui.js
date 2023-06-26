@@ -17,10 +17,30 @@ export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
   }
 }
 
+export function mostrarErrores(llaves, errores, selector) {
+  const $formulario = obtenerElemento("#formulario");
+  const $error = obtenerElemento(selector);
+  $error.innerText = "";
+
+  let erroresPresente = 0;
+
+  llaves.forEach((llave) => {
+    const error = errores[llave];
+    if (error) {
+      erroresPresente++;
+      $formulario[llave].className = "form-control is-invalid";
+      $error.innerText = error;
+      $error.className = "invalid-feedback";
+    } else {
+      $formulario[llave].className = "form-control is-valid";
+    }
+  });
+  return erroresPresente;
+}
+
 export function resetearFormulario() {
   const $formulario = obtenerElemento("#formulario");
   const $mensajeExito = obtenerElemento("#mensaje-exitoso");
-  const $mensajeError = obtenerElemento(".error");
 
   $formulario.id.value = "";
   $formulario.id.className = "form-control";
