@@ -1,5 +1,7 @@
+import { obtenerElemento, manejarErrores } from "./utilidades.js";
+
 function validarId(id) {
-  const $id = convertirAString(id.value);
+  const $id = id.value;
   if ($id % 1 !== 0) {
     return "El campo ID no acepta decimales";
   } else if (/^$/.test($id)) {
@@ -25,7 +27,7 @@ function validarNombre(nombre) {
 }
 
 export function validarCampoId() {
-  const $campoId = document.querySelector("#input-id");
+  const $campoId = obtenerElemento("#input-id");
   const errorEnCampoId = validarId($campoId);
 
   const errorEnCampo = {
@@ -37,7 +39,7 @@ export function validarCampoId() {
 }
 
 export function validarCampoNombre() {
-  const $campoNombre = document.querySelector("#input-nombre");
+  const $campoNombre = obtenerElemento("#input-nombre");
   const errorEnCampoCategoria = validarNombre($campoNombre);
 
   const errorEnCampo = {

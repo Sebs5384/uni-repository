@@ -1,15 +1,8 @@
-function submitForm() {
-  const $botonGuardar = getButton("#guardar-operacion");
-  $botonGuardar.onclick = saludar;
-}
+import { validarCampoId, validarCampoNombre } from "./validaciones.js";
+import { mostrarMensajeSiEsExitoso, $botonGuardar, $botonCancelar, resetearFormulario } from "./ui.js";
 
-function saludar() {
-  console.log("hola");
-}
+$botonGuardar.onclick = function enviarFormulario() {
+  mostrarMensajeSiEsExitoso(validarCampoId(), validarCampoNombre());
+};
 
-function getButton(selector) {
-  const $button = document.querySelector(selector);
-  return $button;
-}
-
-submitForm();
+$botonCancelar.onclick = resetearFormulario;

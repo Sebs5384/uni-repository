@@ -1,12 +1,12 @@
-export function convertirAString(integro) {
-  const string = integro.toString();
-  return string;
+export function obtenerElemento(selector) {
+  const $elemento = document.querySelector(selector);
+  return $elemento;
 }
 
 export function manejarErrores(errores, selector) {
-  const llaves = Object.keys(errores);
-  const $formulario = document.querySelector("#formulario");
+  const $formulario = obtenerElemento("#formulario");
   const $error = document.querySelector(selector);
+  const llaves = Object.keys(errores);
   let erroresPresente = 0;
 
   $error.innerText = "";
@@ -22,27 +22,4 @@ export function manejarErrores(errores, selector) {
     }
   });
   return erroresPresente;
-}
-
-export function resetearFormulario() {
-  const $inputId = document.querySelector("#input-id");
-  const $inputCategoria = document.querySelector("#input-nombre");
-  const $exitoso = document.querySelector("#exitoso");
-  const $errorId = document.querySelector("#error-id");
-  const $errorNombre = document.querySelector("#error-nombre");
-
-  $inputId.value = "";
-  $inputId.className = "form-control";
-
-  $inputCategoria.value = "";
-  $inputCategoria.className = "form-control";
-
-  $exitoso.innerText = "";
-  $exitoso.className = "";
-
-  $errorId.innerText = "";
-  $errorId.className = "";
-
-  $errorNombre.innerText = "";
-  $errorNombre.className = "";
 }
