@@ -1,7 +1,7 @@
 import { obtenerElemento } from "./utilidades.js";
 
 export const $botonEnviar = obtenerElemento("#enviar-operacion");
-export const $botonCancelar = obtenerElemento("#cancelar-operacion");
+export const $botonRestablecer = obtenerElemento("#restablecer-operacion");
 
 export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
   const $exitoso = obtenerElemento("#mensaje-exitoso");

@@ -1,8 +1,8 @@
 import { validarCampoId, validarCampoNombre } from "./validaciones.js";
-import { mostrarMensajeSiEsExitoso, $botonEnviar, $botonCancelar, resetearFormulario } from "./ui.js";
+import { mostrarMensajeSiEsExitoso, resetearFormulario, $botonEnviar, $botonRestablecer } from "./ui.js";
 
 $botonEnviar.onclick = function enviarFormulario() {
   mostrarMensajeSiEsExitoso(validarCampoId(), validarCampoNombre());
 };
 
-$botonCancelar.onclick = resetearFormulario;
+$botonRestablecer.onclick = resetearFormulario;
