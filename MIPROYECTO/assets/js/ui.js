@@ -1,10 +1,8 @@
-import { obtenerElemento } from "./utilidades.js";
-
-export const $botonEnviar = obtenerElemento("#enviar-operacion");
-export const $botonRestablecer = obtenerElemento("#restablecer-operacion");
+export const $botonEnviar = document.querySelector("#enviar-operacion");
+export const $botonRestablecer = document.querySelector("#restablecer-operacion");
 
 export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
-  const $exitoso = obtenerElemento("#mensaje-exitoso");
+  const $exitoso = document.querySelector("#mensaje-exitoso");
   const idValido = campoId;
   const nombreValido = campoNombre;
 
@@ -18,8 +16,8 @@ export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
 }
 
 export function mostrarErrores(llaves, errores, selector) {
-  const $formulario = obtenerElemento("#formulario");
-  const $error = obtenerElemento(selector);
+  const $formulario = document.querySelector("#formulario");
+  const $error = document.querySelector(selector);
   $error.innerText = "";
 
   let erroresPresente = 0;
@@ -39,8 +37,8 @@ export function mostrarErrores(llaves, errores, selector) {
 }
 
 export function resetearFormulario() {
-  const $formulario = obtenerElemento("#formulario");
-  const $mensajeExito = obtenerElemento("#mensaje-exitoso");
+  const $formulario = document.querySelector("#formulario");
+  const $mensajeExito = document.querySelector("#mensaje-exitoso");
 
   $formulario.id.value = "";
   $formulario.id.className = "form-control";
