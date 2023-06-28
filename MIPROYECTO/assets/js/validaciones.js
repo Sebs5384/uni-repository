@@ -1,4 +1,4 @@
-import { obtenerElemento, manejarErrores } from "./utilidades.js";
+import { manejarErrores } from "./utilidades.js";
 
 function validarId(id) {
   const $id = id.value;
@@ -27,7 +27,7 @@ function validarNombre(nombre) {
 }
 
 export function validarCampoId() {
-  const $campoId = obtenerElemento("#input-id");
+  const $campoId = document.querySelector("#input-id");
   const errorEnCampoId = validarId($campoId);
 
   const errorEnCampo = {
@@ -39,7 +39,7 @@ export function validarCampoId() {
 }
 
 export function validarCampoNombre() {
-  const $campoNombre = obtenerElemento("#input-nombre");
+  const $campoNombre = document.querySelector("#input-nombre");
   const errorEnCampoCategoria = validarNombre($campoNombre);
 
   const errorEnCampo = {
