@@ -1,4 +1,4 @@
-import { validarCampoId } from "../validaciones.js";
+import { validarCampoId, validarCampoNombre } from "../validaciones.js";
 import { manejarErrores } from "../utilidades.js";
 
 jest.mock("../utilidades.js", () => ({
@@ -63,5 +63,59 @@ describe("testea validarCampoId", () => {
     expect(result).toBe(false);
     expect(manejarErrores).toHaveBeenCalledTimes(1);
     expect(manejarErrores).toHaveBeenCalledWith({ id: "El campo ID solo acepta 4 digitos como maximo" }, "#error-id");
+  });
+});
+
+describe("testea validarCampoNombre", () => {
+  jest.mock("../utilidades.js", () => ({
+    manejarErrores: jest.fn(),
+  }));
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("Deberia de llamar a manejarErrores y retornar true si no hay errores", () => {
+    manejarErrores.mockReturnValue(0);
+
+    const input = { value: "PLACADEVIDEO" };
+    const result = validarCampoNombre(input);
+
+    expect(result).toBe(true);
+    expect(manejarErrores).toHaveBeenCalledTimes(1);
+    expect(manejarErrores).toHaveBeenCalledWith({ nombre: "" }, "#error-nombre");
+  });
+
+  it("Deberia de llamar a manejarErrores y retornar false si se le pasa numeros", () => {
+    manejarErrores.mockReturnValue(1);
+
+    const input = { value: 1234 };
+    const result = validarCampoNombre(input);
+
+    expect(result).toBe(false);
+    expect(manejarErrores).toHaveBeenCalledTimes(1);
+    expect(manejarErrores).toHaveBeenCalledWith({ nombre: "El campo nombre no puede tener valores numericos" }, "#error-nombre");
+  });
+
+  it("Deberia de llamar a manejarErrores y retornar false si se le pasa un input vacio", () => {
+    manejarErrores.mockReturnValue(1);
+
+    const input = { value: "" };
+    const result = validarCampoNombre(input);
+
+    expect(result).toBe(false);
+    expect(manejarErrores).toHaveBeenCalledTimes(1);
+    expect(manejarErrores).toHaveBeenCalledWith({ nombre: "El campo nombre no debe estar vacio" }, "#error-nombre");
+  });
+
+  it("Deberia de llamar a manejarErrores y retornar false si se le pasa minusculas", () => {
+    manejarErrores.mockReturnValue(1);
+
+    const input = { value: "placadevideo" };
+    const result = validarCampoNombre(input);
+
+    expect(result).toBe(false);
+    expect(manejarErrores).toHaveBeenCalledTimes(1);
+    expect(manejarErrores).toHaveBeenCalledWith({ nombre: "El campo nombre solo acepta caracteres en mayuscula" }, "#error-nombre");
   });
 });
