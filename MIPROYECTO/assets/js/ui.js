@@ -1,5 +1,7 @@
 export const $botonEnviar = document.querySelector("#enviar-operacion");
 export const $botonRestablecer = document.querySelector("#restablecer-operacion");
+export const $campoId = document.querySelector("#input-id");
+export const $campoNombre = document.querySelector("#input-nombre");
 
 export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
   const $exitoso = document.querySelector("#mensaje-exitoso");
