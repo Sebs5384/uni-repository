@@ -46,10 +46,10 @@ export function resetearFormulario() {
   const $inputNombre = document.querySelector("#input-nombre");
 
   $inputId.value = "";
-  $inputId.className = "";
+  $inputId.className = "form-control";
 
   $inputNombre.value = "";
-  $inputNombre.className = "";
+  $inputNombre.className = "form-control";
 
   $mensajeExito.innerText = "";
   $mensajeExito.className = "";

@@ -83,9 +83,9 @@ describe("Testea mostrarMensajeSiExitoso", () => {
       resetearFormulario();
 
       expect($inputId.value).toBe("");
-      expect($inputId.className).toBe("");
+      expect($inputId.className).toBe("form-control");
       expect($inputNombre.value).toBe("");
-      expect($inputNombre.className).toBe("");
+      expect($inputNombre.className).toBe("form-control");
       expect($mensajeExito.innerText).toBe("");
       expect($mensajeExito.className).toBe("");
     });
@@ -110,9 +110,9 @@ describe("Testea mostrarMensajeSiExitoso", () => {
       resetearFormulario();
 
       expect($inputId.value).toBe("");
-      expect($inputId.className).toBe("");
+      expect($inputId.className).toBe("form-control");
       expect($inputNombre.value).toBe("");
-      expect($inputNombre.className).toBe("");
+      expect($inputNombre.className).toBe("form-control");
     });
 
     it("Deberia de resetear el formulario si esta vacio", () => {
@@ -127,9 +127,9 @@ describe("Testea mostrarMensajeSiExitoso", () => {
       resetearFormulario();
 
       expect($inputId.value).toBe("");
-      expect($inputId.className).toBe("");
+      expect($inputId.className).toBe("form-control");
       expect($inputNombre.value).toBe("");
-      expect($inputNombre.className).toBe("");
+      expect($inputNombre.className).toBe("form-control");
     });
   });
 });
