@@ -1,7 +1,7 @@
 import { validarCampoId, validarCampoNombre } from "./validaciones.js";
 
-export const $botonEnviar = document.querySelector("#enviar-operacion");
-export const $botonRestablecer = document.querySelector("#restablecer-operacion");
+export const $botonEnviar = document.querySelector("#enviar-formulario");
+export const $botonRestablecer = document.querySelector("#restablecer-formulario");
 const $campoId = document.querySelector("#input-id");
 const $campoNombre = document.querySelector("#input-nombre");
 
