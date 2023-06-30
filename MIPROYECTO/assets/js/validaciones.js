@@ -34,7 +34,6 @@ export function validarCampoId($campoId) {
   };
 
   const esExistoso = manejarErrores(errorEnCampo, "#error-id") === 0;
-  console.log(esExistoso);
   return esExistoso;
 }
 

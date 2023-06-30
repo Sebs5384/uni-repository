@@ -18,35 +18,38 @@ export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
 }
 
 export function mostrarErrores(llaves, errores, selector) {
-  const $formulario = document.querySelector("#formulario");
   const $error = document.querySelector(selector);
+  const $formulario = document.querySelector("#formulario");
   $error.innerText = "";
 
   let erroresPresente = 0;
 
   llaves.forEach((llave) => {
     const error = errores[llave];
+    const $elemento = $formulario.querySelector(`[name="${llave}"]`);
+
     if (error) {
       erroresPresente++;
-      $formulario[llave].className = "form-control is-invalid";
+      $elemento.className = "form-control is-invalid";
       $error.innerText = error;
       $error.className = "invalid-feedback";
     } else {
-      $formulario[llave].className = "form-control is-valid";
+      $elemento.className = "form-control is-valid";
     }
   });
   return erroresPresente;
 }
 
 export function resetearFormulario() {
-  const $formulario = document.querySelector("#formulario");
   const $mensajeExito = document.querySelector("#mensaje-exitoso");
+  const $inputId = document.querySelector("#input-id");
+  const $inputNombre = document.querySelector("#input-nombre");
 
-  $formulario.id.value = "";
-  $formulario.id.className = "form-control";
+  $inputId.value = "";
+  $inputId.className = "";
 
-  $formulario.nombre.value = "";
-  $formulario.nombre.className = "form-control";
+  $inputNombre.value = "";
+  $inputNombre.className = "";
 
   $mensajeExito.innerText = "";
   $mensajeExito.className = "";
