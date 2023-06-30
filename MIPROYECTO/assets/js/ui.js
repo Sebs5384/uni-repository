@@ -1,7 +1,9 @@
+import { validarCampoId, validarCampoNombre } from "./validaciones.js";
+
 export const $botonEnviar = document.querySelector("#enviar-operacion");
 export const $botonRestablecer = document.querySelector("#restablecer-operacion");
-export const $campoId = document.querySelector("#input-id");
-export const $campoNombre = document.querySelector("#input-nombre");
+const $campoId = document.querySelector("#input-id");
+const $campoNombre = document.querySelector("#input-nombre");
 
 export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
   const $exitoso = document.querySelector("#mensaje-exitoso");
@@ -38,6 +40,10 @@ export function mostrarErrores(llaves, errores, selector) {
     }
   });
   return erroresPresente;
+}
+
+export function enviarFormulario() {
+  mostrarMensajeSiEsExitoso(validarCampoId($campoId), validarCampoNombre($campoNombre));
 }
 
 export function resetearFormulario() {
