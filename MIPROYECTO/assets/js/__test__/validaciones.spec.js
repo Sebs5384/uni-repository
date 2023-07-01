@@ -67,10 +67,6 @@ describe("testea validarCampoId", () => {
 });
 
 describe("testea validarCampoNombre", () => {
-  jest.mock("../utilidades.js", () => ({
-    manejarErrores: jest.fn(),
-  }));
-
   afterEach(() => {
     jest.clearAllMocks();
   });

@@ -50,7 +50,7 @@ describe("Testeo de alta categorias", () => {
     cy.get("#input-nombre").should("have.class", "form-control");
   });
 
-  it("Testea el uso del boton guardar al principio del programa", () => {
+  it("Testea el uso del boton enviar al principio del programa", () => {
     cy.visit(URL);
 
     cy.get("#enviar-formulario").click();
