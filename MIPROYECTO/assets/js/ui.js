@@ -6,13 +6,14 @@ const $campoId = document.querySelector("#input-id");
 const $campoNombre = document.querySelector("#input-nombre");
 
 export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
-  const $exitoso = document.querySelector("#mensaje-exitoso");
+  const $mensaje = document.querySelector("#mensaje-formulario");
   const idValido = campoId;
   const nombreValido = campoNombre;
+  console.log($mensaje);
 
   if (idValido && nombreValido === true) {
-    $exitoso.innerText = "ID y Nombre guardado con exito";
-    $exitoso.className = "alert alert-success";
+    $mensaje.innerText = "ID y Nombre guardado con exito";
+    $mensaje.className = "alert alert-success";
   } else {
     $exitoso.innerText = "";
     $exitoso.className = "";
@@ -47,7 +48,7 @@ export function enviarFormulario() {
 }
 
 export function resetearFormulario() {
-  const $mensajeExito = document.querySelector("#mensaje-exitoso");
+  const $mensajeFormulario = document.querySelector("#mensaje-formulario");
   const $inputId = document.querySelector("#input-id");
   const $inputNombre = document.querySelector("#input-nombre");
 
@@ -57,6 +58,6 @@ export function resetearFormulario() {
   $inputNombre.value = "";
   $inputNombre.className = "form-control";
 
-  $mensajeExito.innerText = "";
-  $mensajeExito.className = "";
+  $mensajeFormulario.innerText = "";
+  $mensajeFormulario.className = "";
 }

@@ -10,8 +10,8 @@ describe("Testeo de alta categorias", () => {
     cy.get("#enviar-formulario").click();
     cy.get("#error-id").should("have.text", "");
     cy.get("#error-nombre").should("have.text", "");
-    cy.get("#mensaje-exitoso").should("have.class", "alert alert-success");
-    cy.get("#mensaje-exitoso").should("have.text", "ID y Nombre guardado con exito");
+    cy.get("#mensaje-formulario").should("have.class", "alert alert-success");
+    cy.get("#mensaje-formulario").should("have.text", "ID y Nombre guardado con exito");
 
     cy.get("#restablecer-formulario").click();
 
@@ -19,8 +19,8 @@ describe("Testeo de alta categorias", () => {
     cy.get("#input-nombre").should("have.text", "");
     cy.get("#error-id").should("have.text", "");
     cy.get("#error-nombre").should("have.text", "");
-    cy.get("#mensaje-exitoso").should("have.class", "");
-    cy.get("#mensaje-exitoso").should("have.text", "");
+    cy.get("#mensaje-formulario").should("have.class", "");
+    cy.get("#mensaje-formulario").should("have.text", "");
   });
 
   it("Testea el uso incorrecto de la pagina", () => {
@@ -39,8 +39,8 @@ describe("Testeo de alta categorias", () => {
     cy.get("#error-nombre").should("have.text", "El campo nombre solo acepta caracteres en mayuscula");
     cy.get("#error-nombre").should("have.class", "invalid-feedback");
 
-    cy.get("#mensaje-exitoso").should("have.class", "");
-    cy.get("#mensaje-exitoso").should("have.text", "");
+    cy.get("#mensaje-formulario").should("have.class", "");
+    cy.get("#mensaje-formulario").should("have.text", "");
 
     cy.get("#restablecer-formulario").click();
 
@@ -60,7 +60,7 @@ describe("Testeo de alta categorias", () => {
     cy.get("#error-nombre").should("have.text", "El campo nombre no debe estar vacio");
     cy.get("#error-nombre").should("have.class", "invalid-feedback");
 
-    cy.get("#mensaje-exitoso").should("have.text", "");
-    cy.get("#mensaje-exitoso").should("have.class", "");
+    cy.get("#mensaje-formulario").should("have.text", "");
+    cy.get("#mensaje-formulario").should("have.class", "");
   });
 });
