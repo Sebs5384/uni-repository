@@ -2,13 +2,13 @@ import { mostrarMensajeSiEsExitoso, mostrarErrores, resetearFormulario } from ".
 
 describe("Testea mostrarMensajeSiExitoso", () => {
   beforeEach(() => {
-    document.body.innerHTML = "<div id='mensaje-exitoso'></div>";
+    document.body.innerHTML = "<div id='mensaje-formulario'></div>";
   });
 
   it("Deberia de mostrar un mensaje exitoso si los campos evaluan a true", () => {
     const campoId = true;
     const campoNombre = true;
-    const $exitoso = document.querySelector("#mensaje-exitoso");
+    const $exitoso = document.querySelector("#mensaje-formulario");
 
     mostrarMensajeSiEsExitoso(campoId, campoNombre);
     expect($exitoso.innerText).toBe("ID y Nombre guardado con exito");
@@ -19,7 +19,7 @@ describe("Testea mostrarMensajeSiExitoso", () => {
     const campoId = false;
     const campoNombre = true;
 
-    const $exitoso = document.querySelector("#mensaje-exitoso");
+    const $exitoso = document.querySelector("#mensaje-formulario");
 
     mostrarMensajeSiEsExitoso(campoId, campoNombre);
     expect($exitoso.innerText).toBe("");
@@ -63,13 +63,13 @@ describe("Testea mostrarMensajeSiExitoso", () => {
 
   describe("Testea resetearFormulario", () => {
     beforeEach(() => {
-      document.body.innerHTML = "<input type='number' id='input-id' name='id'><input type='text' id='input-nombre'><div id='error-id'><div id='mensaje-exitoso'><div id='error-nombre'></div></div></div>";
+      document.body.innerHTML = "<input type='number' id='input-id' name='id'><input type='text' id='input-nombre'><div id='error-id'><div id='mensaje-formulario'><div id='error-nombre'></div></div></div>";
     });
 
     it("Deberia de resetear el formulario si este contiene clases exitosas", () => {
       const $inputId = document.querySelector("#input-id");
       const $inputNombre = document.querySelector("#input-nombre");
-      const $mensajeExito = document.querySelector("#mensaje-exitoso");
+      const $mensajeExito = document.querySelector("#mensaje-formulario");
 
       $inputId.value = "123";
       $inputNombre.value = "PLACADEVIDEO";
