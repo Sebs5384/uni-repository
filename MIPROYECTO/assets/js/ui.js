@@ -6,16 +6,15 @@ const $campoId = document.querySelector("#input-id");
 const $campoNombre = document.querySelector("#input-nombre");
 
 export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
-  const $exitoso = document.querySelector("#mensaje-exitoso");
   const idValido = campoId;
   const nombreValido = campoNombre;
 
   if (idValido && nombreValido === true) {
-    $exitoso.innerText = "ID y Nombre guardado con exito";
-    $exitoso.className = "alert alert-success";
+    actualizarMensajeFormulario("exitoso");
+    return true;
   } else {
-    $exitoso.innerText = "";
-    $exitoso.className = "";
+    actualizarMensajeFormulario();
+    return false;
   }
 }
 
@@ -43,20 +42,53 @@ export function mostrarErrores(llaves, errores, selector) {
 }
 
 export function enviarFormulario() {
-  mostrarMensajeSiEsExitoso(validarCampoId($campoId), validarCampoNombre($campoNombre));
+  const datosValidos = mostrarMensajeSiEsExitoso(validarCampoId($campoId), validarCampoNombre($campoNombre));
+  if (datosValidos) {
+    insertarDatos();
+  }
 }
 
 export function resetearFormulario() {
-  const $mensajeExito = document.querySelector("#mensaje-exitoso");
   const $inputId = document.querySelector("#input-id");
   const $inputNombre = document.querySelector("#input-nombre");
 
   $inputId.value = "";
   $inputId.className = "form-control";
-
   $inputNombre.value = "";
   $inputNombre.className = "form-control";
 
-  $mensajeExito.innerText = "";
-  $mensajeExito.className = "";
+  actualizarMensajeFormulario();
+}
+
+function actualizarMensajeFormulario(estado = "") {
+  const $mensaje = document.querySelector("#mensaje-formulario");
+  if (estado === "exitoso") {
+    $mensaje.innerText = "ID y Nombre guardado con exito";
+    $mensaje.className = "alert alert-success";
+  } else if (estado === "error") {
+    $mensaje.innerText = "Error; sin sistema";
+    $mensaje.className = "alert alert-danger";
+  } else {
+    $mensaje.innerText = estado;
+    $mensaje.className = estado;
+  }
+}
+
+async function insertarDatos() {
+  try {
+    const URL = "http://localhost/MIPROYECTO/class/categorias.php";
+    const $fomulario = document.querySelector("#formulario");
+    const datosFormulario = new FormData($fomulario);
+
+    const respuesta = await fetch(URL, {
+      method: "POST",
+      body: datosFormulario,
+    });
+
+    const resultado = await respuesta.text();
+    console.log(resultado);
+  } catch (error) {
+    actualizarMensajeFormulario("error");
+    throw new Error("Error en promesa");
+  }
 }
