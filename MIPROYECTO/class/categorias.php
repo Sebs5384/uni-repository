@@ -8,7 +8,8 @@
         $id = $_POST['id'];
         $name = $_POST['nombre'];
 
-        $db->insertar($id, $name);
+        $respuesta = $db->insertar($id, $name);
+        echo json_encode($respuesta);
     }
 
 

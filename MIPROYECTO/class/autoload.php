@@ -22,24 +22,27 @@
 
         private function conectar(){
             $this->conexion = mysqli_connect($this->host, $this->nombreUsuario, $this->contrasenia, $this->database);
-            if($this->conexion){
-                echo "La conexion a la base de datos fue exitosa <br>";
-            } else{
-                echo "No se pudo conectar a la base de datos";
-            }
+      
         }
 
         public function insertar($id, $name){
+            $respuesta = new stdClass();
             $query = "INSERT INTO informacion (id, nombre) VALUES ('$id', '$name')";
             if($this->conexion->query($query) === true){
-                echo "La informacion fue insertada correctamente";
+                $respuesta->estado = 'Exitoso';
+                $respuesta->mensaje = 'La informacion fue insertada correctamente';
             } else {
-                echo "No se inserto correctamente";
+                $respuesta->estado = 'error';
+                $respuesta->mensaje = 'No se pudo insertar la informacion';
             }
+            header('Content-Type: application/json');
+            return json_encode($respuesta);
         }
+        
     }
 
-
+    $db = new database('localhost', 'root', '', 'testeandoo');
+    $db->insertar(1, 'Juan');
 
 
 ?>
