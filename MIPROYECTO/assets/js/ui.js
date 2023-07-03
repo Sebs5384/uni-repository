@@ -1,5 +1,5 @@
 import { validarCampoId, validarCampoNombre } from "./validaciones.js";
-import { insertarDatos, obtenerDatos } from "./servicios-db.js";
+import { insertarDatos } from "./servicios-db.js";
 
 export const $botonEnviar = document.querySelector("#enviar-formulario");
 export const $botonRestablecer = document.querySelector("#restablecer-formulario");
@@ -72,6 +72,5 @@ export function enviarFormulario() {
   const datosValidos = mostrarMensajeSiEsExitoso(validarCampoId($campoId), validarCampoNombre($campoNombre));
   if (datosValidos) {
     insertarDatos();
-    obtenerDatos();
   }
 }
