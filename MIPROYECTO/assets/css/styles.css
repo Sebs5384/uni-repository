@@ -1,6 +1,15 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
 #tech-byte {
-  height: 150px;
-  width: 175px;
+  height: 130px;
+  width: 150px;
 }
 
 #heading-categorias {
