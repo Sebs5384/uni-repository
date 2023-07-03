@@ -1,4 +1,5 @@
 import { validarCampoId, validarCampoNombre } from "./validaciones.js";
+import { insertarDatos, obtenerDatos } from "./servicios-db.js";
 
 export const $botonEnviar = document.querySelector("#enviar-formulario");
 export const $botonRestablecer = document.querySelector("#restablecer-formulario");
@@ -41,13 +42,6 @@ export function mostrarErrores(llaves, errores, selector) {
   return erroresPresente;
 }
 
-export function enviarFormulario() {
-  const datosValidos = mostrarMensajeSiEsExitoso(validarCampoId($campoId), validarCampoNombre($campoNombre));
-  if (datosValidos) {
-    insertarDatos();
-  }
-}
-
 export function resetearFormulario() {
   const $inputId = document.querySelector("#input-id");
   const $inputNombre = document.querySelector("#input-nombre");
@@ -60,13 +54,13 @@ export function resetearFormulario() {
   actualizarMensajeFormulario();
 }
 
-function actualizarMensajeFormulario(estado = "") {
+export function actualizarMensajeFormulario(estado = "") {
   const $mensaje = document.querySelector("#mensaje-formulario");
   if (estado === "exitoso") {
     $mensaje.innerText = "ID y Nombre guardado con exito";
     $mensaje.className = "alert alert-success";
   } else if (estado === "error") {
-    $mensaje.innerText = "Error; sin sistema";
+    $mensaje.innerText = "Error; al insertar los datos.";
     $mensaje.className = "alert alert-danger";
   } else {
     $mensaje.innerText = estado;
@@ -74,21 +68,10 @@ function actualizarMensajeFormulario(estado = "") {
   }
 }
 
-async function insertarDatos() {
-  try {
-    const URL = "http://localhost/MIPROYECTO/class/categorias.php";
-    const $fomulario = document.querySelector("#formulario");
-    const datosFormulario = new FormData($fomulario);
-
-    const $respuesta = await fetch(URL, {
-      method: "POST",
-      body: datosFormulario,
-    });
-    const respuesta = await $respuesta.json();
-    const json = JSON.parse(respuesta);
-    alert(json.mensaje);
-  } catch (error) {
-    actualizarMensajeFormulario("error");
-    throw new Error("Error en promesa");
+export function enviarFormulario() {
+  const datosValidos = mostrarMensajeSiEsExitoso(validarCampoId($campoId), validarCampoNombre($campoNombre));
+  if (datosValidos) {
+    insertarDatos();
+    obtenerDatos();
   }
 }
