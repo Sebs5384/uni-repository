@@ -39,10 +39,17 @@
             return json_encode($respuesta);
         }
         
+        public function consultar(){
+            $query = "SELECT * FROM informacion";
+            $resultado = $this->conexion->query($query);
+            if($resultado){
+                $columnas = $resultado->fetch_all(MYSQLI_ASSOC);
+                $columnasJson = json_encode($columnas);
+                return $columnasJson;
+            } else {
+                echo "Error: " . $query . "<br>" . $this->conexion->error;
+            }
+        }   
+
     }
-
-    $db = new database('localhost', 'root', '', 'testeandoo');
-    $db->insertar(1, 'Juan');
-
-
 ?>
