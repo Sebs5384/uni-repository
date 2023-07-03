@@ -10,6 +10,9 @@
 
         $respuesta = $db->insertar($id, $name);
         echo json_encode($respuesta);
+    } elseif($_SERVER["REQUEST_METHOD"] === "GET"){
+        $respuesta = $db->consultar();
+        echo json_encode($respuesta);
     }
 
 
