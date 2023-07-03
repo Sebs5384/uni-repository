@@ -80,13 +80,13 @@ async function insertarDatos() {
     const $fomulario = document.querySelector("#formulario");
     const datosFormulario = new FormData($fomulario);
 
-    const respuesta = await fetch(URL, {
+    const $respuesta = await fetch(URL, {
       method: "POST",
       body: datosFormulario,
     });
-
-    const resultado = await respuesta.text();
-    console.log(resultado);
+    const respuesta = await $respuesta.json();
+    const json = JSON.parse(respuesta);
+    alert(json.mensaje);
   } catch (error) {
     actualizarMensajeFormulario("error");
     throw new Error("Error en promesa");
