@@ -16,6 +16,10 @@ body {
   font-size: 25px;
 }
 
+#carta-lista-categorias {
+  width: 60rem;
+}
+
 #carta-formulario {
   width: 30rem;
 }
