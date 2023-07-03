@@ -18,7 +18,7 @@ export async function insertarDatos() {
   }
 }
 
-export async function obtenerDatos() {
+export async function obtenerFilas() {
   const URL = "http://localhost/MIPROYECTO/class/categorias.php";
   const $respuesta = await fetch(URL, {
     method: "GET",
@@ -26,5 +26,15 @@ export async function obtenerDatos() {
 
   const respuesta = await $respuesta.json();
   const json = JSON.parse(respuesta);
-  console.log(json);
+  return json;
+}
+
+export async function obtenerTablas() {
+  const URL = "http://localhost/MIPROYECTO/class/productos.php";
+  const $respuesta = await fetch(URL, {
+    method: "GET",
+  });
+  const respuesta = await $respuesta.json();
+  const json = JSON.parse(respuesta);
+  return json;
 }

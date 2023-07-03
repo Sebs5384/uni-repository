@@ -25,7 +25,7 @@
       
         }
 
-        public function insertar($id, $name){
+        public function insertarFilas($id, $name){
             $respuesta = new stdClass();
             $query = "INSERT INTO informacion (id, nombre) VALUES ('$id', '$name')";
             if($this->conexion->query($query) === true){
@@ -39,7 +39,7 @@
             return json_encode($respuesta);
         }
         
-        public function consultar(){
+        public function consultarFilas(){
             $query = "SELECT * FROM informacion";
             $resultado = $this->conexion->query($query);
             if($resultado){
@@ -51,5 +51,19 @@
             }
         }   
 
+        public function consultarTabla(){
+            $query = "SHOW TABLES;";
+            $resultado = $this->conexion->query($query);
+            if($resultado){
+                $tablas = $resultado->fetch_all(MYSQLI_ASSOC);
+                $nombreTablas = new stdClass();
+                $nombreTablas->tablas = $tablas;
+                $tablaJson = json_encode($nombreTablas);
+                return $tablaJson;
+            } else {
+                echo "Error" . $query . "<br>" . $this->conexion->error;
+            }
+        }
+        
     }
 ?>
