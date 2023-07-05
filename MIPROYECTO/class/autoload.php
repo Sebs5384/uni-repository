@@ -4,7 +4,7 @@
         require_once str_replace('\\', '/', $clase) . 'php';
     });
 
-    class database{
+    class ConexionDatabase{
         private $host;
         private $nombreUsuario;
         private $contrasenia;
@@ -20,18 +20,36 @@
             $this->conectar();
         }
 
-        private function conectar(){
+        public function conectar(){
             $this->conexion = mysqli_connect($this->host, $this->nombreUsuario, $this->contrasenia, $this->database);
-      
+            if(!$this-> conexion){
+                echo 'No se pudo conectar a la base de datos';
+            }
+        }
+
+        public function obtenerConexion(){
+            return $this->conexion;
+        }
+    }
+
+
+    class Database{
+
+        private $conexionDb;
+
+        public function __construct(ConexionDatabase $conexionDb){
+            $this-> conexionDb = $conexionDb;
         }
 
         public function insertarFilas($id, $name){
-            $respuesta = new stdClass();
-            $query = "INSERT INTO informacion (id, nombre) VALUES ('$id', '$name')";
-            if($this->conexion->query($query) === true){
+            $conexion = $this->conexionDb->obtenerConexion();
+            $query = "INSERT INTO informacion (id, nombre) VALUES ('$id', '$name')"; 
+            if(mysqli_query($conexion, $query)){
+                $respuesta = new stdClass();
                 $respuesta->estado = 'Exitoso';
                 $respuesta->mensaje = 'La informacion fue insertada correctamente';
             } else {
+                $respuesta = new stdClass();
                 $respuesta->estado = 'error';
                 $respuesta->mensaje = 'No se pudo insertar la informacion';
             }
@@ -39,11 +57,12 @@
             return json_encode($respuesta);
         }
         
-        public function consultarFilas(){
-            $query = "SELECT * FROM informacion";
-            $resultado = $this->conexion->query($query);
+        public function consultarFilas($table){
+            $conexion = $this->conexionDb->obtenerConexion();
+            $query = "SELECT * FROM $table";
+            $resultado = mysqli_query($conexion, $query);
             if($resultado){
-                $columnas = $resultado->fetch_all(MYSQLI_ASSOC);
+                $columnas = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
                 $columnasJson = json_encode($columnas);
                 return $columnasJson;
             } else {
@@ -52,13 +71,12 @@
         }   
 
         public function consultarTabla(){
+            $conexion = $this->conexionDb->obtenerConexion();
             $query = "SHOW TABLES;";
-            $resultado = $this->conexion->query($query);
+            $resultado = mysqli_query($conexion, $query);
             if($resultado){
-                $tablas = $resultado->fetch_all(MYSQLI_ASSOC);
-                $nombreTablas = new stdClass();
-                $nombreTablas->tablas = $tablas;
-                $tablaJson = json_encode($nombreTablas);
+                $tablas = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+                $tablaJson = json_encode($tablas);
                 return $tablaJson;
             } else {
                 echo "Error" . $query . "<br>" . $this->conexion->error;
