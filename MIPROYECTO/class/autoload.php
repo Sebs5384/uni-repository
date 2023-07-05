@@ -40,11 +40,49 @@
         public function __construct(ConexionDatabase $conexionDb){
             $this-> conexionDb = $conexionDb;
         }
-
-        public function insertarFilas($id, $name){
+        
+        public function crearTabla($nombre){
             $conexion = $this->conexionDb->obtenerConexion();
-            $query = "INSERT INTO informacion (id, nombre) VALUES ('$id', '$name')"; 
-            if(mysqli_query($conexion, $query)){
+            $query = "CREATE TABLE $nombre (id SERIAL PRIMARY KEY, nombre_producto VARCHAR(15), tipo_producto VARCHAR(15), update_at TIMESTAMP, image BLOB)";
+            $queryExitosa = mysqli_query($conexion, $query);
+
+            if($queryExitosa){
+                $respuesta = new stdClass();
+                $respuesta->estado = 'Exitoso';
+                $respuesta->mensaje = 'La tabla fue creada correctamente';
+            } else {
+                $respuesta = new stdClass();
+                $respuesta->estado = 'error';
+                $respuesta->mensaje = 'No se pudo crear la tabla';
+            }
+            
+            $respuestaJson = json_encode($respuesta);
+            return $respuestaJson;
+        }
+
+        
+        public function consultarTabla(){
+            
+            $conexion = $this->conexionDb->obtenerConexion();
+            $query = "SHOW TABLES;";
+            $queryExitosa = mysqli_query($conexion, $query);
+            
+            if($queryExitosa){
+                $tablas = mysqli_fetch_all($queryExitosa, MYSQLI_ASSOC);
+                $tablasJson = json_encode($tablas);
+                return $tablasJson;
+            } else {
+                echo "Error, no se pudo consultar la tablas";
+            }
+        }
+
+
+        public function insertarFilas($id, $nombre){
+            $conexion = $this->conexionDb->obtenerConexion();
+            $query = "INSERT INTO placasdevideo (nombre_producto, tipo_categoria) VALUES ('$id', '$nombre')"; 
+            $queryExitosa = mysqli_query($conexion, $query);
+
+            if($queryExitosa){
                 $respuesta = new stdClass();
                 $respuesta->estado = 'Exitoso';
                 $respuesta->mensaje = 'La informacion fue insertada correctamente';
@@ -53,35 +91,25 @@
                 $respuesta->estado = 'error';
                 $respuesta->mensaje = 'No se pudo insertar la informacion';
             }
-            header('Content-Type: application/json');
-            return json_encode($respuesta);
+            
+            $respuestaJson =  json_encode($respuesta);
+            return $respuestaJson;
         }
         
         public function consultarFilas($table){
+            
             $conexion = $this->conexionDb->obtenerConexion();
             $query = "SELECT * FROM $table";
-            $resultado = mysqli_query($conexion, $query);
-            if($resultado){
-                $columnas = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+            $queryExitosa = mysqli_query($conexion, $query);
+            
+            if($queryExitosa){
+                $columnas = mysqli_fetch_all($queryExitosa, MYSQLI_ASSOC);
                 $columnasJson = json_encode($columnas);
                 return $columnasJson;
             } else {
-                echo "Error: " . $query . "<br>" . $this->conexion->error;
+                echo "Error, no se pudo consultar las filas";
             }
         }   
-
-        public function consultarTabla(){
-            $conexion = $this->conexionDb->obtenerConexion();
-            $query = "SHOW TABLES;";
-            $resultado = mysqli_query($conexion, $query);
-            if($resultado){
-                $tablas = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-                $tablaJson = json_encode($tablas);
-                return $tablaJson;
-            } else {
-                echo "Error" . $query . "<br>" . $this->conexion->error;
-            }
-        }
         
     }
 ?>
