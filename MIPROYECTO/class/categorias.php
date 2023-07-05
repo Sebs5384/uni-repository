@@ -6,15 +6,20 @@
     $conexionDb->conectar();
     $queries = new Database($conexionDb);
     
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
-        $id = $_POST['id'];
-        $name = $_POST['nombre'];
 
-        $respuesta = $queries->insertarFilas($id, $name);
-        echo json_encode($respuesta);
+    if($_SERVER["REQUEST_METHOD"] === "POST"){
+        
+        if(isset($_POST['categoria'])){
+            $nombreCategoria = $_POST['categoria'];
+            $crearTable = $queries->crearTabla($nombreCategoria);
+            echo $crearTable;
+        } else {
+            echo "El nombre de la tabla a crear es requerido, por favor agreguelo al request cuando sea llamado o refiera a autoload.php";
+        }
+    
     }elseif($_SERVER["REQUEST_METHOD"] === "GET"){
-        $resultado = $queries->consultarTabla();
-        echo $resultado;
+        $tablas = $queries->consultarTabla();
+        echo $tablas;
     }
 
 
