@@ -41,7 +41,7 @@ export function validarCampoNombre($campoNombre) {
   const errorEnCampoCategoria = validarNombre($campoNombre);
 
   const errorEnCampo = {
-    nombre: errorEnCampoCategoria,
+    categoria: errorEnCampoCategoria,
   };
 
   const esExistoso = manejarErrores(errorEnCampo, "#error-nombre") === 0;
