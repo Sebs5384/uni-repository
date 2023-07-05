@@ -1,16 +1,15 @@
-import { validarCampoId, validarCampoNombre } from "./validaciones.js";
-import { insertarDatos } from "./servicios-db.js";
+import { validarCampoNombre } from "./validaciones.js";
+import { crearCategoria } from "./servicios-db.js";
 
 export const $botonEnviar = document.querySelector("#enviar-formulario");
 export const $botonRestablecer = document.querySelector("#restablecer-formulario");
-const $campoId = document.querySelector("#input-id");
 const $campoNombre = document.querySelector("#input-nombre");
+const $formulario = document.querySelector("#formulario");
 
-export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
-  const idValido = campoId;
+export function mostrarMensajeSiEsExitoso(campoNombre) {
   const nombreValido = campoNombre;
 
-  if (idValido && nombreValido === true) {
+  if (nombreValido === true) {
     actualizarMensajeFormulario("exitoso");
     return true;
   } else {
@@ -21,10 +20,8 @@ export function mostrarMensajeSiEsExitoso(campoId, campoNombre) {
 
 export function mostrarErrores(llaves, errores, selector) {
   const $error = document.querySelector(selector);
-  const $formulario = document.querySelector("#formulario");
-  $error.innerText = "";
-
   let erroresPresente = 0;
+  $error.innerText = "";
 
   llaves.forEach((llave) => {
     const error = errores[llave];
@@ -39,18 +36,12 @@ export function mostrarErrores(llaves, errores, selector) {
       $elemento.className = "form-control is-valid";
     }
   });
+
   return erroresPresente;
 }
 
 export function resetearFormulario() {
-  const $inputId = document.querySelector("#input-id");
-  const $inputNombre = document.querySelector("#input-nombre");
-
-  $inputId.value = "";
-  $inputId.className = "form-control";
-  $inputNombre.value = "";
-  $inputNombre.className = "form-control";
-
+  actualizarEstadoInput("", "#input-nombre");
   actualizarMensajeFormulario();
 }
 
@@ -60,7 +51,10 @@ export function actualizarMensajeFormulario(estado = "") {
     $mensaje.innerText = "ID y Nombre guardado con exito";
     $mensaje.className = "alert alert-success";
   } else if (estado === "error") {
-    $mensaje.innerText = "Error; al insertar los datos.";
+    $mensaje.innerText = "Error al crear la categoria";
+    $mensaje.className = "alert alert-danger";
+  } else if (estado === "existente") {
+    $mensaje.innerText = "Esta categoria ya existe";
     $mensaje.className = "alert alert-danger";
   } else {
     $mensaje.innerText = estado;
@@ -68,9 +62,21 @@ export function actualizarMensajeFormulario(estado = "") {
   }
 }
 
+export function actualizarEstadoInput(estado, selector) {
+  const $input = document.querySelector(`${selector}`);
+  if (estado === "valido") {
+    $input.className = "form-control is-valid";
+  } else if (estado === "invalido") {
+    $input.className = "form-control is-invalid";
+  } else {
+    $input.className = "form-control";
+    $input.innerText = "";
+  }
+}
+
 export function enviarFormulario() {
-  const datosValidos = mostrarMensajeSiEsExitoso(validarCampoId($campoId), validarCampoNombre($campoNombre));
+  const datosValidos = mostrarMensajeSiEsExitoso(validarCampoNombre($campoNombre));
   if (datosValidos) {
-    insertarDatos();
+    crearCategoria();
   }
 }
