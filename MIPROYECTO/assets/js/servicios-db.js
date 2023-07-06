@@ -1,5 +1,5 @@
 import { actualizarEstadoInput, actualizarMensajeFormulario } from "./ui.js";
-export async function insertarDatos() {
+export async function insertarProducto() {
   try {
     const URL = "http://localhost/MIPROYECTO/class/categorias.php";
     const $fomulario = document.querySelector("#formulario");
@@ -18,7 +18,7 @@ export async function insertarDatos() {
   }
 }
 
-export async function obtenerFilas(table) {
+export async function obtenerProductos(table) {
   try {
     const URL = `http://localhost/MIPROYECTO/class/productos.php?table=${table}`;
     const $respuesta = await fetch(URL, {
@@ -55,10 +55,30 @@ export async function crearCategoria() {
       body: datosFormulario,
     });
 
-    return $respuesta.json();
+    const respuesta = await $respuesta.json();
+    const categoriaExistente = respuesta.estado === "existente";
+
+    if (categoriaExistente) {
+      actualizarEstadoInput("invalido", "#input-nombre");
+      actualizarMensajeFormulario("existente");
+    } else {
+      return respuesta;
+    }
   } catch (error) {
-    actualizarEstadoInput("invalido", "#input-nombre");
-    actualizarMensajeFormulario("existente");
     throw new Error("Error en promesa, no se pudo crear la categoria");
+  }
+}
+
+export async function borrarCategoria(categoria) {
+  try {
+    const URL = `http://localhost/MIPROYECTO/class/categorias.php?table=${categoria}`;
+    const $respuesta = await fetch(URL, {
+      method: "DELETE",
+    });
+
+    const respuesta = await $respuesta.json();
+    return respuesta;
+  } catch (error) {
+    throw new Error("Error en promesa, no se pudo borrar la categoria");
   }
 }

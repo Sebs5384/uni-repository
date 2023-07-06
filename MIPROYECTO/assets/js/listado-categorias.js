@@ -8,13 +8,22 @@ async function cargarCategorias() {
 function crearTabla(tablas, elementos) {
   const $cuerpoTabla = document.querySelector("#table-body");
 
-  tablas.forEach((tabla) => {
-    const $categorias = elementos(tabla);
+  tablas.forEach((tabla, i) => {
+    const $categorias = elementos(tabla, i);
     $cuerpoTabla.appendChild($categorias);
   });
 }
 
-function crearElementosTabla(tabla) {
+const $tabla = document.querySelector("#tabla-categorias");
+$tabla.onclick = (event) => {
+  const $clickedButton = event.target;
+  console.log($clickedButton);
+  if ($clickedButton.classList.contains("borrar")) {
+    $clickedButton.closest("tr").remove();
+  }
+};
+
+function crearElementosTabla(tabla, i) {
   const $lista = document.createElement("tr");
   const $nombreCategoria = document.createElement("td");
   const $botonProductos = document.createElement("button");
@@ -27,7 +36,7 @@ function crearElementosTabla(tabla) {
   $botonBorrar.innerText = "Borrar";
 
   $botonProductos.className = "btn btn-outline-secondary btn-sm";
-  $botonBorrar.className = "btn btn-outline-secondary btn-sm";
+  $botonBorrar.className = "btn btn-outline-secondary btn-sm borrar";
 
   $contenedorBotones.appendChild($botonProductos);
   $contenedorBotones.appendChild($espacioBlanco);
