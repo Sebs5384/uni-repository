@@ -10,16 +10,20 @@
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         
         if(isset($_POST['categoria'])){
-            $nombreCategoria = $_POST['categoria'];
-            $crearTable = $queries->crearTabla($nombreCategoria);
-            echo $crearTable;
+            $categoria = $_POST['categoria'];
+            $tablaCreada = $queries->crearTabla($categoria);
+            echo $tablaCreada;
         } else {
             echo "El nombre de la tabla a crear es requerido, por favor agreguelo al request cuando sea llamado o refiera a autoload.php";
         }
     
     }elseif($_SERVER["REQUEST_METHOD"] === "GET"){
-        $tablas = $queries->consultarTabla();
+        $tablas = $queries->consultarTablas();
         echo $tablas;
+    }elseif($_SERVER["REQUEST_METHOD"] === "DELETE"){
+        $categoria = $_GET['table'];
+        $tablaBorrada = $queries->borrarTabla($categoria);
+        echo $tablaBorrada;
     }
 
 

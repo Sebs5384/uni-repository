@@ -43,17 +43,28 @@
         
         public function crearTabla($nombre){
             $conexion = $this->conexionDb->obtenerConexion();
-            $query = "CREATE TABLE $nombre (id SERIAL PRIMARY KEY, nombre_producto VARCHAR(15), tipo_producto VARCHAR(15), update_at TIMESTAMP, image BLOB)";
-            $queryExitosa = mysqli_query($conexion, $query);
+            
+            $existingTablesQuery = "SHOW TABLES LIKE '$nombre'";
+            $existingTablesResult = mysqli_query($conexion, $existingTablesQuery);
 
-            if($queryExitosa){
+            if(mysqli_num_rows($existingTablesResult) > 0){
                 $respuesta = new stdClass();
-                $respuesta->estado = 'Exitoso';
-                $respuesta->mensaje = 'La tabla fue creada correctamente';
-            } else {
-                $respuesta = new stdClass();
-                $respuesta->estado = 'error';
-                $respuesta->mensaje = 'No se pudo crear la tabla';
+                $respuesta->estado = 'existente';
+                $respuesta->mensaje = 'La tabla ya existe';
+            } else{
+            
+                $query = "CREATE TABLE $nombre (id SERIAL PRIMARY KEY, nombre_producto VARCHAR(15), tipo_producto VARCHAR(15), update_at TIMESTAMP, image BLOB)";
+                $queryExitosa = mysqli_query($conexion, $query);
+
+                if($queryExitosa){
+                    $respuesta = new stdClass();
+                    $respuesta->estado = 'Exitoso';
+                    $respuesta->mensaje = 'La tabla fue creada correctamente';
+                } else {
+                    $respuesta = new stdClass();
+                    $respuesta->estado = 'Error';
+                    $respuesta->mensaje = 'No se pudo crear la tabla';
+                }
             }
             
             $respuestaJson = json_encode($respuesta);
@@ -61,7 +72,7 @@
         }
 
         
-        public function consultarTabla(){
+        public function consultarTablas(){
             
             $conexion = $this->conexionDb->obtenerConexion();
             $query = "SHOW TABLES;";
@@ -74,6 +85,24 @@
             } else {
                 echo "Error, no se pudo consultar la tablas";
             }
+        }
+
+        public function borrarTabla($tabla){
+            $conexion = $this->conexionDb->obtenerConexion();
+            $query = "DROP TABLE $tabla";
+            $queryExitosa = mysqli_query($conexion, $query);
+            
+            if($queryExitosa){
+                $respuesta = new stdClass();
+                $respuesta->estado = 'Exitoso';
+                $respuesta->mensaje = 'La tabla fue borrada correctamente';
+            } else {
+                $respuesta = new stdClass();
+                $respuesta->estado = 'Error';
+                $respuesta->mensaje = 'No se pudo borrar la tabla';
+            }
+            $respuestaJson = json_encode($respuesta);
+            return $respuestaJson;
         }
 
 
@@ -110,6 +139,5 @@
                 echo "Error, no se pudo consultar las filas";
             }
         }   
-        
     }
 ?>
