@@ -16,6 +16,10 @@ body {
   font-size: 25px;
 }
 
+#carta-lista-productos {
+  width: 60rem;
+}
+
 #carta-lista-categorias {
   width: 40rem;
 }

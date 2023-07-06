@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="icon" type="image/x-icon" href="../../assets/img/tech-byte-solutions.png" />
+    <title>Listado de productos</title>
+  </head>
+  <body>
+    <nav id="navegador" class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+      <a class="navbar-brand" href="categorias.html">TechByte Solutions</a>
+      <a class="btn btn-outline-secondary" href="lista-categorias.html" role="button">Listado de Categorias</a>
+    </nav>
+
+    <div class="row justify-content-center" id="logo">
+      <img src="../../assets/img/tech-byte-solutions.png" id="tech-byte" />
+    </div>
+
+    <div class="text-center">
+      <h1 id="heading-categorias">LISTADO DE PRODUCTOS</h1>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="card" id="carta-lista-productos">
+        <div class="card-body">
+          <table class="table table-hover" id="tabla-categorias">
+            <thead>
+              <tr>
+                <th scope="col">Nombre del producto</th>
+                <th scope="col">Tipo de producto</th>
+                <th scope="col">Ultima modificacion</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpo-tabla"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../assets/js/listado-productos.js" type="module"></script>
+</html>
