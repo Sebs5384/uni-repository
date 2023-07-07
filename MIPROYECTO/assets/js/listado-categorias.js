@@ -1,4 +1,7 @@
-import { obtenerCategorias } from "./servicios-db.js";
+import { obtenerCategorias, borrarCategoria } from "./servicios-db.js";
+import { mostrarProductos } from "./listado-productos.js";
+import { $tablaCategorias } from "./ui.js";
+import { verProductos } from "./listado-productos.js";
 
 async function cargarCategorias() {
   const tablas = await obtenerCategorias();
@@ -6,7 +9,7 @@ async function cargarCategorias() {
 }
 
 function crearTabla(tablas, elementos) {
-  const $cuerpoTabla = document.querySelector("#table-body");
+  const $cuerpoTabla = document.querySelector("#cuerpo-tabla");
 
   tablas.forEach((tabla, i) => {
     const $categorias = elementos(tabla, i);
@@ -14,16 +17,19 @@ function crearTabla(tablas, elementos) {
   });
 }
 
-const $tabla = document.querySelector("#tabla-categorias");
-$tabla.onclick = (event) => {
-  const $clickedButton = event.target;
-  console.log($clickedButton);
-  if ($clickedButton.classList.contains("borrar")) {
-    $clickedButton.closest("tr").remove();
+async function manejarBotonesCategorias(event) {
+  const $categoriaElegida = event.target;
+  const $fila = $categoriaElegida.closest("tr");
+  const $nombreCategoria = $fila.firstElementChild.innerText;
+  console.log($nombreCategoria);
+  if ($categoriaElegida.classList.contains("borrar")) {
+    await removerCategoria($nombreCategoria, $fila);
+  } else if ($categoriaElegida.classList.contains("mostrar")) {
+    await verProductos($nombreCategoria);
   }
-};
+}
 
-function crearElementosTabla(tabla, i) {
+function crearElementosTabla(tabla) {
   const $lista = document.createElement("tr");
   const $nombreCategoria = document.createElement("td");
   const $botonProductos = document.createElement("button");
@@ -35,7 +41,7 @@ function crearElementosTabla(tabla, i) {
   $botonProductos.innerText = "Ver productos";
   $botonBorrar.innerText = "Borrar";
 
-  $botonProductos.className = "btn btn-outline-secondary btn-sm";
+  $botonProductos.className = "btn btn-outline-secondary btn-sm mostrar";
   $botonBorrar.className = "btn btn-outline-secondary btn-sm borrar";
 
   $contenedorBotones.appendChild($botonProductos);
@@ -47,4 +53,10 @@ function crearElementosTabla(tabla, i) {
   return $lista;
 }
 
+async function removerCategoria(categoria, columna) {
+  await borrarCategoria(categoria);
+  columna.remove();
+}
+
 cargarCategorias();
+$tablaCategorias.onclick = manejarBotonesCategorias;

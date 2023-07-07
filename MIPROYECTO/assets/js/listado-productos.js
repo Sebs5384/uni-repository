@@ -5,8 +5,14 @@ export async function mostrarProductos(categoria) {
   console.log(productos);
 }
 
-function redirigirA(URL) {
-  window.location.href = URL;
+export async function verProductos(categoria) {
+  localStorage.setItem("categoria", categoria);
+  window.location.href = `lista-productos.html?table=${categoria}`;
 }
 
-mostrarProductos("seba");
+async function inicializar() {
+  const categoria = localStorage.getItem("categoria");
+  await mostrarProductos(categoria);
+}
+
+inicializar();
