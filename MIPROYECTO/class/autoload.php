@@ -44,10 +44,10 @@
         public function crearTabla($nombre){
             $conexion = $this->conexionDb->obtenerConexion();
             
-            $existingTablesQuery = "SHOW TABLES LIKE '$nombre'";
-            $existingTablesResult = mysqli_query($conexion, $existingTablesQuery);
+            $tablaSeleccionada = "SHOW TABLES LIKE '$nombre'";
+            $verificarTablaExiste = mysqli_query($conexion, $tablaSeleccionada);
 
-            if(mysqli_num_rows($existingTablesResult) > 0){
+            if(mysqli_num_rows($verificarTablaExiste) > 0){
                 $respuesta = new stdClass();
                 $respuesta->estado = 'existente';
                 $respuesta->mensaje = 'La tabla ya existe';
