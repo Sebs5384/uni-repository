@@ -1,6 +1,7 @@
 import { obtenerProductos } from "./servicios-db.js";
+import { crearTabla } from "./listado-categorias.js";
 
-export async function mostrarProductos(categoria) {
+export async function mostrarListaProductos(categoria) {
   const productos = await obtenerProductos(categoria);
   console.log(productos);
 }
@@ -10,9 +11,13 @@ export async function verProductos(categoria) {
   window.location.href = `lista-productos.html?table=${categoria}`;
 }
 
-async function inicializar() {
+async function cargarProductos() {
   const categoria = localStorage.getItem("categoria");
-  await mostrarProductos(categoria);
+  await mostrarListaProductos(categoria);
 }
 
-inicializar();
+function elementosProducto(tabla) {
+  const $lista = document.createElement("tr");
+}
+
+cargarProductos();

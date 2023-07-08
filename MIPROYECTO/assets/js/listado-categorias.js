@@ -1,19 +1,20 @@
 import { obtenerCategorias, borrarCategoria } from "./servicios-db.js";
-import { mostrarProductos } from "./listado-productos.js";
 import { $tablaCategorias } from "./ui.js";
 import { verProductos } from "./listado-productos.js";
 
 async function cargarCategorias() {
-  const tablas = await obtenerCategorias();
-  crearTabla(tablas, crearElementosTabla);
+  const categorias = await obtenerCategorias();
+  crearTabla(categorias, "#cuerpo-tabla-categorias", elementosCategoria);
 }
 
-function crearTabla(tablas, elementos) {
-  const $cuerpoTabla = document.querySelector("#cuerpo-tabla");
+export function crearTabla(tablas, cuerpo, elementos) {
+  const $cuerpoTabla = document.querySelector(cuerpo);
 
-  tablas.forEach((tabla, i) => {
-    const $categorias = elementos(tabla, i);
-    $cuerpoTabla.appendChild($categorias);
+  if ($cuerpoTabla === null) return;
+
+  tablas.forEach((tabla) => {
+    const $elementosTabla = elementos(tabla);
+    $cuerpoTabla.appendChild($elementosTabla);
   });
 }
 
@@ -22,6 +23,7 @@ async function manejarBotonesCategorias(event) {
   const $fila = $categoriaElegida.closest("tr");
   const $nombreCategoria = $fila.firstElementChild.innerText;
   console.log($nombreCategoria);
+
   if ($categoriaElegida.classList.contains("borrar")) {
     await removerCategoria($nombreCategoria, $fila);
   } else if ($categoriaElegida.classList.contains("mostrar")) {
@@ -29,7 +31,7 @@ async function manejarBotonesCategorias(event) {
   }
 }
 
-function crearElementosTabla(tabla) {
+function elementosCategoria(tabla) {
   const $lista = document.createElement("tr");
   const $nombreCategoria = document.createElement("td");
   const $botonProductos = document.createElement("button");
