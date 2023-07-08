@@ -14,7 +14,7 @@ export async function insertarProducto() {
     console.log(json);
   } catch (error) {
     actualizarMensajeFormulario("error");
-    throw new Error("Error en promesa, no se pudo insertar los datos");
+    throw new Error(`Error en promesa, no se pudo insertar los datos, ${error}`);
   }
 }
 
@@ -27,7 +27,7 @@ export async function obtenerProductos(table) {
     const respuesta = await $respuesta.json();
     return respuesta;
   } catch (error) {
-    throw new Error("Error en promesa, no se pudo obtener las filas");
+    throw new Error(`Error en promesa, no se pudo obtener las filas, ${error}`);
   }
 }
 
@@ -41,7 +41,7 @@ export async function obtenerCategorias() {
     const respuesta = await $respuesta.json();
     return respuesta;
   } catch (error) {
-    throw new Error("Error en promesa, no se pudo obtener las tablas");
+    throw new Error(`Error en promesa, no se pudo obtener las tablas, ${error}`);
   }
 }
 
@@ -67,7 +67,7 @@ export async function crearCategoria() {
       return respuesta;
     }
   } catch (error) {
-    throw new Error("Error en promesa, no se pudo crear la categoria");
+    throw new Error(`Error en promesa, no se pudo crear la categoria, ${error}`);
   }
 }
 
@@ -81,6 +81,6 @@ export async function borrarCategoria(categoria) {
     const respuesta = await $respuesta.json();
     return respuesta;
   } catch (error) {
-    throw new Error("Error en promesa, no se pudo borrar la categoria");
+    throw new Error(`Error en promesa, no se pudo borrar la categoria, ${error}`);
   }
 }
