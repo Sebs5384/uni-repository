@@ -1,10 +1,12 @@
 import { obtenerCategorias, borrarCategoria } from "./servicios-db.js";
 import { $tablaCategorias } from "./ui.js";
 import { verProductos } from "./listado-productos.js";
+import { removerGuionesBajos } from "./utilidades.js";
 
 async function cargarCategorias() {
   const categorias = await obtenerCategorias();
-  crearTabla(categorias, "#cuerpo-tabla-categorias", elementosCategoria);
+  const nombreCategorias = removerGuionesBajos(categorias, "Tables_in_testeandoo");
+  crearTabla(nombreCategorias, "#cuerpo-tabla-categorias", elementosCategoria);
 }
 
 export function crearTabla(tablas, cuerpo, elementos) {
@@ -39,7 +41,7 @@ function elementosCategoria(tabla) {
   const $contenedorBotones = document.createElement("td");
   const $espacioBlanco = document.createTextNode(" ");
 
-  $nombreCategoria.innerText = tabla.Tables_in_testeandoo;
+  $nombreCategoria.innerText = tabla;
   $botonProductos.innerText = "Ver productos";
   $botonBorrar.innerText = "Borrar";
 

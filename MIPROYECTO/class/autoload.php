@@ -42,9 +42,10 @@
         }
         
         public function crearTabla($nombre){
+            $nombreTabla = str_replace(' ', '_', $nombre);
             $conexion = $this->conexionDb->obtenerConexion();
             
-            $tablaSeleccionada = "SHOW TABLES LIKE '$nombre'";
+            $tablaSeleccionada = "SHOW TABLES LIKE '$nombreTabla'";
             $verificarTablaExiste = mysqli_query($conexion, $tablaSeleccionada);
 
             if(mysqli_num_rows($verificarTablaExiste) > 0){
@@ -53,7 +54,7 @@
                 $respuesta->mensaje = 'La tabla ya existe';
             } else{
             
-                $query = "CREATE TABLE $nombre (id SERIAL PRIMARY KEY, nombre_producto VARCHAR(15), descripcion_producto VARCHAR(50), precio FLOAT, update_at TIMESTAMP, image BLOB)";
+                $query = "CREATE TABLE $nombreTabla (id SERIAL PRIMARY KEY, nombre_producto VARCHAR(15), descripcion_producto VARCHAR(50), precio FLOAT, update_at TIMESTAMP, image BLOB)";
                 $queryExitosa = mysqli_query($conexion, $query);
 
                 if($queryExitosa){
