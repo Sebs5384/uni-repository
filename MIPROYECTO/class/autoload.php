@@ -126,10 +126,10 @@
             return $respuestaJson;
         }
         
-        public function consultarFilas($table){
-            
+        public function consultarFilas($tabla){
+            $nombreTabla = str_replace(' ', '_', $tabla);
             $conexion = $this->conexionDb->obtenerConexion();
-            $query = "SELECT * FROM $table";
+            $query = "SELECT * FROM $nombreTabla";
             $queryExitosa = mysqli_query($conexion, $query);
             
             if($queryExitosa){
