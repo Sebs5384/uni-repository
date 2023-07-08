@@ -1,6 +1,6 @@
 import { manejarErrores } from "./utilidades.js";
 
-function validarId(id) {
+function validarCamposProducto(producto) {
   const $id = id.value;
   if ($id % 1 !== 0) {
     return "El campo ID no acepta decimales";
@@ -37,7 +37,7 @@ export function validarCampoId($campoId) {
   return esExistoso;
 }
 
-export function validarCampoNombre($campoNombre) {
+export function validarCampoCategoria($campoNombre) {
   const errorEnCampoCategoria = validarNombre($campoNombre);
 
   const errorEnCampo = {

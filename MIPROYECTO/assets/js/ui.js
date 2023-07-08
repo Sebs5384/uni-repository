@@ -1,16 +1,16 @@
-import { validarCampoNombre } from "./validaciones.js";
+import { validarCampoCategoria } from "./validaciones.js";
 import { crearCategoria } from "./servicios-db.js";
 
 export const $botonEnviar = document.querySelector("#enviar-formulario");
 export const $botonRestablecer = document.querySelector("#restablecer-formulario");
 export const $tablaCategorias = document.querySelector("#tabla-categorias");
-const $campoNombre = document.querySelector("#input-nombre");
+const $campoCategoria = document.querySelector("#input-categoria");
 const $formulario = document.querySelector("#formulario");
 
-export function mostrarMensajeSiEsExitoso(campoNombre) {
-  const nombreValido = campoNombre;
+export function mostrarMensajeSiEsExitoso($campoCategoria) {
+  const nombreCategoriaValido = $campoCategoria;
 
-  if (nombreValido === true) {
+  if (nombreCategoriaValido === true) {
     actualizarMensajeFormulario("exitoso");
     return true;
   } else {
@@ -30,11 +30,11 @@ export function mostrarErrores(llaves, errores, selector) {
 
     if (error) {
       erroresPresente++;
-      $elemento.className = "form-control is-invalid";
+      $elemento.className = "form-control is-invalid mt-2";
       $error.innerText = error;
       $error.className = "invalid-feedback";
     } else {
-      $elemento.className = "form-control is-valid";
+      $elemento.className = "form-control is-valid mt-2";
     }
   });
 
@@ -42,7 +42,7 @@ export function mostrarErrores(llaves, errores, selector) {
 }
 
 export function resetearFormulario() {
-  actualizarEstadoInput("", "#input-nombre");
+  actualizarEstadoInput("", "#input-categoria");
   actualizarMensajeFormulario();
 }
 
@@ -50,13 +50,13 @@ export function actualizarMensajeFormulario(estado = "") {
   const $mensaje = document.querySelector("#mensaje-formulario");
   if (estado === "exitoso") {
     $mensaje.innerText = "ID y Nombre guardado con exito";
-    $mensaje.className = "alert alert-success";
+    $mensaje.className = "alert alert-success mt-2";
   } else if (estado === "error") {
     $mensaje.innerText = "Error al crear la categoria";
-    $mensaje.className = "alert alert-danger";
+    $mensaje.className = "alert alert-danger mt-2";
   } else if (estado === "existente") {
     $mensaje.innerText = "Esta categoria ya existe";
-    $mensaje.className = "alert alert-danger";
+    $mensaje.className = "alert alert-danger mt-2";
   } else {
     $mensaje.innerText = estado;
     $mensaje.className = estado;
@@ -66,17 +66,17 @@ export function actualizarMensajeFormulario(estado = "") {
 export function actualizarEstadoInput(estado, selector) {
   const $input = document.querySelector(`${selector}`);
   if (estado === "valido") {
-    $input.className = "form-control is-valid";
+    $input.className = "form-control is-valid mt-2";
   } else if (estado === "invalido") {
-    $input.className = "form-control is-invalid";
+    $input.className = "form-control is-invalid mt-2";
   } else {
-    $input.className = "form-control";
+    $input.className = "form-control mt-2";
     $input.innerText = "";
   }
 }
 
 export function enviarFormulario() {
-  const datosValidos = mostrarMensajeSiEsExitoso(validarCampoNombre($campoNombre));
+  const datosValidos = mostrarMensajeSiEsExitoso(validarCampoCategoria($campoCategoria));
   if (datosValidos) {
     crearCategoria();
   }

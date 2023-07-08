@@ -50,16 +50,18 @@ export async function crearCategoria() {
     const URL = "http://localhost/MIPROYECTO/class/categorias.php";
     const $formulario = document.querySelector("#formulario");
     const datosFormulario = new FormData($formulario);
+    console.log(datosFormulario);
     const $respuesta = await fetch(URL, {
       method: "POST",
       body: datosFormulario,
     });
 
     const respuesta = await $respuesta.json();
+    console.log(respuesta.estado);
     const categoriaExistente = respuesta.estado === "existente";
 
     if (categoriaExistente) {
-      actualizarEstadoInput("invalido", "#input-nombre");
+      actualizarEstadoInput("invalido", "#input-categoria");
       actualizarMensajeFormulario("existente");
     } else {
       return respuesta;
