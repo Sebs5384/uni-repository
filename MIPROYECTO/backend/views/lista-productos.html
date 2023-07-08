@@ -18,8 +18,16 @@
       <img src="../../assets/img/tech-byte-solutions.png" id="tech-byte" />
     </div>
 
-    <div class="text-center">
-      <h1 id="heading-categorias">LISTADO DE PRODUCTOS</h1>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-2 align-self-start"></div>
+        <div class="col-8 align-self-center">
+          <h1 id="heading">LISTADO DE PRODUCTOS</h1>
+        </div>
+        <div class="col align-self-end m-3">
+          <button class="btn btn-dark" id="boton-agregar-productos" onclick="window.location.href='productos.html'">Agregar Productos</button>
+        </div>
+      </div>
     </div>
 
     <div class="row justify-content-center">
@@ -29,12 +37,24 @@
             <thead>
               <tr>
                 <th scope="col">Nombre del producto</th>
-                <th scope="col">Tipo de producto</th>
+                <th scope="col">Descripcion del producto</th>
+                <th scope="col">Precio</th>
                 <th scope="col">Ultima modificacion</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
-            <tbody id="cuerpo-tabla"></tbody>
+            <tbody id="cuerpo-tabla-productos">
+              <tr>
+                <td>RTX-3000</td>
+                <td>Placa de video para la serie 3000</td>
+                <td>$30000.00</td>
+                <td>22/22/22</td>
+                <td>
+                  <button class="btn btn-outline-secondary">Editar</button>
+                  <button class="btn btn-outline-secondary">Borrar</button>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
