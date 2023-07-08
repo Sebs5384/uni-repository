@@ -1,11 +1,11 @@
 import { obtenerCategorias, borrarCategoria } from "./servicios-db.js";
 import { $tablaCategorias } from "./ui.js";
 import { verProductos } from "./listado-productos.js";
-import { removerGuionesBajos } from "./utilidades.js";
+import { reemplazarEnNombre } from "./utilidades.js";
 
 async function cargarCategorias() {
   const categorias = await obtenerCategorias();
-  const nombreCategorias = removerGuionesBajos(categorias, "Tables_in_testeandoo");
+  const nombreCategorias = reemplazarEnNombre(categorias, "Tables_in_testeandoo", /_/g, " ");
   crearTabla(nombreCategorias, "#cuerpo-tabla-categorias", elementosCategoria);
 }
 
@@ -21,15 +21,15 @@ export function crearTabla(tablas, cuerpo, elementos) {
 }
 
 async function manejarBotonesCategorias(event) {
-  const $categoriaElegida = event.target;
-  const $fila = $categoriaElegida.closest("tr");
+  const $botonElegido = event.target;
+  const $fila = $botonElegido.closest("tr");
   const $nombreCategoria = $fila.firstElementChild.innerText;
-  console.log($nombreCategoria);
+  const nombreCategoria = reemplazarEnNombre($nombreCategoria, "", / /g, "_");
 
-  if ($categoriaElegida.classList.contains("borrar")) {
-    await removerCategoria($nombreCategoria, $fila);
-  } else if ($categoriaElegida.classList.contains("mostrar")) {
-    await verProductos($nombreCategoria);
+  if ($botonElegido.classList.contains("borrar")) {
+    await removerCategoria(nombreCategoria, $fila);
+  } else if ($botonElegido.classList.contains("mostrar")) {
+    await verProductos(nombreCategoria);
   }
 }
 
@@ -58,6 +58,7 @@ function elementosCategoria(tabla) {
 }
 
 async function removerCategoria(categoria, columna) {
+  console.log(categoria);
   await borrarCategoria(categoria);
   columna.remove();
 }

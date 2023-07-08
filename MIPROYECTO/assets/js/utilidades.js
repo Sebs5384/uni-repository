@@ -6,6 +6,10 @@ export function manejarErrores(errores, selector) {
   return noErrores;
 }
 
-export function removerGuionesBajos(array, index) {
-  return array.map((item) => item[index].replace(/_/g, " "));
+export function reemplazarEnNombre(nombres, index, remplazar, remplazo) {
+  if (typeof nombres === "string") {
+    return nombres.replace(remplazar, remplazo);
+  } else {
+    return nombres.map((item) => item[index].replace(remplazar, remplazo));
+  }
 }
