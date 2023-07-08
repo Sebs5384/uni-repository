@@ -53,7 +53,7 @@
                 $respuesta->mensaje = 'La tabla ya existe';
             } else{
             
-                $query = "CREATE TABLE $nombre (id SERIAL PRIMARY KEY, nombre_producto VARCHAR(15), tipo_producto VARCHAR(15), update_at TIMESTAMP, image BLOB)";
+                $query = "CREATE TABLE $nombre (id SERIAL PRIMARY KEY, nombre_producto VARCHAR(15), descripcion_producto VARCHAR(50), precio FLOAT, update_at TIMESTAMP, image BLOB)";
                 $queryExitosa = mysqli_query($conexion, $query);
 
                 if($queryExitosa){
