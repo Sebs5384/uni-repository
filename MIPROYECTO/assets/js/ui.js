@@ -22,7 +22,6 @@ export function mostrarMensajeSiEsExitoso($campoCategoria) {
 export function mostrarErrores(llaves, errores, selector) {
   const $error = document.querySelector(selector);
   let erroresPresente = 0;
-  $error.innerText = "";
 
   llaves.forEach((llave) => {
     const error = errores[llave];
@@ -35,6 +34,7 @@ export function mostrarErrores(llaves, errores, selector) {
       $error.className = "invalid-feedback";
     } else {
       $elemento.className = "form-control is-valid mt-2";
+      $error.innerText = "";
     }
   });
 
