@@ -35,20 +35,21 @@
               <div class="mb-4 p-1 col-7 text-center">
                 <label for="input-descripcion" class="form-label"><strong>Ingrese una descripcion del producto</strong></label>
                 <textarea id="textarea-descripcion" class="form-control productos" name="descripcion" placeholder="Ej: Placa de video para la serie 3000"></textarea>
+                <strong id="error-descripcion" class=""></strong>
               </div>
               <div class="mb-2 p-1 col-7 text-center">
-                <label for="input-id" class="form-label"><strong>Ingrese el precio del producto</strong></label>
+                <label for="input-precio" class="form-label"><strong>Ingrese el precio del producto</strong></label>
                 <input type="number" class="form-control productos" id="input-precio" name="precio" placeholder="Ej: 320" />
                 <strong id="error-precio" class=""></strong>
               </div>
-              <div class="text-center mb-4">
-                <strong id="exitoso" style="font-size: 9px"></strong>
+              <div class="text-center mb-4 mt-4">
+                <strong id="mensaje-formulario"></strong>
               </div>
             </div>
 
             <div class="contenedor-botones text-center mb-4">
-              <button type="button" class="btn btn-dark" id="enviar-producto">Enviar</button>
-              <button type="button" class="btn btn-dark" id="restablecer-campos">Restablecer</button>
+              <button type="button" class="btn btn-dark" id="enviar-formulario">Enviar</button>
+              <button type="button" class="btn btn-dark" id="restablecer-formulario">Restablecer</button>
             </div>
 
             <div class="text-center gy-4">
@@ -59,4 +60,5 @@
       </div>
     </div>
   </body>
+  <script src="../../assets/js/productos.js" type="module"></script>
 </html>
