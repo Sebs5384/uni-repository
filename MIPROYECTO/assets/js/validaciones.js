@@ -3,9 +3,9 @@ import { manejarErrores } from "./utilidades.js";
 function validarPrecio(precio) {
   const $precio = precio.value;
   if (/^$/.test($precio)) {
-    return "El campo precio no puede estar vacio";
+    return "El campo precio no puede estar vacio y solo acepta numeros";
   } else if (!/^[1-9][0-9]*$/.test($precio)) {
-    return "El campo precio solo acepta numeros y no puede empezar con 0";
+    return "El no puede empezar con 0";
   } else if (!/^.{1,8}$/.test($precio)) {
     return "El campo precio solo acepta 8 digitos como maximo";
   }
@@ -53,9 +53,9 @@ function validarCategoria(categoria) {
 }
 
 export function validarCamposProducto($camposProducto) {
-  const errorEnCampoNombre = validarNombre($camposProducto);
-  const errorEnCampoDescripcion = validarDescripcion($camposProducto);
-  const errorEnCampoPrecio = validarPrecio($camposProducto);
+  const errorEnCampoNombre = validarNombre($camposProducto[0]);
+  const errorEnCampoDescripcion = validarDescripcion($camposProducto[1]);
+  const errorEnCampoPrecio = validarPrecio($camposProducto[2]);
 
   const errorEnCampos = {
     nombre: errorEnCampoNombre,
@@ -67,8 +67,8 @@ export function validarCamposProducto($camposProducto) {
   return esExistoso;
 }
 
-export function validarCampoCategoria($campoNombre) {
-  const errorEnCampoCategoria = validarCategoria($campoNombre);
+export function validarCampoCategoria($campoCategoria) {
+  const errorEnCampoCategoria = validarCategoria($campoCategoria);
 
   const errorEnCampo = {
     categoria: errorEnCampoCategoria,
