@@ -25,7 +25,7 @@ export async function obtenerProductos(tabla) {
       method: "GET",
     });
     const respuesta = await $respuesta.json();
-    console.log(respuesta);
+    console.log(respuesta );
     return respuesta;
   } catch (error) {
     throw new Error(`Error en promesa, no se pudo obtener las filas, ${error}`);

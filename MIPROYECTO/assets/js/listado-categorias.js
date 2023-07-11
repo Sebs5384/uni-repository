@@ -58,7 +58,6 @@ function elementosCategoria(tabla) {
 }
 
 async function removerCategoria(categoria, columna) {
-  console.log(categoria);
   await borrarCategoria(categoria);
   columna.remove();
 }
