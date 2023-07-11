@@ -72,7 +72,7 @@ export function actualizarMensajeFormulario(estado = "") {
     $mensaje.innerText = "Formulario enviado con exito";
     $mensaje.className = "alert alert-success mt-2";
   } else if (estado === "error") {
-    $mensaje.innerText = "Error al3 crear la categoribnm,.-a";
+    $mensaje.innerText = "Error al enviar formulario";
     $mensaje.className = "alert alert-danger mt-2";
   } else if (estado === "existente") {
     $mensaje.innerText = "Esta categoria ya existe";
@@ -107,7 +107,8 @@ export function enviarFormulario(formulario) {
   } else if (formulario === "productos") {
     const datosValidos = mostrarMensajeSiEsExitoso(validarCamposProducto($camposProducto));
     if (datosValidos) {
-      insertarProducto();
+      const $tabla = localStorage.getItem("categoria");
+      insertarProducto($tabla);
     }
   }
 }

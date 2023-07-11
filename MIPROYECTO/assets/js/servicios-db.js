@@ -1,7 +1,7 @@
-import { actualizarEstadoInput, actualizarMensajeFormulario } from "./ui.js";
-export async function insertarProducto() {
+import { actualizarEstadoCampos, actualizarMensajeFormulario } from "./ui.js";
+export async function insertarProducto(tabla) {
   try {
-    const URL = "http://localhost/MIPROYECTO/class/categorias.php";
+    const URL = `http://localhost/MIPROYECTO/class/productos.php?tabla=${tabla}`;
     const $fomulario = document.querySelector("#formulario");
     const datosFormulario = new FormData($fomulario);
 
@@ -10,21 +10,22 @@ export async function insertarProducto() {
       body: datosFormulario,
     });
     const respuesta = await $respuesta.json();
-    const json = JSON.parse(respuesta);
-    console.log(json);
+    console.log(respuesta);
+    return respuesta;
   } catch (error) {
     actualizarMensajeFormulario("error");
     throw new Error(`Error en promesa, no se pudo insertar los datos, ${error}`);
   }
 }
 
-export async function obtenerProductos(table) {
+export async function obtenerProductos(tabla) {
   try {
-    const URL = `http://localhost/MIPROYECTO/class/productos.php?table=${table}`;
+    const URL = `http://localhost/MIPROYECTO/class/productos.php?tabla=${tabla}`;
     const $respuesta = await fetch(URL, {
       method: "GET",
     });
     const respuesta = await $respuesta.json();
+    console.log(respuesta);
     return respuesta;
   } catch (error) {
     throw new Error(`Error en promesa, no se pudo obtener las filas, ${error}`);
@@ -57,11 +58,10 @@ export async function crearCategoria() {
     });
 
     const respuesta = await $respuesta.json();
-    console.log(respuesta.estado);
     const categoriaExistente = respuesta.estado === "existente";
 
     if (categoriaExistente) {
-      actualizarEstadoInput("invalido", "#input-categoria");
+      actualizarEstadoCampos("invalido", "#input-categoria");
       actualizarMensajeFormulario("existente");
     } else {
       return respuesta;
@@ -73,7 +73,7 @@ export async function crearCategoria() {
 
 export async function borrarCategoria(categoria) {
   try {
-    const URL = `http://localhost/MIPROYECTO/class/categorias.php?table=${categoria}`;
+    const URL = `http://localhost/MIPROYECTO/class/categorias.php?tabla=${categoria}`;
     const $respuesta = await fetch(URL, {
       method: "DELETE",
     });
