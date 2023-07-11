@@ -7,8 +7,8 @@
     $queries = new database($conexionDb);
 
     if($_SERVER["REQUEST_METHOD"] === "GET"){
-        if(isset ($_GET['table'])){
-            $tabla = $_GET['table'];
+        if(isset ($_GET['tabla'])){
+            $tabla = $_GET['tabla'];
             $filas = $queries->consultarFilas($tabla);
             echo $filas;
         } else {
@@ -16,10 +16,17 @@
         }
     }
     elseif($_SERVER["REQUEST_METHOD"] === "POST"){
-        $id = $_POST['id'];
-        $name = $_POST['nombre'];
+        if(isset ($_GET['tabla'])){
+            $nombre = $_POST['nombre'];
+            $descripcion = $_POST['descripcion'];
+            $precio = $_POST['precio'];
+            $tabla = $_GET['tabla'];
 
-        $insercion = $queries->insertarFilas($id, $name);
-        echo $insercion;
+            $insercion = $queries->insertarFilas($nombre, $descripcion, $precio, $tabla);
+            echo $insercion;
+        } else{
+            echo "El paramatero de la tabla es requerido, por favor agreguelo al request cuando sea llamado o refiera a autoload.php";
+        }
+        
     }
 ?>

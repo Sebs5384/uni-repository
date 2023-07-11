@@ -21,7 +21,7 @@
         $tablas = $queries->consultarTablas();
         echo $tablas;
     }elseif($_SERVER["REQUEST_METHOD"] === "DELETE"){
-        $categoria = $_GET['table'];
+        $categoria = $_GET['tabla'];
         $tablaBorrada = $queries->borrarTabla($categoria);
         echo $tablaBorrada;
     }

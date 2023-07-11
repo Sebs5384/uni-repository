@@ -107,9 +107,9 @@
         }
 
 
-        public function insertarFilas($id, $nombre){
+        public function insertarFilas($nombre, $descripcion, $precio, $tabla){
             $conexion = $this->conexionDb->obtenerConexion();
-            $query = "INSERT INTO placasdevideo (nombre_producto, tipo_categoria) VALUES ('$id', '$nombre')"; 
+            $query = "INSERT INTO $tabla (nombre_producto, descripcion_producto, precio) VALUES ('$nombre', '$descripcion', '$precio')"; 
             $queryExitosa = mysqli_query($conexion, $query);
 
             if($queryExitosa){
