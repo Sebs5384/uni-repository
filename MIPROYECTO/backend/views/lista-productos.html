@@ -43,40 +43,7 @@
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
-            <tbody id="cuerpo-tabla-productos">
-              <tr>
-                <td>RTX-3000</td>
-                <td>Series 3000</td>
-                <td>120000</td>
-                <td>2022-01-01</td>
-                <td>
-                  <button class="btn btn-outline-secondary btn-sm editar" data-bs-toggle="collapse" data-bs-target="#hola" id="editar">Editar</button>
-                  <button class="btn btn-outline-secondary btn-sm borrar">Borrar</button>
-                </td>
-              </tr>
-
-              <tr class="collapse" id="hola">
-                <form>
-                  <td class="text-center">
-                    <label for="nuevo-nombre" class="form-label">Nuevo nombre</label>
-                    <input type="text" class="form-control mt-2" id="nuevo-nombre" />
-                  </td>
-                  <td>
-                    <label for="nueva-descripcion" class="form-label">Nueva descripcion</label>
-                    <textarea id="nueva-descripcion" class="form-control"></textarea>
-                  </td>
-                  <td>
-                    <label for="nuevo-precio" class="form-label">Nuevo precio</label>
-                    <input type="number" class="form-control" />
-                  </td>
-
-                  <td>
-                    <button class="btn btn-outline-secondary btn-sm mt-4" onclick="return false">Actualizar</button>
-                    <button class="btn btn-outline-secondary btn-sm mt-4" data-bs-toggle="collapse" data-bs-target="#hola" onclick="return false">Cancelar</button>
-                  </td>
-                </form>
-              </tr>
-            </tbody>
+            <tbody id="cuerpo-tabla-productos"></tbody>
           </table>
         </div>
       </div>
