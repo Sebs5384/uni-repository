@@ -3,7 +3,7 @@ import { crearCategoria, insertarProducto } from "./servicios-db.js";
 
 export const $botonEnviar = document.querySelector("#enviar-formulario");
 export const $botonRestablecer = document.querySelector("#restablecer-formulario");
-export const $tablaCategorias = document.querySelector("#tabla-categorias");
+export const $tabla = document.querySelector("#tabla");
 const $campoCategoria = document.querySelector("#input-categoria");
 const $camposProducto = document.querySelectorAll(".productos");
 const $formulario = document.querySelector("#formulario");

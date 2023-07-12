@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../assets/css/styles.css" />
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="../../assets/img/tech-byte-solutions.png" />
     <title>Listado de productos</title>
   </head>
@@ -32,7 +33,7 @@
     <div class="row justify-content-center">
       <div class="card" id="carta-lista-productos">
         <div class="card-body">
-          <table class="table table-hover" id="tabla-categorias">
+          <table class="table table-hover" id="tabla">
             <thead>
               <tr>
                 <th scope="col">Nombre del producto</th>
@@ -42,7 +43,40 @@
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
-            <tbody id="cuerpo-tabla-productos"></tbody>
+            <tbody id="cuerpo-tabla-productos">
+              <tr>
+                <td>RTX-3000</td>
+                <td>Series 3000</td>
+                <td>120000</td>
+                <td>2022-01-01</td>
+                <td>
+                  <button class="btn btn-outline-secondary btn-sm editar" data-bs-toggle="collapse" data-bs-target="#hola" id="editar">Editar</button>
+                  <button class="btn btn-outline-secondary btn-sm borrar">Borrar</button>
+                </td>
+              </tr>
+
+              <tr class="collapse" id="hola">
+                <form>
+                  <td class="text-center">
+                    <label for="nuevo-nombre" class="form-label">Nuevo nombre</label>
+                    <input type="text" class="form-control mt-2" id="nuevo-nombre" />
+                  </td>
+                  <td>
+                    <label for="nueva-descripcion" class="form-label">Nueva descripcion</label>
+                    <textarea id="nueva-descripcion" class="form-control"></textarea>
+                  </td>
+                  <td>
+                    <label for="nuevo-precio" class="form-label">Nuevo precio</label>
+                    <input type="number" class="form-control" />
+                  </td>
+
+                  <td>
+                    <button class="btn btn-outline-secondary btn-sm mt-4" onclick="return false">Actualizar</button>
+                    <button class="btn btn-outline-secondary btn-sm mt-4" data-bs-toggle="collapse" data-bs-target="#hola" onclick="return false">Cancelar</button>
+                  </td>
+                </form>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

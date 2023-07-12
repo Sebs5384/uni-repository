@@ -1,5 +1,5 @@
 import { obtenerCategorias, borrarCategoria } from "./servicios-db.js";
-import { $tablaCategorias } from "./ui.js";
+import { $tabla } from "./ui.js";
 import { verProductos } from "./listado-productos.js";
 import { reemplazarEnNombre } from "./utilidades.js";
 
@@ -14,8 +14,8 @@ export function crearTabla(tablas, cuerpo, elementos) {
 
   if ($cuerpoTabla === null) return;
 
-  tablas.forEach((tabla) => {
-    const $elementosTabla = elementos(tabla);
+  tablas.forEach((tabla, index) => {
+    const $elementosTabla = elementos(tabla, index);
     $cuerpoTabla.appendChild($elementosTabla);
   });
 }
@@ -29,7 +29,7 @@ async function manejarBotonesCategorias(event) {
   if ($botonElegido.classList.contains("borrar")) {
     await removerCategoria(nombreCategoria, $fila);
   } else if ($botonElegido.classList.contains("mostrar")) {
-    await verProductos(nombreCategoria);
+    verProductos(nombreCategoria);
   }
 }
 
@@ -63,4 +63,4 @@ async function removerCategoria(categoria, columna) {
 }
 
 cargarCategorias();
-$tablaCategorias.onclick = manejarBotonesCategorias;
+$tabla.onclick = manejarBotonesCategorias;
