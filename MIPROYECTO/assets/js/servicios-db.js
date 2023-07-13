@@ -25,7 +25,7 @@ export async function obtenerProductos(tabla) {
       method: "GET",
     });
     const respuesta = await $respuesta.json();
-    console.log(respuesta );
+    console.log(respuesta);
     return respuesta;
   } catch (error) {
     throw new Error(`Error en promesa, no se pudo obtener las filas, ${error}`);
@@ -82,5 +82,22 @@ export async function borrarCategoria(categoria) {
     return respuesta;
   } catch (error) {
     throw new Error(`Error en promesa, no se pudo borrar la categoria, ${error}`);
+  }
+}
+
+export async function actualizarProducto(tabla, id, formulario) {
+  try {
+    const URL = `http://localhost/MIPROYECTO/class/productos.php?tabla=${tabla}&id=${id}`;
+    const datosFormulario = new FormData(formulario);
+    const $respuesta = await fetch(URL, {
+      method: "PUT",
+      body: datosFormulario,
+    });
+
+    const respuesta = await $respuesta.json();
+    console.log(respuesta);
+    return respuesta;
+  } catch (error) {
+    throw new Error(`Error en promesa, no se pudo actualizar el producto, ${error}`);
   }
 }

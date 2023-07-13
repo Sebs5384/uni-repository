@@ -19,7 +19,7 @@ export function crearTabla(tablas, cuerpo, elementos, subElementos = "") {
     $cuerpoTabla.appendChild($elementosTabla);
 
     if (subElementos) {
-      const $subElementosTabla = subElementos(index);
+      const $subElementosTabla = subElementos(tabla, index);
       $cuerpoTabla.appendChild($subElementosTabla);
     }
   });
@@ -31,11 +31,8 @@ async function manejarBotonesCategorias(event) {
   const $nombreCategoria = $fila.firstElementChild.innerText;
   const nombreCategoria = reemplazarEnNombre($nombreCategoria, "", / /g, "_");
 
-  if ($botonElegido.classList.contains("borrar")) {
-    await removerCategoria(nombreCategoria, $fila);
-  } else if ($botonElegido.classList.contains("mostrar")) {
-    verProductos(nombreCategoria);
-  }
+  if ($botonElegido.classList.contains("borrar")) await removerCategoria(nombreCategoria, $fila);
+  if ($botonElegido.classList.contains("mostrar")) verProductos(nombreCategoria);
 }
 
 function elementosCategoria(tabla) {

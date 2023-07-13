@@ -104,7 +104,9 @@ export function enviarFormulario(formulario, $camposFormulario) {
     if (datosValidos) {
       crearCategoria();
     }
-  } else if (formulario === "productos") {
+  }
+
+  if (formulario === "productos") {
     const datosValidos = mostrarMensajeSiEsExitoso(validarCamposProducto($camposFormulario));
     if (datosValidos) {
       const $tabla = localStorage.getItem("categoria");
