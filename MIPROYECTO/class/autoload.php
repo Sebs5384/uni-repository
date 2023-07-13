@@ -54,7 +54,7 @@
                 $respuesta->mensaje = 'La tabla ya existe';
             } else{
             
-                $query = "CREATE TABLE $nombreTabla (id SERIAL PRIMARY KEY, nombre_producto VARCHAR(15), descripcion_producto VARCHAR(50), precio FLOAT, update_at TIMESTAMP, image BLOB)";
+                $query = "CREATE TABLE $nombreTabla (id SERIAL PRIMARY KEY, nombre_producto VARCHAR(15), descripcion_producto VARCHAR(50), precio DECIMAL(10, 2), update_at TIMESTAMP, image BLOB)";
                 $queryExitosa = mysqli_query($conexion, $query);
 
                 if($queryExitosa){
@@ -140,5 +140,25 @@
                 echo "Error, no se pudo consultar las filas";
             }
         }   
+
+        public function actualizarFila($nombre, $descripcion, $precio, $tabla, $id){
+            $conexion = $this->conexionDb->obtenerConexion();
+            $query = "UPDATE $tabla SET nombre_producto = '$nombre', descripcion_producto = '$descripcion', precio = '$precio',  update_at = NOW() WHERE id = $id";
+            $queryExitosa = mysqli_query($conexion, $query);
+
+            if($queryExitosa){
+                $respuesta = new stdClass();
+                $respuesta->estado = 'Exitoso';
+                $respuesta->mensaje = 'La informacion fue actualizada correctamente';
+            } else {
+                $respuesta = new stdClass();
+                $respuesta->estado = 'Error';
+                $respuesta->mensaje = 'No se pudo actualizar la informacion';
+            }
+
+            $respuestaJson = json_encode($respuesta);
+            return $respuestaJson;
+
+        }
     }
 ?>
