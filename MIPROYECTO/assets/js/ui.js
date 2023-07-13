@@ -4,8 +4,8 @@ import { crearCategoria, insertarProducto } from "./servicios-db.js";
 export const $botonEnviar = document.querySelector("#enviar-formulario");
 export const $botonRestablecer = document.querySelector("#restablecer-formulario");
 export const $tabla = document.querySelector("#tabla");
-const $campoCategoria = document.querySelector("#input-categoria");
-const $camposProducto = document.querySelectorAll(".productos");
+export const $campoCategoria = document.querySelector("#input-categoria");
+export const $camposProducto = document.querySelectorAll(".productos");
 const $formulario = document.querySelector("#formulario");
 
 export function mostrarMensajeSiEsExitoso($campoCategoria) {
@@ -42,8 +42,8 @@ export function mostrarErrores(llaves, errores, selector) {
     llaves.forEach((llave) => {
       const error = errores[llave];
 
-      const $errores = $formulario.querySelector(`[name="${llave}"]`).nextElementSibling;
-      const $elemento = $formulario.querySelector(`[name="${llave}"]`);
+      const $errores = document.querySelector(`[name="${llave}"]`).nextElementSibling;
+      const $elemento = document.querySelector(`[name="${llave}"]`);
 
       if (error) {
         erroresPresente++;
@@ -98,14 +98,14 @@ export function actualizarEstadoCampos(estado, selector) {
   });
 }
 
-export function enviarFormulario(formulario) {
+export function enviarFormulario(formulario, $camposFormulario) {
   if (formulario === "categoria") {
-    const datosValidos = mostrarMensajeSiEsExitoso(validarCampoCategoria($campoCategoria));
+    const datosValidos = mostrarMensajeSiEsExitoso(validarCampoCategoria($camposFormulario));
     if (datosValidos) {
       crearCategoria();
     }
   } else if (formulario === "productos") {
-    const datosValidos = mostrarMensajeSiEsExitoso(validarCamposProducto($camposProducto));
+    const datosValidos = mostrarMensajeSiEsExitoso(validarCamposProducto($camposFormulario));
     if (datosValidos) {
       const $tabla = localStorage.getItem("categoria");
       insertarProducto($tabla);

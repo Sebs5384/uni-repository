@@ -1,7 +1,7 @@
 import { enviarFormulario, resetearFormulario, $botonEnviar, $botonRestablecer } from "./ui.js";
-
+import { $campoCategoria } from "./ui.js";
 $botonEnviar.onclick = () => {
-  enviarFormulario("categoria");
+  enviarFormulario("categoria", $campoCategoria);
 };
 
 $botonRestablecer.onclick = () => {
