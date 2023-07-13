@@ -9,7 +9,7 @@ async function cargarCategorias() {
   crearTabla(nombreCategorias, "#cuerpo-tabla-categorias", elementosCategoria);
 }
 
-export function crearTabla(tablas, cuerpo, elementos) {
+export function crearTabla(tablas, cuerpo, elementos, subElementos = "") {
   const $cuerpoTabla = document.querySelector(cuerpo);
 
   if ($cuerpoTabla === null) return;
@@ -17,6 +17,11 @@ export function crearTabla(tablas, cuerpo, elementos) {
   tablas.forEach((tabla, index) => {
     const $elementosTabla = elementos(tabla, index);
     $cuerpoTabla.appendChild($elementosTabla);
+
+    if (subElementos) {
+      const $subElementosTabla = subElementos(index);
+      $cuerpoTabla.appendChild($subElementosTabla);
+    }
   });
 }
 
