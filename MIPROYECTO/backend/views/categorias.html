@@ -11,12 +11,12 @@
   </head>
 
   <body>
-    <div class="box">
+    <div>
       <header>
         <div>
-          <nav id="nav-categorias" class="centrado">
+          <nav id="nav-categorias">
             <div class="nav-item">
-              <a id="home" href="../../views/home.html"></a>
+              <a id="home" href="../../views/home.html">Home</a>
             </div>
 
             <div class="nav-item">
@@ -28,7 +28,26 @@
 
       <main>
         <img src="../../assets/img/tech-byte-solutions.png" class="techbyte" />
+        <h1 class="title">Carga de Categorias</h1>
+
+        <div>
+          <section>
+            <form id="formulario-carga-categorias" method="POST" autocomplete="on" class="centrado">
+              <label for="nombre-categoria">Nombre Categoria</label>
+              <input type="text" id="nombre-categoria" name="nombre" placeholder="Ej: Placas de video" />
+
+              <div class="contenedor-botones">
+                <input id="boton-enviar" type="submit" value="Enviar" />
+                <input id="boton-restablecer" type="reset" />
+                <button id="boton-cancelar" type="button">Cancelar</button>
+              </div>
+            </form>
+          </section>
+        </div>
       </main>
+      <footer>
+        <span id="nombre-desarrollador" class="author">Sebastian Araya</span>
+      </footer>
     </div>
   </body>
 </html>

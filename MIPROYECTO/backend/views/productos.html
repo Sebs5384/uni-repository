@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Techbyte - Alta productos</title>
+    <meta name="description" content="Alta de productos" />
+    <meta name="author" content="Sebastian Araya" />
+    <link rel="stylesheet" href="../../assets/css/estilos.css" />
+  </head>
+  <body>
+    <div>
+      <header>
+        <div>
+          <nav id="nav-formulario-productos" class="nav">
+            <div class="nav-item">
+              <a id="home" href="../../views/home.html">Home</a>
+            </div>
+
+            <div class="nav-item">
+              <a id="formulario-productos" href="../../backend/views/productos.html">Alta de productos</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <img src="../../assets/img/tech-byte-solutions.png" class="techbyte" />
+        <h1 class="title">Carga de productos</h1>
+
+        <div>
+          <section>
+            <form id="formulario-carga-productos" method="post" autocomplete="on">
+              <div class="contenedor-input">
+                <label for="nombre-producto">Nombre del producto</label>
+                <input type="search" id="nombre-producto" name="nombre" placeholder="Ej: RTX-3080" />
+              </div>
+
+              <div class="contenedor-input">
+                <label for="descripcion-producto">Descripcion del producto</label>
+                <textarea id="descripcion-producto" name="descripcion" placeholder="Ej: Placa serie 3080" rows="5"></textarea>
+              </div>
+
+              <div class="contenedor-input">
+                <label for="precio-producto">Precio del producto</label>
+                <input type="number" id="precio-producto" name="precio" placeholder="Ej: 35000" />
+              </div>
+
+              <div class="contenedor-input">
+                <label for="categoria-producto">Categoria del producto $</label>
+                <input type="text" id="categoria-producto" name="categoria" placeholder="Ej: Placas de video" />
+              </div>
+
+              <div class="contenedor-input">
+                <label for="imagen-producto">Imagen del producto</label>
+                <input type="file" accept="image/*" id="imagen-producto" name="imagen" />
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

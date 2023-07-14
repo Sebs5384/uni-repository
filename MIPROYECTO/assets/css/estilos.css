@@ -3,9 +3,19 @@
   width: 150px;
 }
 
-.centrado {
+body {
   display: flex;
-  justify-content: center;
+  text-align: center;
   align-items: center;
   flex-direction: column;
+}
+
+.contenedor-input {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor-botones {
+  margin: 30px;
 }
