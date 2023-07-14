@@ -4,16 +4,14 @@ const $formularioCategorias = $("#formulario-cargar-categorias");
 const $formularioProductos = $("#formulario-cargar-productos");
 
 $($formularioCategorias).submit(function (event) {
-  event.preventDefault();
-  const $categoria = $("#nombre-categoria");
-  const categoria = $categoria.val().trim();
+  const categoria = $("#nombre-categoria").val().trim();
 
   this.reset();
   validarCampoCategoria(categoria);
+  event.preventDefault();
 });
 
 $($formularioProductos).submit(function (event) {
-  event.preventDefault();
   const nombreProducto = $("#nombre-producto").val().trim();
   const descripcionProducto = $("#descripcion-producto").val().trim();
   const precioProducto = $("#precio-producto").val().trim();
@@ -22,6 +20,7 @@ $($formularioProductos).submit(function (event) {
 
   this.reset();
   validarCamposProducto(nombreProducto, descripcionProducto, precioProducto, categoriaProducto, imagenProducto);
+  event.preventDefault();
 });
 
 function validarCampoCategoria(categoria) {
