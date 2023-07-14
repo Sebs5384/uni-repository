@@ -30,7 +30,7 @@
 
         <div>
           <section>
-            <form id="formulario-carga-productos" method="post" autocomplete="on">
+            <form id="formulario-cargar-productos" method="post" autocomplete="on">
               <div class="contenedor-input">
                 <label for="nombre-producto">Nombre del producto</label>
                 <input type="search" id="nombre-producto" name="nombre" placeholder="Ej: RTX-3080" />
@@ -47,7 +47,7 @@
               </div>
 
               <div class="contenedor-input">
-                <label for="categoria-producto">Categoria del producto $</label>
+                <label for="categoria-producto">Categoria del producto </label>
                 <input type="text" id="categoria-producto" name="categoria" placeholder="Ej: Placas de video" />
               </div>
 
@@ -55,10 +55,23 @@
                 <label for="imagen-producto">Imagen del producto</label>
                 <input type="file" accept="image/*" id="imagen-producto" name="imagen" />
               </div>
+
+              <div class="contenedor-botones">
+                <input id="boton-enviar" type="submit" />
+                <input id="boton-restablecer" type="reset" />
+                <button id="boton-cancelar" type="button">Cancelar</button>
+              </div>
             </form>
           </section>
         </div>
       </main>
+
+      <footer>
+        <span class="author">Araya Sebastian</span>
+      </footer>
+
+      <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+      <script src="../../assets/js/validaciones.js"></script>
     </div>
   </body>
 </html>
