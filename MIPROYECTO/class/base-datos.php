@@ -16,7 +16,7 @@
 
         public function conectar(){
             try{
-                $conectado = $this->conexion = new PDO("mysql:host=$this->host;dbname=$this->basedatos",$this->nombreUsuario,$this->contrasenia);
+                $conectado = $this->conexion = mysqli_connect($this->host, $this->nombreUsuario, $this->contrasenia,  $this->basedatos);
 
                 if($conectado) echo "Conexion exitosa"; return true;
                 
@@ -27,9 +27,35 @@
         }
 
         public function obtenerConexion(){
-            return $this->conexion;
+            $conexionObtenida = $this->conexion;
+            return $conexionObtenida;
         }
     }
     
+    class Basedatos{
 
+        private $conexionBd;
+
+        function __construct(Conexion $conexionBd){
+            $this-> conexionBd = $conexionBd;
+        }
+        
+        public function consultarFilas($tabla){
+            try{
+                $conexion = $this->conexionBd->obtenerConexion();
+                $consulta = "SELECT * FROM $tabla";
+                $consultaExitosa = mysqli_query($conexion, $consulta);
+
+                if($consultaExitosa){
+                    $filas = mysqli_fetch_all($consultaExitosa, MYSQLI_ASSOC);
+                    print_r($filas);
+                    return $filas;
+                }
+
+            } catch(Exception $error){
+                echo "Fallo la consulta a las filas: " . $error->getMessage();
+            }
+
+        }
+    }
 ?>
