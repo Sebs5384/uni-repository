@@ -16,7 +16,7 @@
 
         public function conectar(){
             try{
-                $conectado = $this->conexion = mysqli_connect($this->host, $this->nombreUsuario, $this->contrasenia,  $this->basedatos);
+                $conectado = $this->conexion = new PDO("mysql:host=$this->host;dbname=$this->basedatos",$this->nombreUsuario,$this->contrasenia);
 
                 if($conectado) echo "Conexion exitosa"; return true;
                 
@@ -39,15 +39,15 @@
         function __construct(Conexion $conexionBd){
             $this-> conexionBd = $conexionBd;
         }
-        
+    
         public function consultarFilas($tabla){
             try{
                 $conexion = $this->conexionBd->obtenerConexion();
                 $consulta = "SELECT * FROM $tabla";
-                $consultaExitosa = mysqli_query($conexion, $consulta);
+                $consultaExitosa = $conexion->query($consulta);
 
                 if($consultaExitosa){
-                    $filas = mysqli_fetch_all($consultaExitosa, MYSQLI_ASSOC);
+                    $filas = $consultaExitosa->fetchAll(PDO::FETCH_ASSOC);
                     print_r($filas);
                     return $filas;
                 }
@@ -58,4 +58,10 @@
 
         }
     }
+
+    $db = new Conexion('localhost', 'root', '', 'miproyecto');
+    $db->conectar();
+    $query = new Basedatos($db);
+
+    $query->consultarFilas('productos');
 ?>
