@@ -18,7 +18,7 @@
             try{
                 $conectado = $this->conexion = new PDO("mysql:host=$this->host;dbname=$this->basedatos",$this->nombreUsuario,$this->contrasenia);
 
-                if($conectado) echo "Conexion exitosa"; return true;
+                if($conectado) echo "Conexion exitosa <br><br>"; return true;
                 
             } catch (Exception $error){
                 echo "Fallo la conexion a la base de datos: " . $error->getMessage();
@@ -39,8 +39,9 @@
         function __construct(Conexion $conexionBd){
             $this-> conexionBd = $conexionBd;
         }
-    
-        public function consultarFilas($tabla){
+        
+
+        public function select($tabla){
             try{
                 $conexion = $this->conexionBd->obtenerConexion();
                 $consulta = "SELECT * FROM $tabla";
@@ -63,5 +64,5 @@
     $db->conectar();
     $query = new Basedatos($db);
 
-    $query->consultarFilas('productos');
+    $query->select('productos');
 ?>
