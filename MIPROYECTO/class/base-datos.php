@@ -46,8 +46,8 @@
         public function select($tabla, $filtro = null, $orden = null, $limite = null){
             try{
                 $conexion = $this->conexionBd->obtenerConexion();
-
                 $consulta = "SELECT * FROM $tabla";
+                
                 if($filtro != null){
                     $consulta .= " WHERE " . $filtro;
                 }
@@ -57,11 +57,12 @@
                 if($limite != null){
                     $consulta .= " LIMIT " . $limite;
                 }
-                
-                $consultaExitosa = $conexion->query($consulta);
+
+                $sentencia = $conexion->prepare($consulta);
+                $consultaExitosa = $sentencia->execute();
 
                 if($consultaExitosa){
-                    $filas = $consultaExitosa->fetchAll(PDO::FETCH_ASSOC);
+                    $filas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                     
                     echo "<table>";
                     echo "<tr>";
@@ -76,12 +77,16 @@
                         }
                         echo "</tr>";
                     }
-                    echo "</table>";
+                    echo "</table> <br>";
+                    echo "Las tabla se esta mostrando exitosamente <br>";
                     return $filas;
+                } else {
+                    echo "Fallo al mostrar la tabla <br>";
+                    return false;                     
                 }
 
             } catch(Exception $error){
-                echo "Fallo la consulta a las filas: " . $error->getMessage();
+                throw new Exception ("select fallo: " . $error->getMessage());
             }
 
         }
@@ -91,16 +96,23 @@
                 $conexion = $this->conexionBd->obtenerConexion();
 
                 $consulta = "DELETE FROM $tabla WHERE " . $filtro;
+                $sentencia = $conexion->prepare($consulta);
+                $consultaExitosa = $sentencia->execute();
+
                 if($multiples != null){
                     $consulta .= " IN " . $multiples;
                 }
 
-                $consultaExitosa = $conexion->query($consulta);
+                if($consultaExitosa){  
+                    echo "Eliminacion exitosa <br>"; 
+                    return true;
+                } else {
+                    echo "Fallo la eliminacion <br>";
+                    return false;
+                }
 
-                if($consultaExitosa) echo "Eliminacion exitosa"; return true;
-        
             } catch(Exception $error){
-                echo "Fallo la eliminacion: " . $error->getMessage();
+                throw new Exception("Fallo la eliminacion: " . $error->getMessage());
             }
         }
 
@@ -109,12 +121,19 @@
                 $conexion = $this->conexionBd->obtenerConexion();
 
                 $consulta = "INSERT INTO $tabla ($columnas) VALUES ($valores)";
-                $consultaExitosa = $conexion->query($consulta);
+                $sentencia = $conexion->prepare($consulta);
+                $consultaExitosa = $sentencia->execute();
     
-                if($consultaExitosa) echo "Registro exitoso"; return true;
+                if($consultaExitosa){  
+                    echo "Registro exitoso <br>"; 
+                    return true;
+                } else {
+                    echo "Fallo la insercion <br>";
+                    return false;
+                }
     
             } catch(Exception $error){
-                echo "Fallo la insercion: " . $error->getMessage();
+                throw new Exception("Insert fallo: " . $error->getMessage());
             }
       
 
@@ -125,12 +144,18 @@
                 $conexion = $this->conexionBd->obtenerConexion();
 
                 $consulta = "UPDATE $tabla SET $columnas = $nuevoValor WHERE $filtro";
-                $consultaExitosa = $conexion->query($consulta);
+                $sentencia = $conexion->prepare($consulta);
+                $consultaExitosa = $sentencia->execute();
 
-                if($consultaExitosa) echo "Actualizacion exitosa"; return true;
-
+                if($consultaExitosa){ 
+                    echo "Actualizacion exitosa"; 
+                    return true;
+                }else { 
+                    echo "Fallo la actualizacion";
+                    return false;
+                }
             }catch(Exception $error){
-                echo "Fallo la actualizacion: " . $error->getMessage();
+                throw new Exception("Update fallo: " . $error->getMessage());
             }
         }
     }
@@ -140,7 +165,7 @@
     $query = new Basedatos($db);
 
     $query->select('productos', null, 'ID asc', null);
-    //$query->delete('productos', 'id = 32', null);
+    //$query->delete('productos', 'id = 34', null);
     //$query->insert('productos', 'nombre_producto, descripcion_producto, precio_producto, id_categoria', '"RTX-6000", "SERIES 6000", "6000", "1"');
-    //$query->update('productos', 'nombre_producto', '"RTX-9000"', 'id = 34');
+    //$query->update('productos', 'nombre_producto', '"RTX-1000", "SERIES 1000"', 'id = 36');
 ?>
