@@ -1,12 +1,14 @@
 <?php 
 
     class Conexion{
+        private $databaseDriver;
         private $host;
         private $nombreUsuario;
         private $contrasenia;
         private $basedatos;
 
-        function __construct($host, $nombreUsuario, $contrasenia, $basedatos){
+        function __construct($databaseDriver, $host, $nombreUsuario, $contrasenia, $basedatos){
+            $this-> databaseDriver = $databaseDriver;
             $this-> host = $host;
             $this-> nombreUsuario = $nombreUsuario;
             $this-> contrasenia = $contrasenia;
@@ -16,7 +18,7 @@
 
         public function conectar(){
             try{
-                $conectado = $this->conexion = new PDO("mysql:host=$this->host;dbname=$this->basedatos",$this->nombreUsuario,$this->contrasenia);
+                $conectado = $this->conexion = new PDO("$this->databaseDriver:host=$this->host;dbname=$this->basedatos",$this->nombreUsuario,$this->contrasenia);
 
                 if($conectado) echo "Conexion exitosa <br><br>"; return true;
                 
@@ -41,15 +43,39 @@
         }
         
 
-        public function select($tabla){
+        public function select($tabla, $filtro = null, $orden = null, $limite = null){
             try{
-                $conexion = $this->conexionBd->obtenerConexion();
                 $consulta = "SELECT * FROM $tabla";
+                if($filtro != null){
+                    $consulta .= " WHERE " . $filtro;
+                }
+                if($orden != null){
+                    $consulta .= " ORDER BY " . $orden;
+                }
+                if($limite != null){
+                    $consulta .= " LIMIT " . $limite;
+                }
+
+                $conexion = $this->conexionBd->obtenerConexion();
                 $consultaExitosa = $conexion->query($consulta);
 
                 if($consultaExitosa){
                     $filas = $consultaExitosa->fetchAll(PDO::FETCH_ASSOC);
-                    print_r($filas);
+                    
+                    echo "<table>";
+                    echo "<tr>";
+                    foreach ($filas[0] as $columna => $valor) {
+                        echo "<th>$columna</th>";
+                    }
+                    echo "</tr>";
+                    foreach ($filas as $fila) {
+                        echo "<tr>";
+                        foreach ($fila as $valor) {
+                            echo "<td>$valor</td>";
+                        }
+                        echo "</tr>";
+                    }
+                    echo "</table>";
                     return $filas;
                 }
 
@@ -60,9 +86,9 @@
         }
     }
 
-    $db = new Conexion('localhost', 'root', '', 'miproyecto');
+    $db = new Conexion('mysql','localhost', 'root', '', 'miproyecto');
     $db->conectar();
     $query = new Basedatos($db);
 
-    $query->select('productos');
+    $query->select('productos', null, 'ID asc', '3');
 ?>
