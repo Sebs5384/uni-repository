@@ -86,11 +86,15 @@
 
         }
 
-        public function delete($tabla, $filtro = null){
+        public function delete($tabla, $filtro = null, $multiples = null){
             try{
                 $conexion = $this->conexionBd->obtenerConexion();
 
                 $consulta = "DELETE FROM $tabla WHERE " . $filtro;
+                if($multiples != null){
+                    $consulta .= " IN " . $multiples;
+                }
+
                 $consultaExitosa = $conexion->query($consulta);
 
                 if($consultaExitosa) echo "Eliminacion exitosa"; return true;
@@ -115,13 +119,28 @@
       
 
         }
+
+        public function update($tabla, $columnas, $nuevoValor,$filtro){
+            try{
+                $conexion = $this->conexionBd->obtenerConexion();
+
+                $consulta = "UPDATE $tabla SET $columnas = $nuevoValor WHERE $filtro";
+                $consultaExitosa = $conexion->query($consulta);
+
+                if($consultaExitosa) echo "Actualizacion exitosa"; return true;
+
+            }catch(Exception $error){
+                echo "Fallo la actualizacion: " . $error->getMessage();
+            }
+        }
     }
 
     $db = new Conexion('mysql','localhost', 'root', '', 'miproyecto');
     $db->conectar();
     $query = new Basedatos($db);
 
-    $query->select('productos', null, 'ID asc', '3');
-    //$query->delete('productos', 'id = 2');
-    $query->insert('productos', 'nombre_producto, descripcion_producto, precio_producto, id_categoria', '"RTX-3000", "SERIES 3000", "3000", "1"');
+    $query->select('productos', null, 'ID asc', null);
+    //$query->delete('productos', 'id = 32', null);
+    //$query->insert('productos', 'nombre_producto, descripcion_producto, precio_producto, id_categoria', '"RTX-6000", "SERIES 6000", "6000", "1"');
+    //$query->update('productos', 'nombre_producto', '"RTX-9000"', 'id = 34');
 ?>
