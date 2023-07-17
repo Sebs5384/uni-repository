@@ -26,7 +26,7 @@ $($formularioProductos).submit(function (event) {
 function validarCampoCategoria(categoria) {
   if (!categoria) {
     intentosCategorias += 1;
-    alert(`El campo nombre no debe estar vacio, \n intentos fallidos:${intentosCategorias}`);
+    alert(`El campo nombre no debe estar vacio, \n\n Sebastian Araya \n intentos fallidos:${intentosCategorias}`);
     return false;
   }
 
@@ -49,6 +49,7 @@ function validarCamposProducto(nombre, descripcion, precio, categoria, imagen) {
 
   if (errores.length) {
     intentosProductos += 1;
+    errores.push("\n Sebastian Araya");
     alert(`Debe completar ${errores.map((error) => `\n ${error}`)} \n\n Intentos fallidos: ${intentosProductos}`);
 
     return false;
