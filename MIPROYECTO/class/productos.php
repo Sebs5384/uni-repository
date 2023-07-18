@@ -39,7 +39,21 @@
            
         }
 
+        private function insertar(){
+            $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
+            $conexion->conectar();
+            $query = new Basedatos($conexion);
+            $query->insert('productos', 'nombre_productos=?, descripcion_productos=?, precio_productos=?, id_categorias=?', '?,?,?,?', array($this->nombre, $this->descripcion, $this->precio, $this->categoria));
         
+            if($query){
+                $this->id = $query;
+                $this->existe = true;
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public static function listar(){
             $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
             $conexion->conectar();
