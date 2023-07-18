@@ -39,6 +39,21 @@
            
         }
 
+        public function guardar(){
+            if($this->existe){
+                return $this->actualizar();
+            } else{
+                return $this->insertar();
+            }
+        }
+
+        public function eliminar(){
+            $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
+            $conexion->conectar();
+            $query = new Basedatos($conexion);
+            $query->delete("productos", "id=?", array($this->id));
+        }      
+
         private function insertar(){
             $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
             $conexion->conectar();
@@ -52,6 +67,13 @@
             } else {
                 return false;
             }
+        }
+
+        private function actualizar(){
+            $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
+            $conexion->conectar();
+            $query = new Basedatos($conexion);
+            $query->update("productos", 'nombre_productos=?, descripcion_productos=?, precio_productos=?, id_categorias=?', 'id=?', array( $this->id, $this->nombre, $this->descripcion, $this->precio, $this->categoria));
         }
 
         public static function listar(){
