@@ -1,6 +1,6 @@
 <?php 
 
-    include "base-datos.php";
+    include "autoload.php";
 
     class Productos{
 
