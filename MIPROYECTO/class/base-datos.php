@@ -43,7 +43,7 @@
         }
         
 
-        public function select($tabla, $filtro = null, $orden = null, $limite = null){
+        public function select($tabla, $filtro = null, $orden = null, $limite = null, $parametros = null){
             try{
                 $conexion = $this->conexionBd->obtenerConexion();
                 $consulta = "SELECT * FROM $tabla";
@@ -59,7 +59,7 @@
                 }
 
                 $sentencia = $conexion->prepare($consulta);
-                $consultaExitosa = $sentencia->execute();
+                $consultaExitosa = $sentencia->execute($parametros);
 
                 if($consultaExitosa){
                     $filas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -91,13 +91,13 @@
 
         }
 
-        public function delete($tabla, $filtro = null, $multiples = null){
+        public function delete($tabla, $filtro, $multiples = null, $parametros = null){
             try{
                 $conexion = $this->conexionBd->obtenerConexion();
 
                 $consulta = "DELETE FROM $tabla WHERE " . $filtro;
                 $sentencia = $conexion->prepare($consulta);
-                $consultaExitosa = $sentencia->execute();
+                $consultaExitosa = $sentencia->execute($parametros);
 
                 if($multiples != null){
                     $consulta .= " IN " . $multiples;
@@ -116,13 +116,13 @@
             }
         }
 
-        public function insert($tabla, $columnas, $valores){
+        public function insert($tabla, $columnas, $valores, $parametros = null){
             try{
                 $conexion = $this->conexionBd->obtenerConexion();
 
                 $consulta = "INSERT INTO $tabla ($columnas) VALUES ($valores)";
                 $sentencia = $conexion->prepare($consulta);
-                $consultaExitosa = $sentencia->execute();
+                $consultaExitosa = $sentencia->execute($parametros);
     
                 if($consultaExitosa){  
                     echo "Registro exitoso <br>"; 
@@ -139,7 +139,7 @@
 
         }
 
-        public function update($tabla, $columnas, $nuevoValor,$filtro){
+        public function update($tabla, $columnas, $nuevoValor, $filtro, $parametros = null){
             try{
                 $conexion = $this->conexionBd->obtenerConexion();
 
@@ -160,12 +160,12 @@
         }
     }
 
-    $db = new Conexion('mysql','localhost', 'root', '', 'miproyecto');
+    /*$db = new Conexion('mysql','localhost', 'root', '', 'miproyecto');
     $db->conectar();
     $query = new Basedatos($db);
 
-    $query->select('productos', null, 'ID asc', null);
-    //$query->delete('productos', 'id = 34', null);
-    //$query->insert('productos', 'nombre_producto, descripcion_producto, precio_producto, id_categoria', '"RTX-6000", "SERIES 6000", "6000", "1"');
-    //$query->update('productos', 'nombre_producto', '"RTX-1000", "SERIES 1000"', 'id = 36');
+    $query->select('productos', null, 'ID DESC', null);
+    $query->delete('productos', 'id = 33', null);
+    $query->insert('productos', 'nombre_producto, descripcion_producto, precio_producto, id_categoria', '"RTX-1000", "SERIES 1000", "10000", "1"');
+    $query->update('productos', 'nombre_producto', '"RTX-8000', 'id = 38');*/
 ?>
