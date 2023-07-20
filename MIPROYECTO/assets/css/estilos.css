@@ -3,6 +3,11 @@
   width: 150px;
 }
 
+.techbyte-php {
+  height: 150px;
+  width: 150px;
+}
+
 body {
   display: flex;
   text-align: center;
@@ -19,4 +24,30 @@ body {
 .contenedor-botones {
   margin-top: 40px;
   margin-bottom: 20px;
+}
+
+#lista-productos-tabla {
+  width: 100%;
+}
+
+#lista-productos-tabla td {
+  text-align: center;
+  padding: 5px;
+}
+
+#lista-productos-tabla th {
+  border-bottom: 1px solid #ccc;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  padding: 45px;
+  margin-bottom: 45px;
+  width: 200%;
+  margin-left: -50%;
+  margin-right: -50%;
 }
