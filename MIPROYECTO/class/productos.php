@@ -1,7 +1,4 @@
 <?php 
-
-    include "autoload.php";
-
     class Productos{
 
         protected $id;
@@ -41,6 +38,7 @@
 
         public function guardar(){
             if($this->existe){
+                print_r($this->existe);
                 return $this->actualizar();
             } else{
                 return $this->insertar();
@@ -58,7 +56,10 @@
             $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
             $conexion->conectar();
             $query = new Basedatos($conexion);
-            $query->insert('productos', 'nombre_productos=?, descripcion_productos=?, precio_productos=?, id_categorias=?', '?,?,?,?', array($this->nombre, $this->descripcion, $this->precio, $this->categoria));
+            $columnas = 'nombre_producto, descripcion_producto, precio_producto, id_categoria';
+            $valores = '?,?,?,?';
+            $parametros = array($this->nombre, $this->descripcion, $this->precio, $this->categoria);
+            $query->insert('productos', $columnas, $valores, $parametros);
         
             if($query){
                 $this->id = $query;
@@ -83,9 +84,4 @@
             return $query->select("productos");
         }
     }
-
-    $verProductos = new Productos(3);
-    $verProductos->mostrarObjeto();
-    $verProductos::listar();
-    
 ?>
