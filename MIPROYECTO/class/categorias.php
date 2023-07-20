@@ -22,32 +22,6 @@
             }
         }
         
-    
-    
-        public function mostrarObjeto(){
-            if($this->existe){
-                echo"<pre>";
-                print_r($this);
-                echo"</pre>";     
-            }     
-        }
-
-        public function guardar(){
-            if($this->existe){
-                print_r($this->existe);
-                return $this->actualizar();
-            } else{
-                return $this->insertar();
-            }
-        }
-        
-        public function eliminar(){
-            $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
-            $conexion->conectar();
-            $query = new Basedatos($conexion);
-            $query->delete("categorias", "id=?", array($this->id));
-        }
-
         private function insertar(){
             $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
             $conexion->conectar();
@@ -66,8 +40,49 @@
                 return false;
             }
         }
+
+        public function mostrarObjeto(){
+            if($this->existe){
+                echo"<pre>";
+                print_r($this);
+                echo"</pre>";     
+            }     
+        }
+
+        public function guardar(){
+            if($this->existe){
+                print_r($this->existe);
+                return $this->actualizar();
+            } else{
+                return $this->insertar();
+            }
+        }
+
+        public function eliminar(){
+            $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
+            $conexion->conectar();
+            $query = new Basedatos($conexion);
+            $query->delete("categorias", "id=?", array($this->id));
+        }
+
+        private function actualizar(){
+            $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
+            $conexion->conectar();
+            $query = new Basedatos($conexion);
+            $query->update("categorias", 'nombre_categoria=?', 'id=?', array($this->nombre, $this->id));
+        }
+
+        public static function listar(){
+            $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
+            $conexion->conectar();
+            $query = new Basedatos($conexion);
+            $lista = $query->select("categorias");
+            return $lista;
+        }
     }
 
     $xd = new Categorias(2);
     $xd->mostrarObjeto();
+    $lista = Categorias::listar();
+    print_r($lista);
 ?>
