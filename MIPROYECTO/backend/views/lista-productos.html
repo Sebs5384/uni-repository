@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Techbyte - Lista de productos</title>
+    <meta name="description" content="Lista de productos" />
+    <meta name="author" content="Sebastian Araya" />
+    <?php echo "<link href=\"../assets/css/estilos.css\" rel=\"stylesheet\" type=\"text/css\"/>
+    "; ?>
+  </head>
+  <body>
+    <main>
+      <card></card>
+      <h1 class="title">Lista de Productos</h1>
+      <div class="card">
+        <table id="lista-productos-tabla">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripcion</th>
+              <th>Precio</th>
+              <th>Categoria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($listarProductos as $producto) { ?>
+            <tr>
+              <td><?php echo $producto['ID'];?></td>
+              <td><?php echo $producto['nombre_producto']; ?></td>
+              <td><?php echo $producto['descripcion_producto']; ?></td>
+              <td><?php echo $producto['precio_producto']; ?></td>
+              <td><?php echo $producto['id_categoria']; ?></td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+      <a href="productos.php?agregar">Agregar</a>
+    </main>
+  </body>
+</html>
