@@ -8,6 +8,7 @@
             $clases['Conexion'] = $ruta. "base-datos.php";
             $clases['Basedatos'] = $ruta. "base-datos.php";
             $clases['Productos'] = $ruta. "productos.php";
+            $clases['Categorias'] = $ruta. "categorias.php";
 
             if(isset($clases[$clase])){
                 if(file_exists($clases[$clase])){
