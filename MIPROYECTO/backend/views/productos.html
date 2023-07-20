@@ -18,7 +18,7 @@
             </div>
 
             <div class="nav-item">
-              <a id="formulario-productos" href="../../backend/views/productos.html">Alta de productos</a>
+              <a id="formulario-productos" href="../../backend/views/categorias.html">Alta de categorias</a>
             </div>
           </nav>
         </div>
@@ -30,7 +30,8 @@
 
         <div>
           <section>
-            <form id="formulario-cargar-productos" method="post" autocomplete="on">
+            <form id="formulario-cargar-productos" method="post" action="http://localhost/MIPROYECTO/backend/productos.php" autocomplete="on">
+              <input type="hidden" name="enviar" value="guardar" />
               <div class="contenedor-input">
                 <label for="nombre-producto">Nombre del producto</label>
                 <input type="search" id="nombre-producto" name="nombre" placeholder="Ej: RTX-3080" />
