@@ -63,21 +63,6 @@
 
                 if($consultaExitosa){
                     $filas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-                    
-                    echo "<table>";
-                    echo "<tr>";
-                    foreach ($filas[0] as $columna => $valor) {
-                        echo "<th>$columna</th>";
-                    }
-                    echo "</tr>";
-                    foreach ($filas as $fila) {
-                        echo "<tr>";
-                        foreach ($fila as $valor) {
-                            echo "<td>$valor</td>";
-                        }
-                        echo "</tr>";
-                    }
-                    echo "</table> <br>";
                     echo "Las tabla se esta mostrando exitosamente <br>";
                     return $filas;
                 } else {
