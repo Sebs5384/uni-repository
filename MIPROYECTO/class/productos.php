@@ -1,4 +1,5 @@
 <?php 
+    
     class Productos{
 
         protected $id;
@@ -27,31 +28,6 @@
             }
         }
 
-        public function mostrarObjeto(){
-            if($this->existe){
-                echo"<pre>";
-                print_r($this);
-                echo"</pre>";     
-            }
-           
-        }
-
-        public function guardar(){
-            if($this->existe){
-                print_r($this->existe);
-                return $this->actualizar();
-            } else{
-                return $this->insertar();
-            }
-        }
-
-        public function eliminar(){
-            $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
-            $conexion->conectar();
-            $query = new Basedatos($conexion);
-            $query->delete("productos", "id=?", array($this->id));
-        }      
-
         private function insertar(){
             $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
             $conexion->conectar();
@@ -70,6 +46,13 @@
             }
         }
 
+        public function eliminar(){
+            $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
+            $conexion->conectar();
+            $query = new Basedatos($conexion);
+            $query->delete("productos", "id=?", array($this->id));
+        }      
+
         private function actualizar(){
             $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
             $conexion->conectar();
@@ -83,5 +66,24 @@
             $query = new Basedatos($conexion);
             return $query->select("productos");
         }
+
+        public function mostrarObjeto(){
+            if($this->existe){
+                echo"<pre>";
+                print_r($this);
+                echo"</pre>";     
+            }
+           
+        }
+
+        public function guardar(){
+            if($this->existe){
+                print_r($this->existe);
+                return $this->actualizar();
+            } else{
+                return $this->insertar();
+            }
+        }
     }
+
 ?>
