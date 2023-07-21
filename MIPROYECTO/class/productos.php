@@ -1,5 +1,5 @@
 <?php 
-    
+    /* @autor Sebastian Araya */
     class Productos{
 
         protected $id;

@@ -1,5 +1,5 @@
 <?php 
-
+    /* @autor Sebastian Araya */
     class Conexion{
         private $databaseDriver;
         private $host;
@@ -144,12 +144,4 @@
         }
     }
 
-    //$db = new Conexion('mysql','localhost', 'root', '', 'miproyecto');
-    //$db->conectar();
-    //$query = new Basedatos($db);
-
-    //$query->select('productos', null, 'ID DESC', null);
-    //$query->delete('categorias', 'id = 14', null);
-    //$query->insert('productos', 'nombre_producto, descripcion_producto, precio_producto, id_categoria', '"RTX-1000", "SERIES 1000", "10000", "1"');
-    //$query->update('productos', 'nombre_producto', '"RTX-8000', 'id = 38');*/
 ?>

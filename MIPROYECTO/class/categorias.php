@@ -1,4 +1,5 @@
 <?php 
+    /* @autor Sebastian Araya */
     class Categorias{
         
         protected $id;

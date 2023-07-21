@@ -1,5 +1,5 @@
 <?php 
-
+    /* @autor Sebastian Araya */
     class Autoload{
 
         static public function cargarClases($clase){
