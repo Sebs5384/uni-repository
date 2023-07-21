@@ -4,7 +4,7 @@
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
-        $nuevoProducto = new Productos(1);
+        $nuevoProducto = new Productos(null);
         $nuevoProducto->nombre=$_POST['nombre'];
         $nuevoProducto->descripcion=$_POST['descripcion'];
         $nuevoProducto->precio=$_POST['precio'];
