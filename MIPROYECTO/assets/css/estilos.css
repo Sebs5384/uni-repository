@@ -26,22 +26,36 @@ body {
   margin-bottom: 20px;
 }
 
+#lista-categorias-tabla,
 #lista-productos-tabla {
   width: 100%;
 }
 
+#lista-categorias-tabla td,
 #lista-productos-tabla td {
   text-align: center;
   padding: 5px;
 }
 
+#lista-categorias-tabla th,
 #lista-productos-tabla th {
   border-bottom: 1px solid #ccc;
   font-size: 20px;
   padding: 10px;
 }
 
-.card {
+.card-categorias {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  padding: 45px;
+  margin-bottom: 45px;
+  width: 150%;
+  margin-left: -40%;
+  margin-right: -40%;
+}
+
+.card-productos {
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
