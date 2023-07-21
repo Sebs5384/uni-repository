@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Techbyte - Lista de categorias</title>
+    <meta name="description" content="Lista de categorias" />
+    <meta name="author" content="Sebastian Araya" />
+  </head>
+  <body>
+    <main>
+      <h1 class="title">Lista de Categorias</h1>
+      <div class="card-categorias">
+        <table id="lista-categorias-tabla">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($listarCategorias as $categoria) { ?>
+            <tr>
+              <td><?php echo $categoria['ID']; ?></td>
+              <td><?php echo $categoria['nombre_categoria']; ?></td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+      <a href="categorias.php?agregar">Agregar Categoria</a>
+    </main>
+  </body>
+</html>
