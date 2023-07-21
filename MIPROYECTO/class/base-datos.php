@@ -20,7 +20,7 @@
             try{
                 $conectado = $this->conexion = new PDO("$this->databaseDriver:host=$this->host;dbname=$this->basedatos",$this->nombreUsuario,$this->contrasenia);
 
-                if($conectado) echo "Conexion exitosa <br><br>"; return true;
+                if($conectado) return true;
                 
             } catch (Exception $error){
                 echo "Fallo la conexion a la base de datos: " . $error->getMessage();
@@ -63,7 +63,6 @@
 
                 if($consultaExitosa){
                     $filas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-                    echo "Las tabla se esta mostrando exitosamente <br>";
                     return $filas;
                 } else {
                     echo "Fallo al mostrar la tabla <br>";
@@ -145,12 +144,12 @@
         }
     }
 
-    /*$db = new Conexion('mysql','localhost', 'root', '', 'miproyecto');
-    $db->conectar();
-    $query = new Basedatos($db);
+    //$db = new Conexion('mysql','localhost', 'root', '', 'miproyecto');
+    //$db->conectar();
+    //$query = new Basedatos($db);
 
-    $query->select('productos', null, 'ID DESC', null);
-    $query->delete('productos', 'id = 33', null);
-    $query->insert('productos', 'nombre_producto, descripcion_producto, precio_producto, id_categoria', '"RTX-1000", "SERIES 1000", "10000", "1"');
-    $query->update('productos', 'nombre_producto', '"RTX-8000', 'id = 38');*/
+    //$query->select('productos', null, 'ID DESC', null);
+    //$query->delete('categorias', 'id = 14', null);
+    //$query->insert('productos', 'nombre_producto, descripcion_producto, precio_producto, id_categoria', '"RTX-1000", "SERIES 1000", "10000", "1"');
+    //$query->update('productos', 'nombre_producto', '"RTX-8000', 'id = 38');*/
 ?>
