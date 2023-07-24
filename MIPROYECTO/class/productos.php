@@ -7,6 +7,7 @@
         public $descripcion;
         public $precio;
         public $categoria;
+        public $imagen;
         public $existe = false;
 
 
@@ -24,6 +25,7 @@
                 $this->descripcion = $select[0]['descripcion_producto'];
                 $this->precio = $select[0]['precio_producto'];
                 $this->categoria = $select[0]['id_categoria'];
+                $this->imagen = $select[0]['imagen'];
                 $this->existe = true;
             }
         }
@@ -32,9 +34,9 @@
             $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
             $conexion->conectar();
             $query = new Basedatos($conexion);
-            $columnas = 'nombre_producto, descripcion_producto, precio_producto, id_categoria';
-            $valores = '?,?,?,?';
-            $parametros = array($this->nombre, $this->descripcion, $this->precio, $this->categoria);
+            $columnas = 'nombre_producto, descripcion_producto, precio_producto, id_categoria, imagen';
+            $valores = '?,?,?,?,?';
+            $parametros = array($this->nombre, $this->descripcion, $this->precio, $this->categoria, $this->imagen);
             $query->insert('productos', $columnas, $valores, $parametros);
         
             if($query){
@@ -57,6 +59,8 @@
             $conexion = new Conexion('mysql', 'localhost', 'root', '', 'miproyecto');
             $conexion->conectar();
             $query = new Basedatos($conexion);
+            $tabla = "productos";
+            $parametros = "nombre_producto=?, descripcion_producto=?, precio_producto=?, id_categoria=?";
             $query->update("productos", 'nombre_productos=?, descripcion_productos=?, precio_productos=?, id_categorias=?', 'id=?', array( $this->id, $this->nombre, $this->descripcion, $this->precio, $this->categoria));
         }
 
