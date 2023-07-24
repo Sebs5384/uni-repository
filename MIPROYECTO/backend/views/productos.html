@@ -30,7 +30,7 @@
 
         <div>
           <section>
-            <form id="formulario-cargar-productos" method="post" action="http://localhost/MIPROYECTO/backend/productos.php" autocomplete="on">
+            <form id="formulario-cargar-productos" method="post" action="http://localhost/uni-repository/MIPROYECTO/backend/productos.php" autocomplete="on">
               <input type="hidden" name="enviar" value="guardar" />
               <div class="contenedor-input">
                 <label for="nombre-producto">Nombre del producto</label>
@@ -50,6 +50,13 @@
               <div class="contenedor-input">
                 <label for="categoria-producto">Categoria del producto </label>
                 <input type="text" id="categoria-producto" name="categoria" placeholder="Ej: Placas de video" />
+              </div>
+
+              <div class="contenedor-input">
+                <label for="categoria-option">Categoria del producto</label>
+                <select name="categoria" id="categoria-options">
+                  
+                </select>
               </div>
 
               <div class="contenedor-input">
@@ -73,6 +80,7 @@
 
       <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
       <script src="../../assets/js/validaciones.js"></script>
+      <script src="../../assets/js/main.js"></script>
     </div>
   </body>
 </html>
