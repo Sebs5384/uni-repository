@@ -1,8 +1,4 @@
-.techbyte {
-  height: 150px;
-  width: 150px;
-}
-
+.techbyte,
 .techbyte-php {
   height: 150px;
   width: 150px;
@@ -64,4 +60,17 @@ body {
   width: 200%;
   margin-left: -50%;
   margin-right: -50%;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+}
+
+.menu a {
+  border: 1px solid;
+  margin-bottom: 20px;
 }
