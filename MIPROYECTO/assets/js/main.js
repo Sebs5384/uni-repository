@@ -1,11 +1,10 @@
 async function obtenerCategorias() {
   try {
-    const URL = "http://localhost/uni-repository/MIPROYECTO/backend/carga-categorias.php";
+    const URL = "http://localhost/MIPROYECTO/backend/lista-categorias.php";
     const $respuesta = await fetch(URL, {
       method: "GET",
     });
     const respuesta = await $respuesta.json();
-    console.log(respuesta[0].nombre_categoria);
     return respuesta;
   } catch (error) {
     throw new Error(`Error en promesa, no se pudo obtener las categorias: ${error}`);
@@ -15,13 +14,12 @@ async function obtenerCategorias() {
 function crearCategorias(categorias) {
   const $lista = document.querySelector("#categoria-options");
 
-  categorias.forEach((categoria, index) => {
+  categorias.forEach((categoria) => {
     const $nombreCategoria = document.createElement("option");
-    $nombreCategoria.value = categoria[index].nombre_categoria;
-    $nombreCategoria.innerText = categoria[index].nombre_categoria;
+    $nombreCategoria.value = categoria.ID;
+    $nombreCategoria.innerText = categoria.nombre_categoria;
     $lista.appendChild($nombreCategoria);
   });
-  console.log($lista);
   return $lista;
 }
 
