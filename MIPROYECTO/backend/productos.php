@@ -2,6 +2,12 @@
 
     include '../class/autoload.php';
 
+    $ocultarElementos = ".techbyte, #home, #formulario-categorias { display: none; }";
+    $incluirEstilos = "href=\"../assets/css/estilos.css\" rel=\"stylesheet\" type=\"text/css\"";
+    $incluirImagen = "src=\"../assets/img/tech-byte-solutions.png\" class=\"techbyte-php\"";
+    $incluirHome = "id=\"nuevo-home\" href=\"../views/home.html\"";
+    $incluirAltaCategorias = "id=\"formulario-categorias-nuevo\" href=\"views/categorias.html\"";
+
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
         $nuevoProducto = new Productos(null);
@@ -18,13 +24,16 @@
 
         $nuevoProducto->guardar();
     
-    } else if(isset($_GET['agregar'])){
+    } else if(isset($_GET['agregar-producto'])){
         
-        echo "<link href=\"../assets/css/estilos.css\" rel=\"stylesheet\" type=\"text/css\"/>";
-        echo "<style>.techbyte { display: none; }</style>";
-        echo "<img src=\"../assets/img/tech-byte-solutions.png\" class=\"techbyte-php\" />";
-        echo "<style>.categorias { display: none; }</style>";
-
+        echo <<<HTML
+        <style>{$ocultarElementos}</style>
+        <link {$incluirEstilos}/>
+        <img {$incluirImagen}/>
+        <a {$incluirHome}>Home</a>
+        <a {$incluirAltaCategorias}>Alta de categorias</a>
+        HTML;
+        
         $listarCategorias = Categorias::listar();
         include 'views/productos.html';
         die();
