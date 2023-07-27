@@ -12,7 +12,7 @@ async function obtenerCategorias() {
 }
 
 function crearCategorias(categorias) {
-  const $lista = document.querySelector("#categoria-options");
+  const $lista = document.querySelector("#categoria-producto");
 
   categorias.forEach((categoria) => {
     const $nombreCategoria = document.createElement("option");

@@ -30,7 +30,7 @@
 
         <div>
           <section>
-            <form id="formulario-cargar-productos" method="post" action="http://localhost/uni-repository/MIPROYECTO/backend/productos.php" autocomplete="on">
+            <form id="formulario-cargar-productos" method="post" action="http://localhost/MIPROYECTO/backend/productos.php" autocomplete="on" enctype="multipart/form-data">
               <input type="hidden" name="enviar" value="guardar" />
               <div class="contenedor-input">
                 <label for="nombre-producto">Nombre del producto</label>
@@ -48,14 +48,12 @@
               </div>
 
               <div class="contenedor-input">
-                <label for="categoria-producto">Categoria del producto </label>
-                <input type="text" id="categoria-producto" name="categoria" placeholder="Ej: Placas de video" />
-              </div>
-
-              <div class="contenedor-input">
                 <label for="categoria-option">Categoria del producto</label>
-                <select name="categoria" id="categoria-options">
-                  
+                <select name="categoria" id="categoria-producto">
+                  <option value="0">Selecciona una categoria</option>
+                  <?php forEach ($listarCategorias as $categoria) { ?>
+                  <option value="<?php echo $categoria['ID']; ?>"><?php echo $categoria['nombre_categoria']; ?></option>
+                  <?php } ?>
                 </select>
               </div>
 
