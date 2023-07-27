@@ -6,7 +6,7 @@
     $incluirEstilos = "href=\"../assets/css/estilos.css\" rel=\"stylesheet\" type=\"text/css\"";
     $incluirImagen = "src=\"../assets/img/tech-byte-solutions.png\" class=\"techbyte-php\"";
     $incluirHome = "id=\"nuevo-home\" href=\"../views/home.html\"";
-    $incluirAltaProductos = "id=\"formulario-productos-nuevo\" href=\"../views/productos.html\"";
+    $incluirAltaProductos = "id=\"formulario-productos-nuevo\" href=\"views/productos.html\"";
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
 
@@ -27,6 +27,6 @@
     }
 
     $listarCategorias = Categorias::listar();
-    echo "<link href=\"../assets/css/estilos.css\" rel=\"stylesheet\" type=\"text/css\"/>";
+    echo "<link {$incluirEstilos}/>";
     include "views/lista-categorias.html";
 ?>

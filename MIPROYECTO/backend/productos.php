@@ -41,7 +41,7 @@
     }
 
     $listarProductos = Productos::listar();
-    echo "<link href=\"../assets/css/estilos.css\" rel=\"stylesheet\" type=\"text/css\"/>";
+    echo "<link ${incluirEstilos}/>";
     include './views/lista-productos.html'; 
 
     
