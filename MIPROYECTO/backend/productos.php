@@ -23,7 +23,9 @@
         echo "<link href=\"../assets/css/estilos.css\" rel=\"stylesheet\" type=\"text/css\"/>";
         echo "<style>.techbyte { display: none; }</style>";
         echo "<img src=\"../assets/img/tech-byte-solutions.png\" class=\"techbyte-php\" />";
+        echo "<style>.categorias { display: none; }</style>";
 
+        $listarCategorias = Categorias::listar();
         include 'views/productos.html';
         die();
     

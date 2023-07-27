@@ -16,7 +16,6 @@
             $conexion->conectar();
             $query = new Basedatos($conexion);
             $select = $query->select("productos", "id=?", null, null, array($id));
-            print_r($select);
 
             if(isset($select[0]['ID'])){
 
