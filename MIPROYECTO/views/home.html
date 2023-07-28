@@ -26,6 +26,34 @@
     <main>
       <img src="../assets/img/tech-byte-solutions.png" class="techbyte" />
       <h1 class="title">Home</h1>
+
+      <div class="contenedor-cartas">
+        <?php foreach ($listarProductos as $productos) { ?>
+        <div class="cartas">
+          <div class="contenedor-imagen">
+            <img src="<?php echo $productos['imagen']; ?>" class="imagen-carta" />
+          </div>
+          <div>
+            Nombre:
+            <?php echo $productos['nombre_producto']; ?>
+          </div>
+          <div>
+            Categoria:
+            <?php foreach ($listarCategorias as $categoria) { ?>
+            <?php if ($categoria['ID'] == $productos['id_categoria']) { ?>
+            <?php echo $categoria['nombre_categoria']; ?>
+            <?php break; ?>
+            <?php } ?>
+            <?php } ?>
+          </div>
+          <div>
+            Descripcion:
+            <?php echo $productos['descripcion_producto']; ?>
+          </div>
+        </div>
+
+        <?php } ?>
+      </div>
     </main>
 
     <footer id="nombre-desarrollador">Sebastian Araya</footer>
