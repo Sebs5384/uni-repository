@@ -74,3 +74,23 @@ body {
   border: 1px solid;
   margin-bottom: 20px;
 }
+
+.contenedor-cartas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.cartas {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.imagen-carta {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  height: 100px;
+  width: 100px;
+}
