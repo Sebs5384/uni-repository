@@ -33,3 +33,36 @@ function crearCartasProductos(productos) {
 }
 
 crearCartasProductos(productos);
+
+/*
+function retonarCartaHTML(producto, indice) {
+  return `
+    <div class="card">
+      <div class="card-image">
+        ${producto.imagen}
+      </div>
+      <div class="card-name">
+        ${producto.nombre}
+      </div>
+      <div class="card-price">
+        $ ${producto.precio}
+      </div>
+      <div class="card-button">
+        <button class="button button-outline boton-agregar" id="agregar-producto-${indice + 1}" title="Click para agregar al carrito">+</button>
+      </div>
+    </div>
+  `;
+}
+
+function cargarProductos(productos) {
+  const $contenedorCartas = document.querySelector("#contenedor-cartas");
+
+  productos.forEach((producto, indice) => {
+    $contenedorCartas.innerHTML += retonarCartaHTML(producto, indice);
+  });
+}
+
+cargarProductos(productos);
+*/
+
+//Sebastian Araya
