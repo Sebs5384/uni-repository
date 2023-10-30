@@ -23,6 +23,8 @@ function crearCartasProductos(productos, callback) {
 
     $botonAgregar.id = `agregar-producto-${indice + 1}`;
     $botonAgregar.dataset.id = `${indice + 1}`;
+    $botonAgregar.dataset.fruta = `${producto.nombre}`;
+
     $botonAgregar.onclick = (event) => callback(event);
 
     $contenedorBotonAgregar.appendChild($botonAgregar);
