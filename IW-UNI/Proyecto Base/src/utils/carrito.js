@@ -14,7 +14,6 @@ const agregarAlCarrito = (productoId) => {
 
 function manejarClickProductos(event) {
   const productoId = event.target.dataset.id;
-  const nombreFruta = event.target.dataset.fruta;
 
-  obtenerProductos(productoId, nombreFruta);
+  obtenerProductos(productoId);
 }
