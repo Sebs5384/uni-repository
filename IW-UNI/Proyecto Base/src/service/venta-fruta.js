@@ -1,8 +1,9 @@
-function obtenerProductos(id) {
+async function obtenerProductos() {
   try {
-    return cargarProducto(id);
+    return cargarProductos('productos');
   } catch (error) {
-    agregarAlCarrito(id);
-    almacenarProducto(id, productos[id]);
+    const productos = await obtenerProductosDeApi();
+    almacenarProducto('productos', productos);
+    return productos;
   }
 }

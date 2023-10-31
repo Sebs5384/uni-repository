@@ -1,8 +1,6 @@
 const carritoProductos = [];
 
-const agregarAlCarrito = (productoId) => {
-  if (productoId <= 0) return console.error('El id del producto no puede ser menor o igual a 0.');
-
+function agregarAlCarrito(productoId, productos) {
   const producto = productos.find((producto) => producto.id === Number(productoId));
 
   if (producto !== undefined) {
@@ -10,10 +8,8 @@ const agregarAlCarrito = (productoId) => {
   } else {
     console.error('El producto no existe.');
   }
-};
+}
 
-function manejarClickProductos(event) {
-  const productoId = event.target.dataset.id - 1;
-
-  obtenerProductos(productoId);
+function manejarClickProductos(event, productos) {
+  const productoId = event.target.dataset.id;
 }

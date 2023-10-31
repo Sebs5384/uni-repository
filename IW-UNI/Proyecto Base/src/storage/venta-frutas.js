@@ -1,5 +1,5 @@
 function obtenerKeyProducto(producto) {
-  return `producto_${producto}`;
+  return `${producto}`;
 }
 
 function almacenarProducto(llave, valor) {
@@ -8,8 +8,8 @@ function almacenarProducto(llave, valor) {
   localStorage.setItem(obtenerKeyProducto(llave), JSON.stringify(valor));
 }
 
-function cargarProducto(id) {
-  const producto = JSON.parse(localStorage.getItem(obtenerKeyProducto(id)));
+function cargarProductos(productos) {
+  const producto = JSON.parse(localStorage.getItem(obtenerKeyProducto(productos)));
 
   if (producto === null) throw new Error('El producto no existe');
 
