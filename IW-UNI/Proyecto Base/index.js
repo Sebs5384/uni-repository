@@ -1,1 +1,5 @@
-crearCartasProductos(productos, manejarClickProductos);
+function inizializar() {
+  crearCartasProductos(productos, manejarClickProductos);
+}
+
+inizializar();
