@@ -12,4 +12,7 @@ function agregarAlCarrito(productoId, productos) {
 
 function manejarClickProductos(event, productos) {
   const productoId = event.target.dataset.id;
+
+  agregarAlCarrito(productoId, productos);
+  almacenarProducto('carrito', carritoProductos);
 }

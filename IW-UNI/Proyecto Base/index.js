@@ -1,6 +1,5 @@
 async function inizializar() {
-  const productos = await obtenerProductos();
-  console.log(productos);
+  const productos = await obtenerProductos('productos');
   crearCartasProductos(productos, manejarClickProductos);
 }
 

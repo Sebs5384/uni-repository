@@ -1,9 +1,9 @@
-async function obtenerProductos() {
+async function obtenerProductos(llave) {
   try {
-    return cargarProductos('productos');
+    return cargarProductos(llave);
   } catch (error) {
     const productos = await obtenerProductosDeApi();
-    almacenarProducto('productos', productos);
+    almacenarProducto(llave, productos);
     return productos;
   }
 }
