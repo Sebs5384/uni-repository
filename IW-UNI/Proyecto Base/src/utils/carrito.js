@@ -13,28 +13,8 @@ const agregarAlCarrito = (productoId) => {
 };
 
 function manejarClickProductos(event) {
-  const productoClickeado = event.target.dataset.id;
-  const frutaClickeada = event.target.dataset.fruta;
+  const productoId = event.target.dataset.id;
+  const nombreFruta = event.target.dataset.fruta;
 
-  try {
-    return obtenerProductosDeStorage('productos', frutaClickeada);
-  } catch (error) {
-    agregarAlCarrito(productoClickeado);
-    almacenarProducto('productos', carritoProductos);
-  }
-}
-
-function almacenarProducto(llave, valor) {
-  localStorage.setItem(llave, JSON.stringify(valor));
-}
-
-function obtenerProductosDeStorage(productos, fruta) {
-  const producto = JSON.parse(localStorage.getItem(productos));
-  const frutaAlmacendas = producto.some((producto) => producto.nombre === fruta);
-
-  if (!frutaAlmacendas) {
-    throw new Error('No se encontro el producto en memoria.');
-  }
-
-  return producto;
+  obtenerProductos(productoId, nombreFruta);
 }
