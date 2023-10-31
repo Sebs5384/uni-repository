@@ -1,7 +1,7 @@
 function crearCartasProductos(productos, callback) {
   const $contenedorCartas = document.querySelector('#contenedor-cartas');
 
-  productos.forEach((producto, indice) => {
+  productos.forEach((producto) => {
     const $carta = document.createElement('div');
     const $imagenCarta = document.createElement('div');
     const $nombreCarta = document.createElement('div');
@@ -21,8 +21,8 @@ function crearCartasProductos(productos, callback) {
     $precioCarta.innerText = `$ ${producto.precio}`;
     $botonAgregar.innerText = '+';
 
-    $botonAgregar.id = `agregar-producto-${indice + 1}`;
-    $botonAgregar.dataset.id = `${indice + 1}`;
+    $botonAgregar.id = `agregar-producto-${producto.id}`;
+    $botonAgregar.dataset.id = `${producto.id}`;
     $botonAgregar.dataset.fruta = `${producto.nombre}`;
 
     $botonAgregar.onclick = (event) => callback(event);
