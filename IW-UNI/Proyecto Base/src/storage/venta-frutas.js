@@ -8,7 +8,7 @@ function almacenarProducto(llave, valor) {
   localStorage.setItem(obtenerKeyProducto(llave), JSON.stringify(valor));
 }
 
-function obtenerProductosDeStorage(id) {
+function cargarProducto(id) {
   const producto = JSON.parse(localStorage.getItem(obtenerKeyProducto(id)));
 
   if (producto === null) throw new Error('El producto no existe');

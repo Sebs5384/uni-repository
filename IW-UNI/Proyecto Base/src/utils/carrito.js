@@ -13,7 +13,7 @@ const agregarAlCarrito = (productoId) => {
 };
 
 function manejarClickProductos(event) {
-  const productoId = event.target.dataset.id;
+  const productoId = event.target.dataset.id - 1;
 
   obtenerProductos(productoId);
 }

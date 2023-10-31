@@ -1,6 +1,6 @@
-function obtenerProductos(id, nombre) {
+function obtenerProductos(id) {
   try {
-    return obtenerProductosDeStorage(id);
+    return cargarProducto(id);
   } catch (error) {
     agregarAlCarrito(id);
     almacenarProducto(id, productos[id]);
