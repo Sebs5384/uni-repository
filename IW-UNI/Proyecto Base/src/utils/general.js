@@ -10,6 +10,25 @@ function agregarAlCarrito(productoId, productos) {
   }
 }
 
+function removerDelCarrito(productoId) {
+  const productos = cargarProductos('carrito');
+
+  productos.forEach((producto, index) => {
+    if (producto.id === Number(productoId)) {
+      productos.splice(index, 1);
+    }
+  });
+
+  console.log(productos);
+  return productos;
+}
+
+function manejarClickTabla(event) {
+  const productoId = event.target.dataset.id;
+
+  const productos = removerDelCarrito(productoId);
+}
+
 function manejarClickProductos(event, productos) {
   const productoId = event.target.dataset.id;
 

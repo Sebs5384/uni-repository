@@ -1,4 +1,4 @@
-function crearTablaProductos(productos) {
+function crearTablaProductos(productos, manejarClickTabla) {
   const $listaProductos = document.querySelector('#lista-productos');
 
   productos.forEach((producto) => {
@@ -19,7 +19,10 @@ function crearTablaProductos(productos) {
     $importe.innerText = `$ ${producto.precio * producto.cantidades}`;
     $descripcion.innerText = `${producto.descripcion}`;
     $precioUnidad.innerText = `$ ${producto.precio}`;
+
     $botonEliminarProducto.innerText = 'x';
+    $botonEliminarProducto.dataset.id = producto.id;
+    $botonEliminarProducto.onclick = manejarClickTabla;
 
     $fila.appendChild($item);
     $fila.appendChild($descripcion);
