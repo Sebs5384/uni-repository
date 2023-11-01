@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css");
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css');
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 /* html {
@@ -181,6 +181,7 @@ thead tr {
 
 #tablehead {
   padding: 10px;
+  text-align: center;
 }
 
 tbody tr:nth-child(even) {
