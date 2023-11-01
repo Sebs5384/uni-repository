@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script defer src="js/checkout.js"></script>
   </head>
   <body>
     <header>
@@ -26,18 +25,13 @@
             <tr>
               <th id="tablehead">Producto</th>
               <th id="tablehead">Descripción</th>
+              <th id="tablehead">Precio Unidad</th>
+              <th id="tablehead">Unidades</th>
               <th id="tablehead">Importe</th>
               <th id="tablehead">Quitar</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Aquí</td>
-              <td>verás</td>
-              <td>productos</td>
-              <td><img src="img/icon-fruits-64.png" width="24px" /></td>
-            </tr>
-          </tbody>
+          <tbody id="lista-productos"></tbody>
         </table>
       </section>
       <div class="centrar-div">
@@ -45,5 +39,9 @@
       </div>
     </main>
   </body>
-  <script src="src/carrito.js"></script>
+
+  <script src="src/storage/venta-frutas.js"></script>
+  <script src="src/ui/tabla.js"></script>
+  <script src="src/utils/general.js"></script>
+  <script src="checkout.js"></script>
 </html>
