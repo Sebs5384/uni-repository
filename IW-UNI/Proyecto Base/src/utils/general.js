@@ -47,12 +47,16 @@ function calcularCantidades(productosCarrito) {
     }
   });
 
-  const productos = productosCarrito.filter((producto, index, array) => {
-    return array.findIndex((fruta) => fruta.nombre === producto.nombre) === index;
+  productosCarrito.forEach((producto) => {
+    producto.cantidades = cantidades[producto.nombre];
   });
 
-  productos.forEach((producto) => {
-    producto.cantidades = cantidades[producto.nombre];
+  return productosCarrito;
+}
+
+function filtarProductos(productosCarrito) {
+  const productos = productosCarrito.filter((producto, index, arrayProductos) => {
+    return arrayProductos.findIndex((fruta) => fruta.nombre === producto.nombre) === index;
   });
 
   return productos;

@@ -1,6 +1,7 @@
 async function inizializar() {
   const productosCarrito = calcularCantidades(cargarProductos('carrito'));
-  crearTablaProductos(productosCarrito, manejarClickTabla);
+  const productos = filtarProductos(productosCarrito);
+  crearTablaProductos(productos, manejarClickTabla);
 
   const hola = removerDelCarrito();
 
