@@ -1,4 +1,5 @@
 function crearTablaProductos(productos, manejarClickTabla) {
+  console.log(productos);
   const $listaProductos = document.querySelector('#lista-productos');
 
   productos.forEach((producto) => {
@@ -12,6 +13,7 @@ function crearTablaProductos(productos, manejarClickTabla) {
     const $botonEliminarProducto = document.createElement('button');
 
     $fila.className = 'centrar';
+    $fila.dataset.id = producto.id;
     $botonEliminarProducto.className = 'button button-outline button-small';
 
     $item.innerText = `${producto.nombre}`;
@@ -22,7 +24,10 @@ function crearTablaProductos(productos, manejarClickTabla) {
 
     $botonEliminarProducto.innerText = 'x';
     $botonEliminarProducto.dataset.id = producto.id;
-    $botonEliminarProducto.onclick = manejarClickTabla;
+    $botonEliminarProducto.onclick = (event) => {
+      manejarClickTabla(event, productos);
+      removerProductoTabla(event);
+    };
 
     $fila.appendChild($item);
     $fila.appendChild($descripcion);
@@ -33,4 +38,11 @@ function crearTablaProductos(productos, manejarClickTabla) {
     $fila.appendChild($contenedorBoton);
     $listaProductos.appendChild($fila);
   });
+}
+
+function removerProductoTabla(event) {
+  const productoId = event.target.dataset.id;
+  const $producto = document.querySelector(`tr[data-id="${productoId}"]`);
+
+  $producto.remove();
 }

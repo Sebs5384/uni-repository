@@ -10,23 +10,21 @@ function agregarAlCarrito(productoId, productos) {
   }
 }
 
-function removerDelCarrito(productoId) {
-  const productos = cargarProductos('carrito');
-
+function removerDelCarrito(productoId, productos) {
   productos.forEach((producto, index) => {
     if (producto.id === Number(productoId)) {
       productos.splice(index, 1);
     }
   });
 
-  console.log(productos);
   return productos;
 }
 
-function manejarClickTabla(event) {
+function manejarClickTabla(event, productos) {
   const productoId = event.target.dataset.id;
 
-  const productos = removerDelCarrito(productoId);
+  const nuevoCarrito = removerDelCarrito(productoId, productos);
+  almacenarProducto('carrito', nuevoCarrito);
 }
 
 function manejarClickProductos(event, productos) {
