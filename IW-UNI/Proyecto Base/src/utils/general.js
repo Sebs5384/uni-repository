@@ -35,6 +35,8 @@ function manejarClickProductos(event, productos) {
 }
 
 function calcularCantidades(productosCarrito) {
+  if (productosCarrito.every((producto) => 'cantidades' in producto)) return productosCarrito;
+
   const cantidades = {};
 
   productosCarrito.forEach((producto, index) => {

@@ -1,5 +1,4 @@
 function crearTablaProductos(productos, manejarClickTabla) {
-  console.log(productos);
   const $listaProductos = document.querySelector('#lista-productos');
 
   productos.forEach((producto) => {
