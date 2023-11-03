@@ -45,3 +45,20 @@ function removerProductoTabla(event) {
 
   $producto.remove();
 }
+
+function removerProductosTabla() {
+  const $listaProductos = document.querySelectorAll('#lista-productos tr');
+
+  $listaProductos.forEach((producto) => {
+    producto.remove();
+  });
+}
+
+function manejarBotonComprar(removerCompras) {
+  const $botonComprar = document.querySelector('#boton-comprar');
+
+  $botonComprar.onclick = () => {
+    removerCompras('carrito');
+    removerProductosTabla();
+  };
+}

@@ -2,6 +2,10 @@ function obtenerKeyProducto(producto) {
   return `${producto}`;
 }
 
+function removerKeyProducto(llave) {
+  localStorage.removeItem(obtenerKeyProducto(llave));
+}
+
 function almacenarProducto(llave, valor) {
   if (llave === undefined) throw new Error('Llave no identificada');
 
