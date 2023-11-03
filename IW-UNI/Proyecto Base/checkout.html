@@ -13,7 +13,7 @@
     <header>
       <h1>Ventadefrutas.com</h1>
       <p>Verifica tus productos antes de confirmar la compra:</p>
-      <div class="centrar-div">
+      <div class="centrar">
         <button class="button button-outline" onclick="location.href='index.html'">Seguir comprando</button>
       </div>
       <hr />
@@ -34,14 +34,16 @@
           <tbody id="lista-productos"></tbody>
         </table>
       </section>
-      <div class="centrar-div">
+      <div class="centrar espacio"><strong id="texto-compras"></strong></div>
+      <div class="centrar">
         <button class="button" id="boton-comprar">COMPRAR</button>
       </div>
     </main>
   </body>
 
-  <script src="src/storage/venta-frutas.js"></script>
-  <script src="src/ui/tabla.js"></script>
   <script src="src/utils/general.js"></script>
+  <script src="src/storage/venta-frutas.js"></script>
+  <script src="src/ui/general.js"></script>
+  <script src="src/ui/tabla.js"></script>
   <script src="checkout.js"></script>
 </html>

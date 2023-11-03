@@ -53,12 +53,3 @@ function removerProductosTabla() {
     producto.remove();
   });
 }
-
-function manejarBotonComprar(removerCompras) {
-  const $botonComprar = document.querySelector('#boton-comprar');
-
-  $botonComprar.onclick = () => {
-    removerCompras('carrito');
-    removerProductosTabla();
-  };
-}

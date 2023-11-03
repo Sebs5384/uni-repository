@@ -10,6 +10,10 @@
     color-scheme: dark;
 } */
 
+.espacio {
+  margin-bottom: 50px;
+}
+
 .button-delete {
   background: darkred !important;
 }
@@ -127,10 +131,6 @@ em {
   border-radius: 6px;
   padding: 40px;
   color: red;
-}
-
-.centrar-div {
-  text-align: center;
 }
 
 .formulario {

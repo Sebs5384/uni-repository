@@ -15,7 +15,10 @@ function almacenarProducto(llave, valor) {
 function cargarProductos(productos) {
   const producto = JSON.parse(localStorage.getItem(obtenerKeyProducto(productos)));
 
-  if (producto === null) throw new Error('El producto no existe');
+  if (producto === null) {
+    actualizarTextoCompras('No hay productos en tu carrito');
+    throw new Error('El producto no existe');
+  }
 
   return producto;
 }
