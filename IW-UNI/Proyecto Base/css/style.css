@@ -6,9 +6,9 @@
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
-/* html {
-    color-scheme: dark;
-} */
+.texto-tabla {
+  font-size: 12px;
+}
 
 .espacio {
   margin-bottom: 50px;

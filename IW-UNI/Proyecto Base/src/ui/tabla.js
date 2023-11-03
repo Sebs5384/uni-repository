@@ -11,7 +11,7 @@ function crearTablaProductos(productos, manejarClickTabla) {
     const $contenedorBoton = document.createElement('th');
     const $botonEliminarProducto = document.createElement('button');
 
-    $fila.className = 'centrar';
+    $fila.className = 'centrar texto-tabla';
     $fila.dataset.id = producto.id;
     $botonEliminarProducto.className = 'button button-outline button-small';
 
