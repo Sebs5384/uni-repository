@@ -1,13 +1,15 @@
-const carritoProductos = [];
+const carrito = [];
 
 function agregarAlCarrito(productoId, productos) {
   const producto = productos.find((producto) => producto.id === Number(productoId));
 
   if (producto !== undefined) {
-    carritoProductos.push(producto);
+    carrito.push(producto);
   } else {
     console.error('El producto no existe.');
   }
+
+  return carrito;
 }
 
 function removerDelCarrito(productoId, productos) {
@@ -30,7 +32,7 @@ function manejarClickTabla(event, productos) {
 function manejarClickProductos(event, productos) {
   const productoId = event.target.dataset.id;
 
-  agregarAlCarrito(productoId, productos);
+  const carritoProductos = agregarAlCarrito(productoId, productos);
   almacenarProducto('carrito', carritoProductos);
 }
 
