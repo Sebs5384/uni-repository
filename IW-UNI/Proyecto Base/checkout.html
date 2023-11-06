@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Venta de Frutas</title>
+    <link rel="icon" href="img/icon-fruits-64.png" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Ventadefrutas.com</h1>
+      <p>Verifica tus productos antes de confirmar la compra:</p>
+      <div class="centrar">
+        <button class="button button-outline" onclick="location.href='index.html'">Seguir comprando</button>
+      </div>
+      <hr />
+    </header>
+    <main>
+      <section>
+        <table>
+          <thead>
+            <tr>
+              <th id="tablehead">Producto</th>
+              <th id="tablehead">Descripción</th>
+              <th id="tablehead">Precio Unidad</th>
+              <th id="tablehead">Unidades</th>
+              <th id="tablehead">Importe</th>
+              <th id="tablehead">Quitar</th>
+            </tr>
+          </thead>
+          <tbody id="lista-productos"></tbody>
+        </table>
+      </section>
+      <div class="centrar espacio"><strong id="texto-compras"></strong></div>
+      <div class="centrar">
+        <button class="button" id="boton-comprar">COMPRAR</button>
+      </div>
+    </main>
+  </body>
+
+  <script src="src/utils/general.js"></script>
+  <script src="src/storage/venta-frutas.js"></script>
+  <script src="src/ui/general.js"></script>
+  <script src="src/ui/tabla.js"></script>
+  <script src="checkout.js"></script>
+</html>

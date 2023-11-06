@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Venta de Frutas</title>
+    <link rel="icon" href="img/icon-fruits-64.png" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="btn-checkout">
+        <a href="checkout.html">
+          <img id="carrito" src="img/icon-fruits-64.png" title="Carrito" alt="Carrito" />
+        </a>
+      </div>
+      <h1>Ventadefrutas.com</h1>
+      <p>Tu tienda saludable, dulce, y natural.</p>
+      <hr />
+    </header>
+    <main>
+      <section class="container" id="contenedor-cartas"></section>
+    </main>
+  </body>
+
+  <script src="src/api/venta-fruta.js"></script>
+  <script src="src/storage/venta-frutas.js"></script>
+  <script src="src/service/venta-fruta.js"></script>
+  <script src="src/ui/cartas.js"></script>
+  <script src="src/utils/general.js"></script>
+  <script src="index.js"></script>
+</html>

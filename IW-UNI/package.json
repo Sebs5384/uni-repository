@@ -1,0 +1,19 @@
+{
+  "name": "iw-uni",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "http-server"
+  },
+  "author": "5384",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "cypress": "^13.3.2"
+  }
+}

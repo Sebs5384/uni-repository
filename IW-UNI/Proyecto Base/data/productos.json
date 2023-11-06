@@ -1,0 +1,114 @@
+[
+  {
+    "imagen": "🍌",
+    "nombre": "Bananas",
+    "descripcion": "Deliciosas bananas tropicales",
+    "precio": 220,
+    "id": 1
+  },
+  {
+    "imagen": "🍎",
+    "nombre": "Manzanas",
+    "descripcion": "Jugosas manzanas frescas",
+    "precio": 200,
+    "id": 2
+  },
+  {
+    "imagen": "🥝",
+    "nombre": "Kiwis",
+    "descripcion": "Kiwis exóticos y refrescantes",
+    "precio": 280,
+    "id": 3
+  },
+  {
+    "imagen": "🍈",
+    "nombre": "Melón",
+    "descripcion": "Dulce y suculento melón maduro",
+    "precio": 350,
+    "id": 4
+  },
+  {
+    "imagen": "🍍",
+    "nombre": "Piñas",
+    "descripcion": "Piñas maduras y sabrosas",
+    "precio": 320,
+    "id": 5
+  },
+  {
+    "imagen": "🍅",
+    "nombre": "Tomates",
+    "descripcion": "Tomates frescos y sabrosos",
+    "precio": 140,
+    "id": 6
+  },
+  {
+    "imagen": "🥥",
+    "nombre": "Cocos",
+    "descripcion": "Cocos tropicales con un sabor único",
+    "precio": 270,
+    "id": 7
+  },
+  {
+    "imagen": "🍉",
+    "nombre": "Sandias",
+    "descripcion": "Sandías refrescantes y jugosas",
+    "precio": 200,
+    "id": 8
+  },
+  {
+    "imagen": "🍑",
+    "nombre": "Duraznos",
+    "descripcion": "Duraznos maduros y deliciosos",
+    "precio": 310,
+    "id": 9
+  },
+  {
+    "imagen": "🫐",
+    "nombre": "Arandanos",
+    "descripcion": "Pequeños y sabrosos arándanos",
+    "precio": 650,
+    "id": 10
+  },
+  {
+    "imagen": "🥭",
+    "nombre": "Mango",
+    "descripcion": "Mangos maduros y jugosos",
+    "precio": 290,
+    "id": 11
+  },
+  {
+    "imagen": "🍇",
+    "nombre": "Uvas",
+    "descripcion": "Uvas por racimos",
+    "precio": 700,
+    "id": 12
+  },
+  {
+    "imagen": "🍐",
+    "nombre": "Peras",
+    "descripcion": "Peras dulces y suaves",
+    "precio": 320,
+    "id": 13
+  },
+  {
+    "imagen": "🍒",
+    "nombre": "Cerezas",
+    "descripcion": "Cerezas frescas y deliciosas",
+    "precio": 1100,
+    "id": 14
+  },
+  {
+    "imagen": "🍓",
+    "nombre": "Frutillas",
+    "descripcion": "Frutillas maduras y refrescantes",
+    "precio": 600,
+    "id": 15
+  },
+  {
+    "imagen": "🍋",
+    "nombre": "Limones",
+    "descripcion": "Ideales para dar sabor",
+    "precio": 260,
+    "id": 16
+  }
+]
