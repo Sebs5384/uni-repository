@@ -1,0 +1,12 @@
+{
+    "orderId": "1",
+    "adresses": "Calle 123",
+    "status": "En preparación",
+    "articles": [
+        {
+            "name": "Patito de hule",
+            "quantity": "2",
+            "dangerous": false
+        }
+    ]
+}
