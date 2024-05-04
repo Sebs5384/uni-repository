@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "9426b14d-e068-4138-ba3c-1e9df66150bb",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34428266"
+	},
+	"item": [
+		{
+			"name": "pokeApiRequest",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Gets pikachu's first ability\", function () {\r",
+							"    const pikachuResponse = pm.response.json();\r",
+							"    const pikachuMainAbility = pikachuResponse.abilities[1].ability;\r",
+							"\r",
+							"    console.log(pikachuMainAbility);\r",
+							"    console.log(`Pikachu's main ability is ${pikachuMainAbility.name}`)\r",
+							"    pm.expect(typeof pikachuMainAbility).to.eql(\"string\");\r",
+							"    pm.expect(pikachuMainAbility).to.eql(\"lighthing-rod\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://pokeapi.co/api/v2/pokemon/pikachu"
+			},
+			"response": []
+		}
+	]
+}
