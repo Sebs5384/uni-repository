@@ -1,0 +1,9 @@
+{
+    "nombre": "Sebastian Rodolfo Araya",
+    "documento": 1234567890,
+    "correo": "sebastian@hotmail.com",
+    "telefono": 15408922,
+    "direccion": "calle falsa 123",
+    "valor": 987654321,
+    "concepto": "Json de muestra"
+}
